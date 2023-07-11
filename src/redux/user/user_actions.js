@@ -1,5 +1,7 @@
 import axios from "axios";
 import userActionTypes from "./user_type";
+import { defaultUser } from "./user_reducer";
+
 
 //payload is the user
 const getUser=(user)=>(
@@ -11,7 +13,7 @@ const getUser=(user)=>(
 
 //remove the user
 const removeUser = () =>{
-    type:userActionTypes.REMOVE_USER
+    return {type:userActionTypes.REMOVE_USER}
 };
 
 //fetch the current authenticated user from the server
@@ -23,7 +25,7 @@ export const me = () => async (dispatch) =>{
         dispatch(getUser(res.data || defaultUser));
         console.log("GET USER IS DONE")
     } catch (error) {
-        console.error(err);
+        console.error(error);
     }
 
 };

@@ -1,6 +1,6 @@
 import userActionTypes from "./user_type";
 
-const defaultUser = {};
+export const defaultUser = {};
 
 export default function userReducer(state = defaultUser, action){
     switch (action.type) {

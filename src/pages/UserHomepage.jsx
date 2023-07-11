@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import { useSelector } from "react-redux";
 
 //This the user's homepage
@@ -20,9 +20,5 @@ const UserHomepage = () =>{
 
 };
 
-UserHomepage.PropTypes = {
-    //actually to check the "email" if provided, it must be the string
-    email: PropTypes.string,
-};
 
-export default UserHome;
+export default UserHomepage;
