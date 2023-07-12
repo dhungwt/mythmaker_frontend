@@ -36,7 +36,7 @@ const fetchSingleCharacter =(singlecharacter) =>({
 //add the new character
 export const addCharacterThunk = (newCharacter) => async (dispatch) => {
     try {
-        console.log("ADD CHARACTER THUNK IS RUN")
+        console.log("ADD CHARACTER THUNK IS RUN");
         const response = await axios.post("/api/characters", newCharacter);
         dispatch(addCharacter(response.data));
         console.log("ADD CHARACTER SUCCESSFULLY");
@@ -54,7 +54,7 @@ export const deleteCharacterThunk = (characterId) => async (dispatch) => {
 
         await axios.delete(`/api/characters/${characterId}`);
         dispatch(deleteCharacter(characterId));
-        console.log("DELETE SUCCESSFULLY")
+        console.log("DELETE CHARACTER SUCCESSFULLY")
     } catch (error) {
         console.error(error);
     }

@@ -25,7 +25,7 @@ function characterReducer(state = INITIAL_CHARACTER_STATE, action) {
         case characterActionTypes.FETCH_SINGLE_CHARACTER:
             return { ...state, singleCharacter:action.payload};
         default:
-            break;
+            return state;
     }
 }
 
