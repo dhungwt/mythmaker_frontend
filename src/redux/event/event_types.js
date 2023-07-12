@@ -1,0 +1,9 @@
+const eventActionTypes = {
+    ADD_EVENT:"ADD_EVENT",
+    REMOVE_EVENT:"REMOVE_EVENT",
+    EDIT_EVENT:"EDIT_EVENT",
+    FETCH_ALL_EVENTS:"FETCH_ALL_EVENTS",
+    FETCH_SINGLE_EVENT:"FETCH_SINGLE_EVENT",
+}
+
+export default eventActionTypes;
