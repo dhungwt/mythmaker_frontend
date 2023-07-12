@@ -90,17 +90,20 @@ export const fetchAllCharactersThunk = (storyId) =>{
     };
 };
 
+
+//fetch single character by the character by the id 
 export const fetchSingleCharacterThunk = (characterId) =>{
     return async (dispatch) => {
         try {
             console.log("FETCH SINGLE CHARACTER THUNK IS RUNNING ");
             //get the single character from the backend
             const response = await axios.get(`api call address/${characterId}`);
-            
+            dispatch(fetchSingleCharacter(response.data));
+            console.log("FETCH SINGLE CHARACTER IS DONE");
         } catch (error) {
-            
+            console.error(error);
         }
     }
-}
+};
 
 

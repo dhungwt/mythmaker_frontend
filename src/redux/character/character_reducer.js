@@ -1,7 +1,8 @@
 import characterActionTypes from "./character_type";
 
 export const INITIAL_CHARACTER_STATE = {
-    characters: []
+    characters: [],
+    singleCharacter: null,
 }
 
 function characterReducer(state = INITIAL_CHARACTER_STATE, action) {
@@ -16,9 +17,13 @@ function characterReducer(state = INITIAL_CHARACTER_STATE, action) {
             return {
                 ...state, characters: state.characters.map(character =>
                     character.id === action.payload.id ? action.payload : character
-                )
+                ),
+                singleCharacter: action.payload,
             };
-
+        case characterActionTypes.FETCH_ALL_CHARACTER:
+            return { ...state, characters:action.payload};
+        case characterActionTypes.FETCH_SINGLE_CHARACTER:
+            return { ...state, singleCharacter:action.payload};
         default:
             break;
     }
