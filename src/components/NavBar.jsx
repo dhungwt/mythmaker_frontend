@@ -38,6 +38,7 @@ const NavBar =()=>{
             <nav>
                 {/*condition rendering based on log in or not */}
                 <LinkButton to="/Gameplay"> game </LinkButton>
+                <LinkButton to="/stories"> story </LinkButton>
 
                 {isLoggedIn ?(
                     

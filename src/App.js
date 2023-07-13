@@ -1,12 +1,17 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login,Signup } from './components/AuthForm';
+
 import NavBar from './components/NavBar';
 import UserHomepage from './pages/UserHomepage';
 import HomePage from './pages/HomePage';
+import IndividualStoryPage from './pages/IndividualStoryPage';
 import PrivateRoute from './components/Auth';
-import Gameplay from  './components/HafeefasQuest';
 import ErrorPage from './pages/ErrorPage';
+import Gameplay from  './components/HafeefasQuest';
+import StoriesPage from './pages/StoriesPage';
+
+//css imports
 import '../src/pages/pages.css';
 
 function App() {
@@ -25,6 +30,9 @@ function App() {
         </Route>
 
         <Route path="/gameplay" element={<Gameplay/>} />
+
+        <Route path="/stories" element={<StoriesPage />} />
+        <Route path="/stories/:id" element={<IndividualStoryPage />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
       </div>
