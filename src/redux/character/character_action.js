@@ -37,7 +37,7 @@ const fetchSingleCharacter =(singlecharacter) =>({
 export const addCharacterThunk = (newCharacter) => async (dispatch) => {
     try {
         console.log("ADD CHARACTER THUNK IS RUN");
-        const response = await axios.post("/api/characters", newCharacter);
+        const response = await axios.post(process.env.REACT_APP_CHARACTER_KEY, newCharacter);
         dispatch(addCharacter(response.data));
         console.log("ADD CHARACTER SUCCESSFULLY");
     } catch (error) {
@@ -52,7 +52,7 @@ export const deleteCharacterThunk = (characterId) => async (dispatch) => {
     try {
         console.log("DELETE CHARACTER THUNK")
 
-        await axios.delete(`/api/characters/${characterId}`);
+        await axios.delete(`${process.env.REACT_APP_CHARACTER_KEY}${characterId}`);
         dispatch(deleteCharacter(characterId));
         console.log("DELETE CHARACTER SUCCESSFULLY")
     } catch (error) {
@@ -65,7 +65,7 @@ export const deleteCharacterThunk = (characterId) => async (dispatch) => {
 export const editCharacterThunk = (updatedCharacter) => async (dispatch) => {
     try {
         console.log("EDIT CHARACTER THUNK IS ACTIVE")
-        const response = await axios.patch(`/api/characters/${updatedCharacter.id}`, updatedCharacter);
+        const response = await axios.patch(`${process.env.REACT_APP_CHARACTER_KEY}${updatedCharacter.id}`, updatedCharacter);
         dispatch(editCharacter(response.data));
         console.log("EDIT SUCCESSFULLY");
     } catch (error) {
@@ -97,7 +97,7 @@ export const fetchSingleCharacterThunk = (characterId) =>{
         try {
             console.log("FETCH SINGLE CHARACTER THUNK IS RUNNING ");
             //get the single character from the backend
-            const response = await axios.get(`api call address/${characterId}`);
+            const response = await axios.get(`${process.env.REACT_APP_CHARACTER_KEY}${characterId}`);
             dispatch(fetchSingleCharacter(response.data));
             console.log("FETCH SINGLE CHARACTER IS DONE");
         } catch (error) {
