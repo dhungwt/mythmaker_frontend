@@ -65,7 +65,7 @@ export const deleteCharacterThunk = (characterId) => async (dispatch) => {
 export const editCharacterThunk = (updatedCharacter) => async (dispatch) => {
     try {
         console.log("EDIT CHARACTER THUNK IS ACTIVE")
-        const response = await axios.put(`/api/characters/${updatedCharacter.id}`, updatedCharacter);
+        const response = await axios.patch(`/api/characters/${updatedCharacter.id}`, updatedCharacter);
         dispatch(editCharacter(response.data));
         console.log("EDIT SUCCESSFULLY");
     } catch (error) {
