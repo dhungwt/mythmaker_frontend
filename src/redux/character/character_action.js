@@ -1,4 +1,5 @@
 import characterActionTypes from "./character_type";
+import axios from "axios";
 
 //add character 
 const addCharacter = (newcharacter) => ({
