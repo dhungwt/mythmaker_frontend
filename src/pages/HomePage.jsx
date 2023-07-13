@@ -1,7 +1,10 @@
 import React from "react";
+import './pages.css'
 
-//this page is the home page when to user not log in
-
-export default function HomePage(){
-    return <div>Home Page</div>
+export default function HomePage() {
+  return (
+    <div className="home">
+        <h1> hello </h1>
+    </div>
+  );
 }

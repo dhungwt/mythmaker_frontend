@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../redux/user/user_actions";
+import '../pages/pages.css'
 
 //this component will display different links based on whether user is logged in or not
 
@@ -32,16 +33,20 @@ const NavBar =()=>{
     };
 
     return(
-        <div className="navbar">
+        <div className="navbar" id='background'>
             <h1>MYTHMAKER</h1>
             <nav>
                 {/*condition rendering based on log in or not */}
+                <LinkButton to="/Gameplay"> game </LinkButton>
+
                 {isLoggedIn ?(
+                    
                     <div className="haslogin">
                         {/* Show these links if the user is logged in */}
                         {/*add more link when other page ready */}
                         <LinkButton to="/home">Home</LinkButton>
                         <LinkButton onClick={handleLogOut}>Log out</LinkButton>
+
                     </div>
 
                 ):(

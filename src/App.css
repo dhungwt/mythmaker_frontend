@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+#home-page {
+  background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1186083443667681557/B8E12850839EC32D058C52AF310E45E1F9EDC36A/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false');
+  /* background-image: url('https://cdn.cloudflare.steamstatic.com/store/promo/summer2023/social_media_share.jpg'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  
+}
