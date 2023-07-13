@@ -8,7 +8,7 @@ import HomePage from './pages/HomePage';
 import IndividualStoryPage from './pages/IndividualStoryPage';
 import PrivateRoute from './components/Auth';
 import ErrorPage from './pages/ErrorPage';
-import Gameplay from  './components/HafeefasQuest';
+// import HafeefasQuest from  './components/HafeefasQuest';
 import StoriesPage from './pages/StoriesPage';
 
 //css imports
@@ -29,7 +29,7 @@ function App() {
           <Route path="/home" element={<UserHomepage />}/>
         </Route>
 
-        <Route path="/gameplay" element={<Gameplay/>} />
+        {/* <Route path="/gameplay" element={<HafeefasQuest/>} /> */}
 
         <Route path="/stories" element={<StoriesPage />} />
         <Route path="/stories/:id" element={<IndividualStoryPage />} />
