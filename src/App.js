@@ -6,6 +6,7 @@ import UserHomepage from './pages/UserHomepage';
 import HomePage from './pages/HomePage';
 import PrivateRoute from './components/Auth';
 import Gameplay from  './components/HafeefasQuest';
+import ErrorPage from './pages/ErrorPage';
 import '../src/pages/pages.css';
 
 function App() {
@@ -21,9 +22,10 @@ function App() {
         
         <Route element={<PrivateRoute />}>
           <Route path="/home" element={<UserHomepage />}/>
-          <Route path="/gameplay" element={<Gameplay/>} />
-
         </Route>
+
+        <Route path="/gameplay" element={<Gameplay/>} />
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
       </div>
     </Router>
