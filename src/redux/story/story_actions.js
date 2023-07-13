@@ -39,6 +39,7 @@ export const editStoryCharacterIdThunk = (storyId, characterId) => async (dispat
         console.log("EDIT STORY CHARACTER ID THUNK IS ACTIVE");
         //add the character id to the array of characterid in the story
         const response = await axios.patch(`http://localhost:8080/api/stories/${storyId}`);
+      
         dispatch(editStory(response.data));
         console.log("EDIT STORY CHARACTER ID SUCCESSFULLY");
       } catch (error) {

@@ -10,7 +10,7 @@ const addEvent = (newevent) => ({
 export const addEventThunk = (newEvent) => async (dispatch) =>{
     try {
         console.log("ADD EVENT THUNK IS RUN");
-        const response = await axios.post("api/events",newEvent);
+        const response = await axios.post(process.env.REACT_APP_EVENT_KEY,newEvent);
         dispatch(addEvent(response.data));
         console.log("ADD EVENT SUCCESSFULLY");
     } catch (error) {
@@ -30,7 +30,7 @@ export const deleteEventThunk = (eventId) => async (dispatch) => {
     try {
         console.log("DELETE EVENT THUNK")
 
-        await axios.delete(`/api/events/${eventId}`);
+        await axios.delete(`${process.env.REACT_APP_EVENT_KEY}${eventId}`);
         dispatch(deleteEvent(eventId));
         console.log("DELETE EVENT SUCCESSFULLY")
     } catch (error) {
@@ -50,7 +50,7 @@ const editEvent = (event) => ({
 export const editEventThunk = (updatedEvent) => async (dispatch) => {
     try {
         console.log("EDIT EVENT THUNK IS ACTIVE")
-        const response = await axios.patch(`/api/Events/${updatedEvent.id}`, updatedEvent);
+        const response = await axios.patch(`${process.env.REACT_APP_EVENT_KEY}${updatedEvent.id}`, updatedEvent);
         dispatch(editEvent(response.data));
         console.log("EDIT EVENT SUCCESSFULLY");
     } catch (error) {
@@ -71,7 +71,7 @@ export const fetchAllEventsThunk = (storyId) =>{
         try {
             console.log("FETCH ALL EVENTS THUNK IS RUNNING");
             //get the date from the backend
-            const response =await axios.get(`api call address/${storyId}`);
+            const response =await axios.get(`${process.env.REACT_APP_EVENT_KEY}${storyId}`);
             //send the data as payload
             dispatch(fetchAllEvents(response.data));
             console.log("FETCH ALL EVENTS IS DONE");
@@ -88,12 +88,12 @@ const fetchSingleEvent = (singleEvent) =>({
 });
 
 //fetch single Event by the Event by the id 
-export const fetchSingleEventThunk = (EventId) =>{
+export const fetchSingleEventThunk = (eventId) =>{
     return async (dispatch) => {
         try {
             console.log("FETCH SINGLE EVENT THUNK IS RUNNING ");
             //get the single Event from the backend
-            const response = await axios.get(`api call address/${EventId}`);
+            const response = await axios.get(`${process.env.REACT_APP_EVENT_KEY}${eventId}`);
             dispatch(fetchSingleEvent(response.data));
             console.log("FETCH SINGLE Event IS DONE");
         } catch (error) {
