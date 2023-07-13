@@ -1,4 +1,5 @@
 import React from "react";
+import '../App.css'
 
 import { useSelector } from "react-redux";
 
@@ -11,7 +12,7 @@ const UserHomepage = () =>{
     const email = useSelector((state)=>state.user.email);
 
     return (
-        <div>
+        <div className="background">
             <h3>Welcome, {email}</h3>
         </div>
     );
