@@ -50,7 +50,7 @@ const editEvent = (event) => ({
 export const editEventThunk = (updatedEvent) => async (dispatch) => {
     try {
         console.log("EDIT EVENT THUNK IS ACTIVE")
-        const response = await axios.put(`/api/Events/${updatedEvent.id}`, updatedEvent);
+        const response = await axios.patch(`/api/Events/${updatedEvent.id}`, updatedEvent);
         dispatch(editEvent(response.data));
         console.log("EDIT EVENT SUCCESSFULLY");
     } catch (error) {
