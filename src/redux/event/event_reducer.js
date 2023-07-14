@@ -12,12 +12,12 @@ function eventReducer(state = INITIAL_EVENT_STATE, action){
             return {...state, events:[...state.events, action.payload]};
         //remove the event by the id 
         case eventActionTypes.REMOVE_EVENT:
-            return {...state, events: state.events.filter(event => event.id !== action.payload)};
+            return {...state, events: state.events.filter(event => event._id !== action.payload)};
        // edit the current event
         case eventActionTypes.EDIT_EVENT:
             return {
                 ...state, events: state.events.map(event =>
-                    event.id === action.payload.id ? action.payload : event
+                    event._id === action.payload._id ? action.payload : event
                 ),
                 singleEvent: action.payload,
             };
