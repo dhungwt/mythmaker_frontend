@@ -25,6 +25,6 @@ function IndividualStoryPage() {
   )
 }
 
-export default IndividualStoryPage
+export default IndividualStoryPage;
 
 //todo: story page that holds all stories eg the browse page
