@@ -1,0 +1,42 @@
+.EditCharacter {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 300px;
+}
+
+.edit-character-form {
+    margin-top: 10px;
+}
+
+.edit-character-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-character-form label,
+.edit-character-form input {
+    margin-bottom: 10px;
+}
+
+.edit-character-form button {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.edit-character-form button[type="submit"] {
+    background-color: #007bff;
+}
+
+.edit-character-form button[type="button"] {
+    background-color: #dc3545;
+}
+
+.edit-character-form button[type="submit"]:hover {
+    background-color: #0056
+}
