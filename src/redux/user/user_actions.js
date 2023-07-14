@@ -76,8 +76,11 @@ export const auth = (email,password,method) => async (dispatch) =>{
 
 export const logout = () => async (dispatch) => {
     try{
+        console.log("hey, are you here!")
         await axios.post("http://localhost:8080/api/users/auth/logout");
+        console.log('Before dispatch removeUser');
         dispatch(removeUser());
+        console.log('After dispatch removeUser');
     }catch(error){
         console.error(error);
     }

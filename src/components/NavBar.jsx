@@ -4,35 +4,41 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../redux/user/user_actions";
 import '../pages/pages.css'
 
+
 //this component will display different links based on whether user is logged in or not
 
 //define the linkbutton that create navigational link with option onclick behavior
-const LinkButton = ({to,children,onClick})=>(
+const LinkButton = ({ to, children, onClick }) => (
     <NavLink to={to} onClick={onClick}>
         {children}
     </NavLink>
 );
 
 //define the component part
-const NavBar =()=>{
+const NavBar = () => {
     //dispatch the redux
     const dispatch = useDispatch();
 
     //navigate between the pages
     const navigate = useNavigate();
 
-    //dtermine the user logged in or not
-    const isLoggedIn = useSelector((state)=>!!state.user.id);
+    //determine the user logged in or not
+    const isLoggedIn = useSelector((state) => !!state.user._id);
+    console.log("isloggen in:",isLoggedIn);
+  
 
+    
     //handle the log out bytton
-    const handleLogOut = (event) =>{
+    const handleLogOut = (event) => {
         event.preventDefault();
-        dispatch(logout());
-        //navigate to the login in page when the user log out
-        navigate("/login");
+        dispatch(logout())
+            .then(() => navigate("/login"))
+            .catch(err => console.error(err));
+            console.log("isloggen in:",isLoggedIn);
     };
 
-    return(
+
+    return (
         <div className="navbar" id='background'>
             <h1>MYTHMAKER</h1>
             <nav>
@@ -40,8 +46,8 @@ const NavBar =()=>{
                 {/* <LinkButton to="/gameplay"> game </LinkButton> */}
                 <LinkButton to="/stories"> story </LinkButton>
 
-                {isLoggedIn ?(
-                    
+                {isLoggedIn ? (
+
                     <div className="haslogin">
                         {/* Show these links if the user is logged in */}
                         {/*add more link when other page ready */}
@@ -50,7 +56,7 @@ const NavBar =()=>{
 
                     </div>
 
-                ):(
+                ) : (
                     <div className="notlogin">
                         {/*show the links if the user is not logged in */}
                         <LinkButton to="/login">Login</LinkButton>
@@ -65,7 +71,7 @@ const NavBar =()=>{
 
 
 
-    
+
 }
 
 export default NavBar;

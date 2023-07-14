@@ -1,5 +1,4 @@
 import storyActionTypes from "./story_types";
-import allStoryTypes from './story_actions';
 
 
 export const INITIAL_STORY_STATE = {
