@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchAllStoriesThunk} from '../redux/story/story_actions'
-import storyCard from '../components/storyCard'
+import StoryCard from '../components/StoryCard'
 
 // /stories page
 function StoriesPage() {
@@ -29,21 +29,30 @@ function StoriesPage() {
 
   return (
     <div>
-    <h1>StoriesPage</h1>
+      <h1>StoriesPage</h1>
     
       {isLoading ? (
         <h1>Loading..</h1>
-      ) : stories.length > 0 ? (
+      )
+       : 
+      stories.length > 0 ? (
         stories.map((storyList) => (
-          <div key={storyList.id}>
-            {/* Render stuff here */}
-            <h2>{storyList.title}</h2>
-            <h2>{storyList.event}</h2>
-          </div>
+          // <div key={storyList.id}>
+            /* Render stuff here */
+
+           <StoryCard story={storyList} key={storyList.id}/>
         ))
-      ) : (
+
+          /* <h2> {storyList.title} </h2>
+            <h2>{storyList.event} </h2> */
+          // </div> 
+        // ))
+      
+        ) 
+      : (
         <h1>Nothing to return</h1>
       )}
+      
     </div>
   
   )
