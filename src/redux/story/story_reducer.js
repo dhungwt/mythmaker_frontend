@@ -31,7 +31,7 @@ const storyReducer = (state = INITIAL_STORY_STATE, action) => {
 
 // ALL STORY
 const allStoryReducer = (state = Initial_All_Story, {type, payload}) => {
-    console.log("ALL STORY IS HANDLING FOR ALL STUDENTS")
+    
     switch(type){
         // fetchallstories is something new btw
         case storyActionTypes.FETCH_ALL_STORIES:
