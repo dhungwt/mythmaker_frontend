@@ -12,9 +12,11 @@ const AuthForm = ({ name, displayName }) => {
     const dispatch = useDispatch();
 
     const error = useSelector((state) => state.user.error);
+    //const user = useSelector((state) => state.user);
+    
 
     //submit the email address(username) and password and the form name
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         //get the form name
@@ -26,12 +28,19 @@ const AuthForm = ({ name, displayName }) => {
         //get the password
         const password = event.target.password.value;
 
-        //dispatch the auth action
-        console.log("DISPATCH AUTH ACTION IN AUTH FORM")
-        dispatch(auth(email, password, formname));
+        try{
+            console.log("DISPATCH AUTH ACTION IN AUTH FORM")
+            await dispatch(auth(email, password, formname)); 
+            navigate("/home");
+        }catch(error){
+            console.error("Auth Failed");
+
+        }
+
+        
 
         //after the submission, navigate to the home page
-        navigate("/home");
+       
 
     };
 
