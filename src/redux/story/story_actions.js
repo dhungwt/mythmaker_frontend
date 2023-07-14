@@ -46,3 +46,25 @@ export const editStoryCharacterIdThunk = (storyId, characterId) => async (dispat
         console.error(error);
       }
 };
+
+// ALL STORIES
+export const fetchAllStories = (payload) => {
+  console.log("FETCH ALL STUDENTS")
+  return{
+    type: storyActionTypes.FETCH_ALL_STORIES,
+    payload: payload,
+  };
+};
+
+export const fetchAllStoriesThunk = () => {
+  return async (dispatch) => {               //wrong link for now
+    try{
+    const response = await axios.get(`http://localhost:8080/api/stories`)
+    console.log('FETCHALLSTORIES THUNK COMPLETE')
+    dispatch(fetchAllStories(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+    
+  }
+}
