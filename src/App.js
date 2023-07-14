@@ -25,9 +25,9 @@ function App() {
         <Route path="/login" element={<Login name="login" displayName='Log In' />}/>
         <Route path="/signup" element={<Signup name="signup" displayName='Sign Up'/>}/>
         
-        <Route element={<PrivateRoute />}>
+        {/* <Route element={<PrivateRoute />}> */}
           <Route path="/home" element={<UserHomepage />}/>
-        </Route>
+        {/* </Route> */}
 
         {/* <Route path="/gameplay" element={<HafeefasQuest/>} /> */}
 
