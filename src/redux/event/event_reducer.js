@@ -21,7 +21,7 @@ function eventReducer(state = INITIAL_EVENT_STATE, action){
                 ),
                 singleEvent: action.payload,
             };
-        case eventActionTypes.FETCH_ALL_EVENTS:
+        case eventActionTypes.FETCH_ALL_EVENTS_BY_STORY:
             return { ...state, events:action.payload};
         case eventActionTypes.FETCH_SINGLE_EVENT:
             return { ...state, singleEvent:action.payload};
