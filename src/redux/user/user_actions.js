@@ -21,7 +21,7 @@ const removeUser = () =>{
 export const me = () => async (dispatch) =>{
     try {
         console.log("FETCHING GET USER")
-        const res = await axios.get("http://localhost:8080/auth/me");
+        const res = await axios.get("http://localhost:8080/api/users/auth/me");
         dispatch(getUser(res.data || defaultUser));
         console.log("GET USER IS DONE")
     } catch (error) {
@@ -34,7 +34,7 @@ export const me = () => async (dispatch) =>{
 export const auth = (email,password,method) => async (dispatch) =>{
     let res;
     try {
-        res = await axios.post(`http://localhost:8080/auth/${method}`,{
+        res = await axios.post(`http://localhost:8080/api/users/auth/${method}`,{
             email,
             password,
         });
@@ -53,7 +53,7 @@ export const auth = (email,password,method) => async (dispatch) =>{
 
 export const logout = () => async (dispatch) => {
     try{
-        await axios.post("http://localhost:8080/auth/logout");
+        await axios.post("http://localhost:8080/api/users/auth/logout");
         dispatch(removeUser());
     }catch(error){
         console.error(error);
