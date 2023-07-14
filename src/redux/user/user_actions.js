@@ -11,9 +11,18 @@ const getUser=(user)=>(
     }
 );
 
+//get all the stories a user has created
+const fetchUserStories=(storyIds)=>{
+   return{
+    type:userActionTypes.FETCH_USER_STORIES,
+    payload: storyIds
+   }
+};
+
 //remove the user
 const removeUser = () =>{
-    return {type:userActionTypes.REMOVE_USER}
+    return {type:userActionTypes.REMOVE_USER 
+    } 
 };
 
 //fetch the current authenticated user from the server
@@ -29,6 +38,20 @@ export const me = () => async (dispatch) =>{
     }
 
 };
+
+export const fetchUserStoriesThunk = (userID) => {
+    return async (dispatch) => {
+      try {
+        //change this url to user stories api once it is set up
+        const response = await axios.get(`http://localhost:8080/api/users/${userID}/`);
+        console.log("data", response.data);
+        dispatch(fetchUserStories(response.data.storyIds));
+    // no route to access all the stories of a user yet  
+    } catch (error) {
+        console.error(error);
+      }
+    };
+  };
 
 //handle user authentication
 export const auth = (email,password,method) => async (dispatch) =>{
@@ -53,8 +76,11 @@ export const auth = (email,password,method) => async (dispatch) =>{
 
 export const logout = () => async (dispatch) => {
     try{
+        console.log("hey, are you here!")
         await axios.post("http://localhost:8080/api/users/auth/logout");
+        console.log('Before dispatch removeUser');
         dispatch(removeUser());
+        console.log('After dispatch removeUser');
     }catch(error){
         console.error(error);
     }

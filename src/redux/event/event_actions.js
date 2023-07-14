@@ -1,4 +1,5 @@
 import eventActionTypes from "./event_types";
+import axios from "axios";
 
 //add event
 const addEvent = (newevent) => ({
@@ -59,22 +60,22 @@ export const editEventThunk = (updatedEvent) => async (dispatch) => {
 };
 
 //fetch all events based on the story id
-const fetchAllEvents = (payload) => ({
-    type: eventActionTypes.FETCH_ALL_EVENTS,
+const fetchAllEventsByStory = (payload) => ({
+    type: eventActionTypes.FETCH_ALL_EVENTS_BY_STORY,
     payload:payload,
 });
 
 //fetch all the events based on the storyid
 //api call addre need to modify when the backend is ready
-export const fetchAllEventsThunk = (storyId) =>{
+export const fetchAllEventsByStoryThunk = (storyId) =>{
     return async (dispatch) => {
         try {
             console.log("FETCH ALL EVENTS THUNK IS RUNNING");
             //get the date from the backend
             const response =await axios.get(`${process.env.REACT_APP_EVENT_KEY}${storyId}`);
             //send the data as payload
-            dispatch(fetchAllEvents(response.data));
-            console.log("FETCH ALL EVENTS IS DONE");
+            dispatch(fetchAllEventsByStory(response.data));
+            console.log("FETCH ALL EVENTS BY StoryId IS DONE");
         } catch (error) {
             console.error(error);
         }

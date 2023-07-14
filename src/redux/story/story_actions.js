@@ -49,7 +49,7 @@ export const editStoryCharacterIdThunk = (storyId, characterId) => async (dispat
 
 // ALL STORIES
 export const fetchAllStories = (payload) => {
-  console.log("FETCH ALL STUDENTS")
+  console.log("FETCH ALL STORIES")
   return{
     type: storyActionTypes.FETCH_ALL_STORIES,
     payload: payload,
