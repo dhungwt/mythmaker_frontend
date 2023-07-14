@@ -66,7 +66,7 @@ const AuthForm = ({ name, displayName }) => {
                     <button type="submit">{displayName}</button>
                 </div>
                 {/*if there is error we can handle the error message */}
-                {error && error.response && <div> {error.response.data} </div>}
+                {error && error.response && <div> {error.response.data.message} </div>}
 
             </form>
             {/*Google Oauth button */}
