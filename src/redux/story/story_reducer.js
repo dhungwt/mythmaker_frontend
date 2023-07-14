@@ -1,5 +1,6 @@
 import storyActionTypes from "./story_types";
-import allStoryTypes from './story_actions'
+import allStoryTypes from './story_actions';
+
 
 export const INITIAL_STORY_STATE = {
     singleStory: null,
@@ -32,7 +33,8 @@ const storyReducer = (state = INITIAL_STORY_STATE, action) => {
 const allStoryReducer = (state = Initial_All_Story, {type, payload}) => {
     console.log("ALL STORY IS HANDLING FOR ALL STUDENTS")
     switch(type){
-        case allStoryTypes.FETCH_ALL_STORIES:
+        // fetchallstories is something new btw
+        case storyActionTypes.FETCH_ALL_STORIES:
             return {...state, allStory: payload};
     
     default:

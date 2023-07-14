@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   character: characterReducer,
   event: eventReducer,
   story: storyReducer,
-  allStudents: allStoryReducer,
+  allStories: allStoryReducer,
 });
 
 export default rootReducer;

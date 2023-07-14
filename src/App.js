@@ -33,6 +33,7 @@ function App() {
 
         <Route path="/stories" element={<StoriesPage />} />
         <Route path="/stories/:id" element={<IndividualStoryPage />} />
+
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
       </div>
