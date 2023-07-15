@@ -40,6 +40,7 @@ const CreateStory = () =>{
 
     return (
         <div>
+            <h1>Please Click the Delete button right now. NO SAVE!!!</h1>
             <button onClick={handleSaveChanges}>Save Changes</button>
             <button onClick={handleDeleteStory}>Delete Story</button>
         </div>
