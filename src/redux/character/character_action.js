@@ -41,6 +41,7 @@ export const addCharacterThunk = (newCharacter) => async (dispatch) => {
         const response = await axios.post(process.env.REACT_APP_CHARACTER_KEY, newCharacter);
         dispatch(addCharacter(response.data));
         console.log("ADD CHARACTER SUCCESSFULLY");
+        return response.data;
     } catch (error) {
         console.error(error);
     }
@@ -66,7 +67,7 @@ export const deleteCharacterThunk = (characterId) => async (dispatch) => {
 export const editCharacterThunk = (updatedCharacter) => async (dispatch) => {
     try {
         console.log("EDIT CHARACTER THUNK IS ACTIVE")
-        const response = await axios.patch(`${process.env.REACT_APP_CHARACTER_KEY}${updatedCharacter.id}`, updatedCharacter);
+        const response = await axios.patch(`${process.env.REACT_APP_CHARACTER_KEY}${updatedCharacter._id}`, updatedCharacter);
         dispatch(editCharacter(response.data));
         console.log("EDIT SUCCESSFULLY");
     } catch (error) {
