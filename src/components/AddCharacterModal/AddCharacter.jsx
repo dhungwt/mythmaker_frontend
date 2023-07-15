@@ -38,7 +38,7 @@ const AddCharacter = ({ storyId }) => {
             //1. add the character to character list
             const addedCharacter = await dispatch(addCharacterThunk(newCharacter));
             //2. after create character, we need to add id to the story
-            await dispatch(editStoryCharacterIdThunk(addedCharacter.id, storyId));
+            await dispatch(editStoryCharacterIdThunk(addedCharacter._id, storyId));
             //3. stor the newcharacter object in the local storage of the browser
             localStorage.setItem("character", JSON.stringify(newCharacter));
             popupModel();

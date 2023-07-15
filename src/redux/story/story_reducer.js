@@ -6,17 +6,17 @@ export const INITIAL_STORY_STATE = {
 };
 
 export const Initial_All_Story = {
-    allStory: [],
-}
+    allStory: [], // Array for holding all stories
+};
 
 // allStory and single story need to be in two different functions
 const storyReducer = (state = INITIAL_STORY_STATE, action) => {
     switch (action.type) {
-            // receive action to fetch single story
+        // receive action to fetch single story
         case storyActionTypes.FETCH_INDIVIDUAL_STORY:
-            return action.payload;
-        
-            //not tested yet
+            return { ...state, singleStory: action.payload };
+
+        //not tested yet
         case storyActionTypes.EDIT_STORY:
             return {
                 ...state,
@@ -29,16 +29,25 @@ const storyReducer = (state = INITIAL_STORY_STATE, action) => {
 };
 
 // ALL STORY
-const allStoryReducer = (state = Initial_All_Story, {type, payload}) => {
-    console.log("ALL STORY IS HANDLING FOR ALL STUDENTS")
-    switch(type){
+const allStoryReducer = (state = Initial_All_Story, { type, payload }) => {
+
+    switch (type) {
         // fetchallstories is something new btw
         case storyActionTypes.FETCH_ALL_STORIES:
-            return {...state, allStory: payload};
-    
-    default:
-        return state;
-    }   
+            return { ...state, allStory: payload };
+        case storyActionTypes.ADD_STORY:
+            return {
+                ...state,
+                allStory: [...state.allStory, payload],
+            };
+        case storyActionTypes.DELETE_STORY:
+            return {
+                ...state,
+                allStory: state.allStory.filter(story => story._id !== payload)
+            };
+        default:
+            return state;
+    }
 }
 
 export { storyReducer, allStoryReducer };

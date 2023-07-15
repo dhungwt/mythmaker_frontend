@@ -12,11 +12,11 @@ function characterReducer(state = INITIAL_CHARACTER_STATE, action) {
             return { ...state, characters: [...state.characters, action.payload] };
         //remove the character by the id 
         case characterActionTypes.REMOVE_CHARACTER:
-            return { ...state, characters: state.characters.filter(character => character.id !== action.payload) };
+            return { ...state, characters: state.characters.filter(character => character._id !== action.payload) };
         case characterActionTypes.EDIT_CHARACTER:
             return {
                 ...state, characters: state.characters.map(character =>
-                    character.id === action.payload.id ? action.payload : character
+                    character._id === action.payload._id ? action.payload : character
                 ),
                 singleCharacter: action.payload,
             };

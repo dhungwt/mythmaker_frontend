@@ -33,6 +33,17 @@ const editStory = (story) => ({
     payload: story,
 });
 
+export const editStoryThunk = (updatedStory) => async (dispatch) =>{
+    try {
+        console.log("EDIT STORY THUNK IS RUNNING");
+        const response = await axios.patch(`http://localhost:8080/api/stories/${updatedStory._id}`,updatedStory);
+        dispatch(editStory(response.data));
+        console.log("EDIT STORY IS COMPLETED");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 export const editStoryCharacterIdThunk = (storyId, characterId) => async (dispatch) => {
     try {
@@ -59,7 +70,7 @@ export const fetchAllStories = (payload) => {
 export const fetchAllStoriesThunk = () => {
   return async (dispatch) => {               //wrong link for now
     try{
-    const response = await axios.get(`http://localhost:8080/api/stories`)
+    const response = await axios.get(`http://localhost:8080/api/stories/`)
     console.log('FETCHALLSTORIES THUNK COMPLETE')
     dispatch(fetchAllStories(response.data));
     } catch (error) {
@@ -68,3 +79,42 @@ export const fetchAllStoriesThunk = () => {
     
   }
 }
+
+//add story action
+const addStory =(story) =>({
+    
+    type: storyActionTypes.ADD_STORY,
+    payload:story,
+});
+
+export const addStoryThunk = (story) => async (dispatch) => {
+    try {
+        console.log("ADD STORY THUNK IS RUNNING");
+        const response = await axios.post(process.env.REACT_APP_STORY_KEY, story);
+ 
+        dispatch(addStory(response.data));
+        console.log("ADD STORY IS COMPLETED");
+        return response.data;
+    }catch(error){
+        console.log(error);
+
+    }
+};
+
+//delete story action
+const deleteStory = (storyId) =>({
+    type: storyActionTypes.DELETE_STORY,
+    payload: storyId,
+});
+
+export const deleteStoryThunk = (storyId) => async(dispatch) =>{
+    try {
+        console.log("Delete STORY THUNK IS RUNNING");
+        await axios.delete(`http://localhost:8080/api/stories/${storyId}`);
+        dispatch(deleteStory(storyId));
+        console.log("DELETE STORY IS COMPLETED");
+    } catch (error) {
+        console.log(error);
+    }
+
+};
