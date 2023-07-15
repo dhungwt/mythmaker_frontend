@@ -41,6 +41,7 @@ export const addCharacterThunk = (newCharacter) => async (dispatch) => {
         const response = await axios.post(process.env.REACT_APP_CHARACTER_KEY, newCharacter);
         dispatch(addCharacter(response.data));
         console.log("ADD CHARACTER SUCCESSFULLY");
+        return response.data;
     } catch (error) {
         console.error(error);
     }

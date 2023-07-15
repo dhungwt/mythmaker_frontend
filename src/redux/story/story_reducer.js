@@ -6,15 +6,15 @@ export const INITIAL_STORY_STATE = {
 };
 
 export const Initial_All_Story = {
-    allStory: [],
-}
+    allStory: [], // Array for holding all stories
+};
 
 // allStory and single story need to be in two different functions
 const storyReducer = (state = INITIAL_STORY_STATE, action) => {
     switch (action.type) {
         // receive action to fetch single story
         case storyActionTypes.FETCH_INDIVIDUAL_STORY:
-            return action.payload;
+            return { ...state, singleStory: action.payload };
 
         //not tested yet
         case storyActionTypes.EDIT_STORY:
@@ -38,7 +38,7 @@ const allStoryReducer = (state = Initial_All_Story, { type, payload }) => {
         case storyActionTypes.ADD_STORY:
             return {
                 ...state,
-                allStory: [...state.allStory, payload]
+                allStory: [...state.allStory, payload],
             };
         case storyActionTypes.DELETE_STORY:
             return {
