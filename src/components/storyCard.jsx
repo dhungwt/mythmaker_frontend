@@ -36,8 +36,9 @@ function StoryCard(props) {
 
     const handleClick = (e) =>{
         e.preventDefault();
-        window.location.href= `/stories/:id`; //redirects to the individual story page
+        window.location.href= `/stories/${story._id}`; //redirects to the individual story page
     }
+
   return (
     // <div className="story-card" style={{maxWidth:"20%"}}>
     //     <button className="card-button" onClick={handleClick}>
@@ -52,7 +53,7 @@ function StoryCard(props) {
     <div className="story-card" style={{margin:"3%", marginTop:"15vh", boxShadow: "10px 10px 15px 0 rgba(0, 0, 0, 0.2)" }}>
     <div className="card" style={{height: '60%', border:"none"}}> 
       <img className="card-img-top" src="https://www.rpgfan.com/wp-content/uploads/2021/08/Pokemon-Legends-Arceus-Cover-Art.jpg" alt="Card image cap"
-        style={{ height: '300px', objectFit:"cover" }} // Set a fixed height for the card image
+        style={{ height: '320px', objectFit:"cover" }} // Set a fixed height for the card image
  />
       
       <div className="card-body" >
