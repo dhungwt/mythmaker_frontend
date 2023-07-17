@@ -1,23 +1,41 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { deleteStoryThunk } from "../redux/story/story_actions";
 import { editStoryThunk } from "../redux/story/story_actions";
+import { fetchIndividualStoryThunk } from "../redux/story/story_actions";
+import CharacterList from "../components/CharacterList/CharacterList";
 
-const CreateStory = () =>{
+const CreateStory = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     //get the story id
-    const {storyId} = useParams();
+    const { storyId } = useParams();
 
-    //use for test:07/14
-    const updatedStory = {
-        _id:storyId,
-    }
-    
+    //fetch the current story
+    useEffect(() => {
+        dispatch(fetchIndividualStoryThunk(storyId))
+    }, [dispatch, storyId]);
+
+    //get the current story
+    const story = useSelector(state => state.story.singleStory);
+
+    //set the story title
+    const [storyTitle, setStoryTitle] = useState(story ? story.title : "Untitled");
+
+    //handle the story title change in the input title form
+    const handleStoryTitleChange = (event) => {
+        setStoryTitle(event.target.value);
+    };
+
     //handle the story save change
     const handleSaveChanges = async () => {
         try {
+            //updated on 07/17
+            const updatedStory = {
+                _id: storyId,
+                title: storyTitle //send the new title here
+            }
             await dispatch(editStoryThunk(updatedStory));
             console.log("Changes saved successfully");
         } catch (error) {
@@ -26,7 +44,7 @@ const CreateStory = () =>{
     }
 
     //please must delete the story when you test here
-    const handleDeleteStory = async() =>{
+    const handleDeleteStory = async () => {
 
         try {
             await dispatch(deleteStoryThunk(storyId));
@@ -40,13 +58,27 @@ const CreateStory = () =>{
 
     return (
         <div>
-            <h1>Please Click the Delete button right now. NO SAVE!!!</h1>
-            <button onClick={handleSaveChanges}>Save Changes</button>
-            <button onClick={handleDeleteStory}>Delete Story</button>
+            <div className="Create_Story_Title">
+                <input type="text" value={storyTitle} onChange={handleStoryTitleChange} />
+            </div>
+
+            <div className="Add_Character_Field">
+                <CharacterList storyId={storyId} />
+            </div>
+
+            <div className="Add_Event_Field">
+
+            </div>
+            
+            <div className="Save_Delete_CreateStory_Buttton">
+                <h1>Please Click the Delete button right now. NO SAVE!!!</h1>
+                <button onClick={handleSaveChanges}>Save Changes</button>
+                <button onClick={handleDeleteStory}>Delete Story</button>
+            </div>
         </div>
     );
 
 
-} 
+}
 
 export default CreateStory;

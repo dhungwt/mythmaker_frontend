@@ -1,61 +1,42 @@
-.AddChareacter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.AddChareacter button {
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.overlay_addCharacter {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-character-content {
-  background: white;
+.AddCharacter {
+  margin: 20px;
   padding: 20px;
-  border-radius: 5px;
-  width: 500px;
-  max-width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  max-width: 300px;
 }
 
-.modal-character-content h2 {
-  text-align: center;
-  margin-bottom: 20px;
+.add-character-form {
+  margin-top: 10px;
 }
 
-.modal-character-content form {
+.add-character-form form {
   display: flex;
   flex-direction: column;
 }
 
-.modal-character-content form input {
-  padding: 10px;
+.add-character-form label,
+.add-character-form input {
   margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
 }
 
-.modal-character-content form button {
+.add-character-form button {
+  margin-top: 10px;
   padding: 10px;
   border-radius: 5px;
   border: none;
+  color: #ffffff;
   cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 10px;
+}
+
+.add-character-form button[type="submit"] {
+  background-color: #007bff;
+}
+
+.add-character-form button[type="button"] {
+  background-color: #dc3545;
+}
+
+.add-character-form button[type="submit"]:hover {
+  background-color: #0056
 }
