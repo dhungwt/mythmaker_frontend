@@ -73,7 +73,7 @@ export const fetchAllEventsByStoryThunk = (storyId) =>{
         try {
             console.log("FETCH ALL EVENTS THUNK IS RUNNING");
             //get the date from the backend
-            const response =await axios.get(`${process.env.REACT_APP_EVENT_KEY}${storyId}`);
+            const response =await axios.get(`http://localhost:8080/api/stories/${storyId}/events`);
             //send the data as payload
             dispatch(fetchAllEventsByStory(response.data));
             console.log("FETCH ALL EVENTS BY StoryId IS DONE");
@@ -95,7 +95,7 @@ export const fetchSingleEventThunk = (storyId, eventId) =>{
         try {
             console.log("FETCH SINGLE EVENT THUNK IS RUNNING ");
             //get the single Event from the backend
-            const response = await axios.get(`${process.env.REACT_APP_EVENT_KEY}${storyId}${eventId}`);
+            const response = await axios.get(`http://localhost:8080/api/events/${storyId}/${eventId}`);
             dispatch(fetchSingleEvent(response.data));
             console.log("FETCH SINGLE Event IS DONE");
         } catch (error) {

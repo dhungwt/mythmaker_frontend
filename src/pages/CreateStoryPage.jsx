@@ -4,7 +4,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { deleteStoryThunk } from "../redux/story/story_actions";
 import { editStoryThunk } from "../redux/story/story_actions";
 import { fetchIndividualStoryThunk } from "../redux/story/story_actions";
+import { fetchAllEventsByStoryThunk } from "../redux/event/event_actions";
 import CharacterList from "../components/CharacterList/CharacterList";
+import DisplayEvent from "../components/EventPart/DispalyEvent/DisplayEvent";
 
 const CreateStory = () => {
     const dispatch = useDispatch();
@@ -12,9 +14,13 @@ const CreateStory = () => {
     //get the story id
     const { storyId } = useParams();
 
+    //get the all events
+    const events = useSelector((state) => state.event.events);
+
     //fetch the current story
     useEffect(() => {
         dispatch(fetchIndividualStoryThunk(storyId))
+        dispatch(fetchAllEventsByStoryThunk(storyId))
     }, [dispatch, storyId]);
 
     //get the current story
@@ -66,7 +72,11 @@ const CreateStory = () => {
                 <CharacterList storyId={storyId} />
             </div>
 
-            <div className="Add_Event_Field">
+            <div className="Display_Event_Field">
+                <h1>Display the Current Story Events</h1>
+                {events.map((event, index) => (
+                    <DisplayEvent key={index} event={event} />
+                ))}
 
             </div>
             
