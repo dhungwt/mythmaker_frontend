@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addCharacterThunk } from "../redux/character/character_action";
 import { addStoryThunk } from "../redux/story/story_actions";
+import { addEventThunk } from "../redux/event/event_actions";
 
 
 //This the user's homepage
@@ -34,8 +35,8 @@ import { addStoryThunk } from "../redux/story/story_actions";
 //     "__v": 0
 //   }
 
-const UserHomepage = () =>{
-    
+const UserHomepage = () => {
+
     const dispatch = useDispatch();
     //useSelctor for the logged in user
     const user = useSelector((state) => state.user);
@@ -51,31 +52,54 @@ const UserHomepage = () =>{
 
     //set the default character
     const defaultCharacter = {
-        name:"narrator",
+        name: "narrator",
     }
+
 
     //set the defaultStory
     const defaultStory = {
-        title:"Untitled",
-        events:[],
-        characters:[],
+        title: "Untitled",
+        events: [],
+        characters: [],
         //currentEvent: "Default Current Event",
-        creatorId:userID,
+        creatorId: userID,
     }
-    
 
-    console.log("what is the user id:",userID);
+
+    console.log("what is the user id:", userID);
 
     //handle the default story we create
-    const handleCreateStory = async () =>{
+    const handleCreateStory = async () => {
         //create the new character
         const newCharacter = await dispatch(addCharacterThunk(defaultCharacter));
+        //create the default option
+        const defaultOption = {
+            name: "Default Option Name",
+            text: "Default Option Text",
+
+        };
+        //set the default Event
+        const defaultEvent = {
+            name: "Default Name",
+            text: "Default Text",
+            characterId: newCharacter._id,
+            option1: defaultOption,
+            option2: null,
+            option3: null,
+
+        }
+
+        //dispatch an action to create new event
+        const newEvent = await dispatch(addEventThunk(defaultEvent));
 
         //put the new character into the default story
         defaultStory.characters.push(newCharacter._id);
-        
 
-        console.log("what is the character id:",newCharacter._id);
+        //put the new event into the story
+        defaultStory.events.push(newEvent._id);
+
+
+        console.log("what is the character id:", newCharacter._id);
         console.log("I am ready to add story");
         //create the new story
         const newStory = await dispatch(addStoryThunk(defaultStory));
@@ -86,7 +110,7 @@ const UserHomepage = () =>{
     }
     //get the email address from the store state
     //comment below back in when auth is set up
-   // const user = useSelector((state)=>state.user);
+    // const user = useSelector((state)=>state.user);
 
     // useEffect(() => {
     //     console.log("FETCH USER Stories FIRING IN USEEFFECT");
@@ -97,11 +121,11 @@ const UserHomepage = () =>{
         <div className="background">
             <p>
                 {user
-                ?JSON.stringify(user)
-                :"No User"}
+                    ? JSON.stringify(user)
+                    : "No User"}
             </p>
             <button onClick={handleCreateStory}>Create Story</button>
-         {/* <h3>Welcome, {email}</h3> */}
+            {/* <h3>Welcome, {email}</h3> */}
         </div>
     );
 
