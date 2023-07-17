@@ -13,6 +13,9 @@ import ErrorPage from './pages/ErrorPage';
 // import HafeefasQuest from  './components/HafeefasQuest';
 import StoriesPage from './pages/StoriesPage';
 
+import EditEvent from './components/EventPart/EditEventModal/EditEvent';
+
+
 //css imports
 import '../src/pages/pages.css';
 
@@ -30,6 +33,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/home" element={<UserHomepage />}/>
           <Route path="/createStory/:storyId" element={<CreateStory />} />
+          <Route path="/editEvent/:eventStoryId/:eventId" element={<EditEvent />} />
         </Route>
 
         {/* <Route path="/gameplay" element={<HafeefasQuest/>} /> */}

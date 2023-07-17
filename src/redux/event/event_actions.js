@@ -14,6 +14,7 @@ export const addEventThunk = (newEvent) => async (dispatch) =>{
         const response = await axios.post(process.env.REACT_APP_EVENT_KEY,newEvent);
         dispatch(addEvent(response.data));
         console.log("ADD EVENT SUCCESSFULLY");
+        return response.data;
     } catch (error) {
         console.error(error);
     }
@@ -72,7 +73,7 @@ export const fetchAllEventsByStoryThunk = (storyId) =>{
         try {
             console.log("FETCH ALL EVENTS THUNK IS RUNNING");
             //get the date from the backend
-            const response =await axios.get(`${process.env.REACT_APP_EVENT_KEY}${storyId}`);
+            const response =await axios.get(`http://localhost:8080/api/stories/${storyId}/events`);
             //send the data as payload
             dispatch(fetchAllEventsByStory(response.data));
             console.log("FETCH ALL EVENTS BY StoryId IS DONE");
@@ -89,12 +90,12 @@ const fetchSingleEvent = (singleEvent) =>({
 });
 
 //fetch single Event by the Event by the id 
-export const fetchSingleEventThunk = (eventId) =>{
+export const fetchSingleEventThunk = (storyId, eventId) =>{
     return async (dispatch) => {
         try {
             console.log("FETCH SINGLE EVENT THUNK IS RUNNING ");
             //get the single Event from the backend
-            const response = await axios.get(`${process.env.REACT_APP_EVENT_KEY}${eventId}`);
+            const response = await axios.get(`http://localhost:8080/api/events/${storyId}/${eventId}`);
             dispatch(fetchSingleEvent(response.data));
             console.log("FETCH SINGLE Event IS DONE");
         } catch (error) {
