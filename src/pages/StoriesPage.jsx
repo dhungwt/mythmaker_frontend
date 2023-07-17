@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchAllStoriesThunk} from '../redux/story/story_actions'
-import storyCard from '../components/storyCard'
+import StoryCard from '../components/StoryCard'
+import './pages.css'
 
 // /stories page
 function StoriesPage() {
@@ -28,22 +29,29 @@ function StoriesPage() {
 // storycard just need to display the information corrrectly by using onclick, so when u click on it, it'll redirect to the individual page
 
   return (
-    <div>
-    <h1>StoriesPage</h1>
+    <div className="story-card-container" 
+    style={{ display: 'flex', flexWrap: 'wrap' , 
+    // backgroundImage: 'url(https://wallpapercave.com/wp/wp2635945.jpg)' ,
+    // backgroundSize: 'cover', 
+    // backgroundRepeat: 'no-repeat', 
+    // minHeight: '100vh',
+    backgroundPosition: 'center'  }}
+  >
+      <h1>StoriesPage</h1>
     
       {isLoading ? (
         <h1>Loading..</h1>
-      ) : stories.length > 0 ? (
+      )
+       : 
+      stories.length > 0 ? (
         stories.map((storyList) => (
-          <div key={storyList.id}>
-            {/* Render stuff here */}
-            <h2>{storyList.title}</h2>
-            <h2>{storyList.event}</h2>
-          </div>
-        ))
-      ) : (
+           <StoryCard story={storyList} key={storyList.id}/>
+        ))         
+        ) 
+      : (
         <h1>Nothing to return</h1>
       )}
+      
     </div>
   
   )
