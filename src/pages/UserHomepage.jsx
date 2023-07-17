@@ -129,16 +129,6 @@ const UserHomepage = () =>{
                 <h1> nothing to return </h1>
             )
         }
-
-
-         {/* stories.length > 0 ? (
-        stories.map((storyList) => (
-           <StoryCard story={storyList} key={storyList.id}/>
-        ))         
-        ) 
-      : (
-        <h1>Nothing to return</h1>
-      )} */}
       
         </div>
     );

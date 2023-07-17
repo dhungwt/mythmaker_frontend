@@ -21,7 +21,6 @@ const storyReducer = (state = INITIAL_STORY_STATE, action) => {
         // receive action to fetch single story
         case storyActionTypes.FETCH_INDIVIDUAL_STORY:
             return { ...state, singleStory: action.payload };
-
         //not tested yet
         case storyActionTypes.EDIT_STORY:
             return {
