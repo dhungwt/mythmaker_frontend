@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editCharacterThunk } from "../../redux/character/character_action";
+import { editCharacterThunk } from "../../../redux/character/character_action";
 import "./StyleEditCharacter.css";
 
 //This component use to edit the character,pass by the 

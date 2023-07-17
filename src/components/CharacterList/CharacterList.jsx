@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchIndividualStoryThunk } from "../../redux/story/story_actions";
 import { deleteCharacterThunk } from "../../redux/character/character_action";
 import AddCharacter from "../AddCharacterModal/AddCharacter";
-import EditCharacter from "../EditCharacterModal/EditCharacter";
+import EditCharacter from "../EditCharacterModal/EditCharacterModal/EditCharacter";
 
 function CharacterList({ storyId }) {
     //dispatch the thunk
