@@ -37,7 +37,7 @@ function EditCharacter({ character }) {
     //handle the event when we click the submit button
     const handleSubmit = (event) => {
         event.preventDefault();
-        const updatedCharacter = { ...character, characterName, };
+        const updatedCharacter = { ...character, name:characterName, };
 
         dispatch(editCharacterThunk(updatedCharacter));
 

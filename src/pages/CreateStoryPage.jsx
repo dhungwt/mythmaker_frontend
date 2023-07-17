@@ -3,18 +3,19 @@ import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { deleteStoryThunk } from "../redux/story/story_actions";
 import { editStoryThunk } from "../redux/story/story_actions";
+import CharacterList from "../components/CharacterList/CharacterList";
 
-const CreateStory = () =>{
+const CreateStory = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     //get the story id
-    const {storyId} = useParams();
+    const { storyId } = useParams();
 
     //use for test:07/14
     const updatedStory = {
-        _id:storyId,
+        _id: storyId,
     }
-    
+
     //handle the story save change
     const handleSaveChanges = async () => {
         try {
@@ -26,7 +27,7 @@ const CreateStory = () =>{
     }
 
     //please must delete the story when you test here
-    const handleDeleteStory = async() =>{
+    const handleDeleteStory = async () => {
 
         try {
             await dispatch(deleteStoryThunk(storyId));
@@ -40,13 +41,19 @@ const CreateStory = () =>{
 
     return (
         <div>
-            <h1>Please Click the Delete button right now. NO SAVE!!!</h1>
-            <button onClick={handleSaveChanges}>Save Changes</button>
-            <button onClick={handleDeleteStory}>Delete Story</button>
+            <div>
+                <CharacterList storyId={storyId} />
+
+            </div>
+            <div>
+                <h1>Please Click the Delete button right now. NO SAVE!!!</h1>
+                <button onClick={handleSaveChanges}>Save Changes</button>
+                <button onClick={handleDeleteStory}>Delete Story</button>
+            </div>
         </div>
     );
 
 
-} 
+}
 
 export default CreateStory;
