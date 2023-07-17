@@ -2,6 +2,32 @@ import axios from "axios";
 import storyActionTypes from "./story_types";
 
 
+//fetch story by id to get title action
+// FETCH_INDIVIDUAL_STORY_BY_CREATORID
+const fetchIndividualStoryByCreatorId = (title) => {
+  console.log("fetchIndividualStoryByCreatorId action")
+
+  return {
+    type: storyActionTypes.FETCH_INDIVIDUAL_STORY_BY_CREATORID,
+    payload: title,
+  }
+}
+
+export const fetchIndividualStoryByCreatorIdThunk = (userId) =>{
+  console.log('fetchIndividualStoryByCreatorIdThunk firing...');
+
+  return async (dispatch) => {
+    try{
+      const response = await axios.get(`http://localhost:8080/api/stories/getCreatorStoryByTitle/${userId}`)
+      // dispatch(fetchIndividualStoryByCreatorId(response.data.title));
+      console.log(response.data, "i am response dataa")
+      dispatch(fetchIndividualStoryByCreatorId(response.data))
+    } catch (error){
+      console.log("error has occured with fetchIndividualStoryByCreatorIdThunk", error)
+    }
+  }
+}
+
 //fetch single story action
 const fetchIndividualStory = (payload) => {
   console.log("fetchIndividualStory action")

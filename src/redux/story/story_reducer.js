@@ -7,7 +7,13 @@ export const INITIAL_STORY_STATE = {
 
 export const Initial_All_Story = {
     allStory: [], // Array for holding all stories
+    
 };
+
+export const INITIAL_CREATORSTORY_STATE = {
+     creatorStory: [],
+};
+
 
 // allStory and single story need to be in two different functions
 const storyReducer = (state = INITIAL_STORY_STATE, action) => {
@@ -15,7 +21,6 @@ const storyReducer = (state = INITIAL_STORY_STATE, action) => {
         // receive action to fetch single story
         case storyActionTypes.FETCH_INDIVIDUAL_STORY:
             return { ...state, singleStory: action.payload };
-
         //not tested yet
         case storyActionTypes.EDIT_STORY:
             return {
@@ -50,4 +55,13 @@ const allStoryReducer = (state = Initial_All_Story, { type, payload }) => {
     }
 }
 
-export { storyReducer, allStoryReducer };
+const creatorStoryReducer = (state = INITIAL_CREATORSTORY_STATE, {type, payload}) => {
+    switch(type){
+        case storyActionTypes.FETCH_INDIVIDUAL_STORY_BY_CREATORID:
+            return payload
+        default:
+            return state;
+    }
+}
+
+export { storyReducer, allStoryReducer, creatorStoryReducer };
