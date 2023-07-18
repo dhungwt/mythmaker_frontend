@@ -33,11 +33,12 @@ const DisplayEvent = ({event}) =>{
 
     return (
         <div className="single_event_field">
-            <h3>{event.characterId.name}</h3>
+            {event.characterId && <h3>{event.characterId.name}</h3>}
+            <p>{event.name}</p>
             <p>{event.text}</p>
-            {event.option1 && <div>{event.option1.name}</div>}
-            {event.option2 && <div>{event.option2.name}</div>}
-            {event.option3 && <div>{event.option3.name}</div>}
+            {event.option1 && event.option1.name && <div>{event.option1.name}</div>}
+            {event.option2 && event.option2.name && <div>{event.option2.name}</div>}
+            {event.option3 && event.option3.name && <div>{event.option3.name}</div>}
             <button onClick={handleDeleteEvent}>Delete</button>
             <button onClick={editEvent}>Edit</button>
         </div>

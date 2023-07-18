@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { deleteStoryThunk } from "../redux/story/story_actions";
+import { deleteEventThunk } from "../redux/event/event_actions";
+import { deleteCharacterThunk } from "../redux/character/character_action";
 import { editStoryThunk } from "../redux/story/story_actions";
 import { fetchIndividualStoryThunk } from "../redux/story/story_actions";
 import { fetchAllEventsByStoryThunk } from "../redux/event/event_actions";
@@ -16,6 +18,9 @@ const CreateStory = () => {
 
     //get the all events
     const events = useSelector((state) => state.event.events);
+
+    
+    
 
     //fetch the current story
     useEffect(() => {
@@ -53,8 +58,23 @@ const CreateStory = () => {
     const handleDeleteStory = async () => {
 
         try {
+          
+            //delete all characters associated with the story
+            for (let character of story.characters){
+                console.log("I try to delete the character",character);
+                await dispatch(deleteCharacterThunk(character._id));
+
+            }
+
+            //delete all events associated with the story
+            for (let eventId of story.events) {
+                console.log("what is the eventid i want to delete:", eventId);
+                await dispatch(deleteEventThunk(eventId));
+            }
+
+            //delete the story
             await dispatch(deleteStoryThunk(storyId));
-            console.log("Story deleted successfully");
+            console.log("Story, characters and events deleted successfully");
             navigate('/home'); // Navigate back to user home page after deletion
         } catch (error) {
             console.log("Error deleting story:", error);
@@ -69,7 +89,7 @@ const CreateStory = () => {
             </div>
 
             <div className="Add_Character_Field">
-                <CharacterList storyId={storyId} />
+                <CharacterList storyId={storyId} onCharacterChange={()=>{}} />
             </div>
 
             <div className="Display_Event_Field">

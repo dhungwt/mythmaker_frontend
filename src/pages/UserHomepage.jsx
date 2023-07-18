@@ -22,6 +22,7 @@ import { editEventThunk } from "../redux/event/event_actions";
 //07/11 created: just simple page created
 
 const UserHomepage = () => {
+
   const dispatch = useDispatch();
   //useSelctor for the logged in user
   const user = useSelector((state) => state.user); //looks into the global store(state) to recieve the info of current user thats logged in
@@ -78,8 +79,8 @@ const UserHomepage = () => {
       text: "Default Text",
       characterId: newCharacter._id,
       option1: defaultOption,
-      option2: null,
-      option3: null,
+      option2: defaultOption,
+      option3: defaultOption,
       storyId: null,
     };
 
@@ -119,6 +120,7 @@ const UserHomepage = () => {
     <div className="background">
       <p>
         {/* {user
+
                 ?JSON.stringify(user)
                 :"No User"} */}
       </p>
