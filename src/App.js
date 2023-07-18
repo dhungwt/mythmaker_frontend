@@ -12,7 +12,6 @@ import PrivateRoute from './components/Auth';
 import ErrorPage from './pages/ErrorPage';
 // import HafeefasQuest from  './components/HafeefasQuest';
 import StoriesPage from './pages/StoriesPage';
-
 import EditEvent from './components/EventPart/EditEventModal/EditEvent';
 
 
