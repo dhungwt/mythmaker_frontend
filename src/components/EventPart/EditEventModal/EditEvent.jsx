@@ -105,7 +105,7 @@ return (
                         <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
                     </div>
                 ) : (
-                    <button onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
+                    <button key={index} onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
                 )
             ))}
 
