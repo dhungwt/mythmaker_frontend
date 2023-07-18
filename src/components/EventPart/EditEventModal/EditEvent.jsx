@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import { fetchSingleEventThunk } from "../../../redux/event/event_actions";
 import { editEventThunk } from "../../../redux/event/event_actions";
+import { editStoryThunk, fetchIndividualStoryThunk } from "../../../redux/story/story_actions";
 import { addEventThunk } from "../../../redux/event/event_actions";
 import CharacterList from "../../CharacterList/CharacterList";
 
@@ -17,6 +18,9 @@ const EditEvent = () => {
 
     //use the hook to get the single event
     const event = useSelector(state => state.event.singleEvent);
+
+    //use the hook to get the single story
+    const story = useSelector(state => state.story.singleStory)
 
     //this is the name in the event
     const [name, setName] = useState("");
@@ -52,11 +56,11 @@ const EditEvent = () => {
         setUnsavedChanges(true);
     };
 
-    const handleSaveOption = (index) =>{
+    const handleSaveOption = (index) => {
         const option = options[index];
         setUnsavedChanges(false);
         //check the user has the selected character
-        if(!characterId){
+        if (!characterId) {
             alert("Please select a character before saving changes");
             return;
         }
@@ -68,7 +72,7 @@ const EditEvent = () => {
 
     // when we click the event it will take us to dispatch edit event thunk
     const handleEditEvent = async () => {
-        if(!characterId){
+        if (!characterId) {
             alert("Please select a character before saving changes");
             return;
         }
@@ -102,12 +106,27 @@ const EditEvent = () => {
             //
             const createdEvent = await dispatch(addEventThunk(newEvent));
 
+
+
+
             if (!createdEvent) {
                 console.error('An error occurred when creating the event:', createdEvent);
             } else if (createdEvent.error) {
                 console.error('An error occurred:', createdEvent.error);
             } else {
                 options[index].next = createdEvent._id;
+                
+
+           
+                console.log("What is the new story lloks like after new event:", story);
+
+                if (story && !story.error) {
+                    console.log("This is the story i am looking for:" , story);
+                    story.events.push(createdEvent._id);
+                    await dispatch(editStoryThunk(story));
+
+                }
+
             }
 
         }
@@ -127,6 +146,7 @@ const EditEvent = () => {
     useEffect(() => {
         const fetcheventData = async () => {
             await dispatch(fetchSingleEventThunk(eventStoryId, eventId))
+            await dispatch(fetchIndividualStoryThunk(eventStoryId));
         }
         fetcheventData();
     }, [dispatch, eventId, eventStoryId]);
