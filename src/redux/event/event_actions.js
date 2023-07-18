@@ -49,10 +49,10 @@ const editEvent = (event) => ({
 
 //edit the current event, dispatch the action and call the edit function in the backend
 //api call address could be wrong
-export const editEventThunk = (updatedEvent) => async (dispatch) => {
+export const editEventThunk = (updatedEventId, updatedEvent) => async (dispatch) => {
     try {
         console.log("EDIT EVENT THUNK IS ACTIVE")
-        const response = await axios.patch(`${process.env.REACT_APP_EVENT_KEY}${updatedEvent._id}`, updatedEvent);
+        const response = await axios.patch(`${process.env.REACT_APP_EVENT_KEY}${updatedEventId}`, updatedEvent);
         dispatch(editEvent(response.data));
         console.log("EDIT EVENT SUCCESSFULLY");
     } catch (error) {
@@ -73,10 +73,11 @@ export const fetchAllEventsByStoryThunk = (storyId) =>{
         try {
             console.log("FETCH ALL EVENTS THUNK IS RUNNING");
             //get the date from the backend
-            const response =await axios.get(`http://localhost:8080/api/stories/${storyId}/events`);
+            const response =await axios.get(`http://localhost:8080/api/events/${storyId}`);
             //send the data as payload
+            console.log("Hey I am the bug you are looking for",response.data);
             dispatch(fetchAllEventsByStory(response.data));
-            console.log("FETCH ALL EVENTS BY StoryId IS DONE");
+            console.log("FETCH ALL EVENTS BY STORYID IS DONE");
         } catch (error) {
             console.error(error);
         }
