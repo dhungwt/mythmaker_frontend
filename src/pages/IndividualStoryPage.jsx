@@ -33,7 +33,7 @@ function IndividualStoryPage() {
 
     // after story data is receive, fire fetchEventByStoryIdThunk to fill all event with event data
     useEffect(() => {
-      if(!story || story._id === id){
+      if(story && story._id === id){
         dispatch(fetchAllEventsByStoryThunk(id))
       }
     }, [story])
@@ -46,7 +46,7 @@ function IndividualStoryPage() {
         //convert event array into object
         event.map((data) => {
           newObj[data._id] = data;
-          if(story && story.currentEvent === data._id){
+          if(story.currentEvent === data._id){
             setDisplayEvent([data]);
           }
         });
@@ -57,6 +57,11 @@ function IndividualStoryPage() {
     }, [event]);
 
     //console.log(eventObj);
+
+    // if no eventObj found, return an error page
+    if(!eventObj){
+      return <ErrorPage />
+    }
 
     //add next event to the end of displayEvent once player has click on an option
     const addNextEvent = (option) => {
@@ -71,24 +76,24 @@ function IndividualStoryPage() {
 
     //if options exist, wait for player to click one
     const playerChoice = () => {
-      const event = displayEvent[displayEvent.length-1];
+      const tempEvent = displayEvent[displayEvent.length-1];
 
-      if(event.option3 !== undefined){
+      if(tempEvent.option3){
         // 3 options
         return (
           <div>
-            <button onClick={() => addNextEvent(event.option1)}>{event.option1.text || "..."}</button>
-            <button onClick={() => addNextEvent(event.option2)}>{event.option2.text || "..."}</button>
-            <button onClick={() => addNextEvent(event.option3)}>{event.option3.text || "..."}</button>
+            <button onClick={() => addNextEvent(tempEvent.option1)}>{tempEvent.option1.text || "..."}</button>
+            <button onClick={() => addNextEvent(tempEvent.option2)}>{tempEvent.option2.text || "..."}</button>
+            <button onClick={() => addNextEvent(tempEvent.option3)}>{tempEvent.option3.text || "..."}</button>
           </div>
         )
           
-      } else if(event.option2) {
+      } else if(tempEvent.option2) {
         // 2 options
         return (
           <div>
-            <button onClick={() => addNextEvent(event.option1)}>{event.option1.text || "..."}</button>
-            <button onClick={() => addNextEvent(event.option2)}>{event.option2.text || "..."}</button>
+            <button onClick={() => addNextEvent(tempEvent.option1)}>{tempEvent.option1.text || "..."}</button>
+            <button onClick={() => addNextEvent(tempEvent.option2)}>{tempEvent.option2.text || "..."}</button>
           </div>
         )
           
@@ -96,7 +101,7 @@ function IndividualStoryPage() {
         // 1 options
         return (
           <div>
-            <button onClick={() => addNextEvent(event.option1)}>{event.option1.text || "..."}</button>
+            <button onClick={() => addNextEvent(tempEvent.option1)}>{tempEvent.option1.text || "..."}</button>
           </div>
         )
       }
@@ -122,18 +127,13 @@ function IndividualStoryPage() {
     />
   }
 
-  // if no eventObj found, return an error page
-  if(!eventObj){
-    return <ErrorPage />
-  }
-
   return (
     <div>
       <h1>IndividualStoryPage : {id}</h1>
       {
-        displayEvent.length !== 0 
+        displayEvent.length !== 0
         ? (displayEvent.map((event) => {
-            if(event && event != displayEvent[displayEvent.length-1])
+            if(event != displayEvent[displayEvent.length-1])
               return <EventDisplay key={event._id} event={event} />
             else
               return typeEvent()
