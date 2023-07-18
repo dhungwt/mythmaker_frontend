@@ -3,7 +3,6 @@
 // import './components.css'
 
 // function StoryCard(props) {
-//     // const { title, event } = props;
 //     const story = props.story;
 
 //     const handleClick = (e) =>{
@@ -17,8 +16,6 @@
 //         {/* <p> Event: {event} </p> */}
 //         <div key={story.id}>
 
-//             {/* <h2> {storyList.title} </h2>
-//             <h2>{storyList.event} </h2> */}
 //           </div>
 //        </button>
 //     </div>
@@ -27,6 +24,7 @@
 
 // export default StoryCard;
 //need props, which is why we imported storycard into storiespage
+//this card is for the browse all stories page
 import React, { useEffect, useState } from 'react'
 import './components.css'
 
@@ -52,7 +50,7 @@ function StoryCard(props) {
     
     <div className="story-card" style={{margin:"3%", marginTop:"15vh", boxShadow: "10px 10px 15px 0 rgba(0, 0, 0, 0.2)" }}>
     <div className="card" style={{height: '60%', border:"none"}}> 
-      <img className="card-img-top" src="https://www.rpgfan.com/wp-content/uploads/2021/08/Pokemon-Legends-Arceus-Cover-Art.jpg" alt="Card image cap"
+      <img className="card-img-top" src="https://1.bp.blogspot.com/-htXGmmH_VLg/V5Xcs8-HM9I/AAAAAAAA8sI/xlIGocvnKFUUptdQbYuVsg2RY8emjrIUgCLcB/s800/book_cover_kawa.png" alt="Card image cap"
         style={{ height: '320px', objectFit:"cover" }} // Set a fixed height for the card image
  />
       
