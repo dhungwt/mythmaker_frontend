@@ -34,6 +34,7 @@ const DisplayEvent = ({event}) =>{
     return (
         <div className="single_event_field">
             {event.characterId && <h3>{event.characterId.name}</h3>}
+            <p>{event.name}</p>
             <p>{event.text}</p>
             {event.option1 && event.option1.name && <div>{event.option1.name}</div>}
             {event.option2 && event.option2.name && <div>{event.option2.name}</div>}

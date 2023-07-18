@@ -33,6 +33,9 @@ const EditEvent = () => {
     //use to track should we created the event for this option
     const [newEventOptions, setNewEventOptions] = useState([]);
 
+    //use to check the user click the save or not
+    const [unsavedChanges, setUnsavedChanges] = useState(false);
+
     // handle the character change
     const handleCharacterChange = (selectedCharacterId) => {
         setCharacterId(selectedCharacterId)
@@ -46,24 +49,34 @@ const EditEvent = () => {
         const newOptions = [...options];
         newOptions[index] = option;
         setOptions(newOptions);
+        setUnsavedChanges(true);
+    };
 
-
-
-        //if the name is "Default Option Name", create the new event
+    const handleSaveOption = (index) =>{
+        const option = options[index];
+        setUnsavedChanges(false);
+        //check the user has the selected character
+        if(!characterId){
+            alert("Please select a character before saving changes");
+            return;
+        }
         if (option.name !== "Default Option Name") {
             setNewEventOptions(old => [...old, { index, option }]);
-
-
-        
         }
 
-
-
-
-    };
+    }
 
     // when we click the event it will take us to dispatch edit event thunk
     const handleEditEvent = async () => {
+        if(!characterId){
+            alert("Please select a character before saving changes");
+            return;
+        }
+
+        if (unsavedChanges) {
+            alert('Please save your changes before editing the event.');
+            return;
+        }
 
         for (let i = 0; i < newEventOptions.length; i++) {
             const { index, option } = newEventOptions[i];
@@ -86,7 +99,7 @@ const EditEvent = () => {
                 option3: defaultOption,
                 storyId: eventStoryId
             }
-//
+            //
             const createdEvent = await dispatch(addEventThunk(newEvent));
 
             if (!createdEvent) {
@@ -106,6 +119,7 @@ const EditEvent = () => {
             option2: options[1],
             option3: options[2]
         }));
+        setNewEventOptions([]);
         navigate(`/createStory/${eventStoryId}`);
     };
 
@@ -155,12 +169,12 @@ const EditEvent = () => {
                         <div key={index}>
                             <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
                             <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
+                            <button onClick={() => handleSaveOption(index)}>Save Changes</button>
                         </div>
                     ) : (
                         <button key={index} onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
                     )
                 ))}
-
             </div>
             <div className="Edit_Event_Button">
                 <button onClick={handleEditEvent}>Edit Event</button>

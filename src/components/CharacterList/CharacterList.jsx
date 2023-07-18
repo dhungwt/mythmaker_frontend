@@ -5,7 +5,7 @@ import { deleteCharacterThunk } from "../../redux/character/character_action";
 import AddCharacter from "../AddCharacterModal/AddCharacter";
 import EditCharacter from "../EditCharacterModal/EditCharacterModal/EditCharacter";
 
-function CharacterList({ storyId, onCharacterChange}) {
+function CharacterList({ storyId, onCharacterChange }) {
     //dispatch the thunk
     const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ function CharacterList({ storyId, onCharacterChange}) {
 
     useEffect(() => {
         dispatch(fetchIndividualStoryThunk(storyId));
-    }, [dispatch, storyId,selectedCharacterId]);
+    }, [dispatch, storyId, selectedCharacterId]);
 
     //use to delete the character
     const handleCharacterDelete = (characterId) => {
@@ -41,21 +41,25 @@ function CharacterList({ storyId, onCharacterChange}) {
         onCharacterChange(event.target.value);
     };
 
-    
+
 
     return (
         <div className="characterList">
             <AddCharacter storyId={storyId} />
             {story && story.characters && (
-                <select onChange={handleCharacterChange}>
+                <form>
+                    <select onChange={handleCharacterChange} required>
 
-                    <option>Select a Character</option>
-                    {story.characters.map((character, index) => (
-                        <option key={index} value={character._id}>
-                            {character.name}
-                        </option>
-                    ))}
-                </select>
+                        <option>Select a Character</option>
+                        {story.characters.map((character, index) => (
+                            <option key={index} value={character._id}>
+                                {character.name}
+                            </option>
+                        ))}
+                    </select>
+
+                </form>
+
 
             )}
 
