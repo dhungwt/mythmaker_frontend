@@ -45,7 +45,7 @@ function StoriesPage() {
        : 
       stories.length > 0 ? (
         stories.map((storyList) => (
-           <StoryCard story={storyList} key={storyList._id}/>
+           <StoryCard story={storyList} key={storyList.id}/>
         ))         
         ) 
       : (
