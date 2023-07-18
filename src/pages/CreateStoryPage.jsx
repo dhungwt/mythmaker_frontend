@@ -69,7 +69,7 @@ const CreateStory = () => {
             </div>
 
             <div className="Add_Character_Field">
-                <CharacterList storyId={storyId} />
+                <CharacterList storyId={storyId} onCharacterChange={()=>{}} />
             </div>
 
             <div className="Display_Event_Field">

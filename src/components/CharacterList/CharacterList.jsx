@@ -5,7 +5,7 @@ import { deleteCharacterThunk } from "../../redux/character/character_action";
 import AddCharacter from "../AddCharacterModal/AddCharacter";
 import EditCharacter from "../EditCharacterModal/EditCharacterModal/EditCharacter";
 
-function CharacterList({ storyId }) {
+function CharacterList({ storyId, onCharacterChange}) {
     //dispatch the thunk
     const dispatch = useDispatch();
 
@@ -38,7 +38,10 @@ function CharacterList({ storyId }) {
     //when the drop down meun character change the character id will change
     const handleCharacterChange = (event) => {
         setSelectedCharacterId(event.target.value);
+        onCharacterChange(event.target.value);
     };
+
+    
 
     return (
         <div className="characterList">
