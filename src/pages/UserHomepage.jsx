@@ -92,16 +92,19 @@ const UserHomepage = () => {
         const defaultOption = {
             name: "Default Option Name",
             text: "Default Option Text",
+            next: null,
 
         };
+
+       
         //set the default Event
         let defaultEvent = {
             name: "Default Name",
             text: "Default Text",
             characterId: newCharacter._id,
             option1: defaultOption,
-            option2: null,
-            option3: null,
+            option2: defaultOption,
+            option3: defaultOption,
             storyId: null,
 
         }

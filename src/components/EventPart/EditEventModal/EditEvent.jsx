@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import { fetchSingleEventThunk } from "../../../redux/event/event_actions";
 import { editEventThunk } from "../../../redux/event/event_actions";
+import { addEventThunk } from "../../../redux/event/event_actions";
 import CharacterList from "../../CharacterList/CharacterList";
 
 
@@ -29,6 +30,9 @@ const EditEvent = () => {
     //this is the part use to handle the character change
     const [characterId, setCharacterId] = useState(null);
 
+    //use to track should we created the event for this option
+    const [newEventOptions, setNewEventOptions] = useState([]);
+
     // handle the character change
     const handleCharacterChange = (selectedCharacterId) => {
         setCharacterId(selectedCharacterId)
@@ -36,16 +40,64 @@ const EditEvent = () => {
 
     //create the new option and to handle each option change
     //index is the option's 1,2,3 
+    //07/18 whenwe create the option name not "Default Option Name", it will create event connect to this event
     const handleOptionChange = (index, option) => {
         //define the new option, based on the options
         const newOptions = [...options];
         newOptions[index] = option;
         setOptions(newOptions);
 
+
+
+        //if the name is "Default Option Name", create the new event
+        if (option.name !== "Default Option Name") {
+            setNewEventOptions(old => [...old, { index, option }]);
+
+
+        
+        }
+
+
+
+
     };
 
     // when we click the event it will take us to dispatch edit event thunk
     const handleEditEvent = async () => {
+
+        for (let i = 0; i < newEventOptions.length; i++) {
+            const { index, option } = newEventOptions[i];
+
+            //create the default option
+            const defaultOption = {
+                name: "Default Option Name",
+                text: "Default Option Text",
+                next: null,
+
+            };
+
+            //define new event
+            const newEvent = {
+                name: option.name,
+                text: option.text,
+                characterId: characterId,
+                option1: defaultOption,
+                option2: defaultOption,
+                option3: defaultOption,
+                storyId: eventStoryId
+            }
+
+            const createdEvent = await dispatch(addEventThunk(newEvent));
+
+            if (!createdEvent) {
+                console.error('An error occurred when creating the event:', createdEvent);
+            } else if (createdEvent.error) {
+                console.error('An error occurred:', createdEvent.error);
+            } else {
+                options[index].next = createdEvent._id;
+            }
+
+        }
         await dispatch(editEventThunk(eventId, {
             name,
             text,
@@ -66,55 +118,55 @@ const EditEvent = () => {
     }, [dispatch, eventId, eventStoryId]);
 
     //if event exist, set the value
-    useEffect(() =>{
+    useEffect(() => {
         if (event) {
             setName(event.name);
             setText(event.text);
             setOptions([event.option1, event.option2, event.option3]);
-    
+
         }
 
-    },[event]);
+    }, [event]);
 
     //if no event exist, give the loading page
-    if(!event){
+    if (!event) {
         return <div>Loading...</div>
     }
-    
 
-return (
-    <div>
-        <div className="Edit_Event_Character_List">
-            <p>Select your character</p>
-            <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} />
-        </div>
-        <div className="Edit_Event_Name">
-            <p>Event Name</p>
-            <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
-        </div>
-        <div className="Edit_Event_Text">
-            <p>Event Text</p>
-            <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Event Text" />
-        </div>
-        <div className="Edit_Event_Option">
-            <p>Options:</p>
-            {options.map((option, index) => (
-                option ? (
-                    <div key={index}>
-                        <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
-                        <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
-                    </div>
-                ) : (
-                    <button key={index} onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
-                )
-            ))}
 
+    return (
+        <div>
+            <div className="Edit_Event_Character_List">
+                <p>Select your character</p>
+                <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} />
+            </div>
+            <div className="Edit_Event_Name">
+                <p>Event Name</p>
+                <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
+            </div>
+            <div className="Edit_Event_Text">
+                <p>Event Text</p>
+                <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Event Text" />
+            </div>
+            <div className="Edit_Event_Option">
+                <p>Options:</p>
+                {options.map((option, index) => (
+                    option ? (
+                        <div key={index}>
+                            <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
+                            <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
+                        </div>
+                    ) : (
+                        <button key={index} onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
+                    )
+                ))}
+
+            </div>
+            <div className="Edit_Event_Button">
+                <button onClick={handleEditEvent}>Edit Event</button>
+            </div>
         </div>
-        <div className="Edit_Event_Button">
-            <button onClick={handleEditEvent}>Edit Event</button>
-        </div>
-    </div>
-);
+    );
 }
 
 export default EditEvent;
