@@ -86,7 +86,7 @@ const EditEvent = () => {
                 option3: defaultOption,
                 storyId: eventStoryId
             }
-
+//
             const createdEvent = await dispatch(addEventThunk(newEvent));
 
             if (!createdEvent) {
