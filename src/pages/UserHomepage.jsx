@@ -5,13 +5,14 @@ import '../App.css'
 // import { fetchAllStories } from "../redux/story/story_actions";
 import { useSelector } from "react-redux";
 // import { fetchUserStoriesThunk} from "../redux/user/user_actions";
-import { useNavigate } from "react-router-dom";2 conflicts 
+import { useNavigate } from "react-router-dom"; 
 import { addCharacterThunk } from "../redux/character/character_action";
 
 import { addStoryThunk, fetchIndividualStoryByCreatorIdThunk } from "../redux/story/story_actions";
 import CreateStory from "./CreateStoryPage";
 import CreatorStoryCard from "../components/CreatorStoryCard";
 import { addEventThunk } from "../redux/event/event_actions";
+import { editEventThunk } from "../redux/event/event_actions";
 
 
 
@@ -94,13 +95,14 @@ const UserHomepage = () => {
 
         };
         //set the default Event
-        const defaultEvent = {
+        let defaultEvent = {
             name: "Default Name",
             text: "Default Text",
             characterId: newCharacter._id,
             option1: defaultOption,
             option2: null,
             option3: null,
+            storyId: null,
 
         }
 
@@ -112,12 +114,16 @@ const UserHomepage = () => {
 
         //put the new event into the story
         defaultStory.events.push(newEvent._id);
+       
 
 
         console.log("what is the character id:", newCharacter._id);
         console.log("I am ready to add story");
         //create the new story
         const newStory = await dispatch(addStoryThunk(defaultStory));
+        defaultEvent.storyId = newStory._id;
+        await dispatch(editEventThunk(newEvent._id, defaultEvent));
+        
 
         console.log("I am done");
         //once we create the newstory, we will jump to the page to create the story
