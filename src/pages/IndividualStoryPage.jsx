@@ -51,8 +51,12 @@ function IndividualStoryPage() {
             break;
           }
         }
-        if (!exist) {
-          
+        if (!exist && user.storyHistory.length >= 5) {
+          let newArr = [id,...user.storyHistory]
+          newArr.pop();
+          let newHistory = { storyHistory: newArr };
+          dispatch(updateEntireUserThunk(user._id, newHistory));
+        }else if (!exist){
           let newArr = { storyHistory: [id, ...user.storyHistory] };
           console.log("After NEWARR :",newArr )
           dispatch(updateEntireUserThunk(user._id, newArr));
