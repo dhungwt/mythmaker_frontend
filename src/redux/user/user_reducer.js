@@ -20,6 +20,8 @@ export default function userReducer(state = defaultUser, action) {
         ...state,
         storyIds: [...state.storyIds, action.payload]
       }
+      case userActionTypes.UPDATE_ENTIRE_USER:
+        return { ...state, ...action.payload}
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { fetchIndividualStoryThunk } from '../redux/story/story_actions';
 import { fetchAllEventsByStoryThunk } from '../redux/event/event_actions';
+import { updateEntireUserThunk } from '../redux/user/user_actions'
 import EventDisplay from '../components/EventDisplay';
 import { TypeAnimation } from 'react-type-animation';
 
@@ -17,6 +18,14 @@ function IndividualStoryPage() {
 
     //get id from the url >>> ( :id )
     const {id} = useParams();
+
+
+    //when a user logs in and they visit a game they havent played before, 
+    //check if the user exists, and if they do, the story id is saved in the users
+    //play history. Meaning if the user is logged in. If the user doesnt exist, they are 
+    //not logged in and it wont be added to their play history.
+    const user = useSelector((state) => state.user);
+
 
     // fire fetchIndividualStoryThunk when page is open
     useEffect(() => {
@@ -35,6 +44,14 @@ function IndividualStoryPage() {
       if(story && story?._id === id){
         console.log("FETCHING_EVENT_THUNK")
         dispatch(fetchAllEventsByStoryThunk(id))
+
+        if(user){
+          let newArr = {"storyHistory": [id, ...user.storyHistory]}
+          dispatch(updateEntireUserThunk(user._id, newArr))
+          console.log(newArr, "im newArr and im working")
+        } else {
+          console.log("user DNE")
+        }
       }
     }, [story])
 
@@ -148,6 +165,7 @@ function IndividualStoryPage() {
       speed={50}
     />
   }
+
 
   return (
     <div>
