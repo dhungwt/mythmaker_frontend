@@ -47,7 +47,7 @@ const AddCharacter = ({ storyId }) => {
             //2. after create character, we need to add id to the story
             await dispatch(editStoryCharacterIdThunk(storyId,addedCharacter._id));
             //3. stor the newcharacter object in the local storage of the browser
-            localStorage.setItem("character", JSON.stringify(newCharacter));
+            // localStorage.setItem("character", JSON.stringify(newCharacter));
 
             await dispatch(fetchIndividualStoryThunk(storyId));
             setIsPop(false);
