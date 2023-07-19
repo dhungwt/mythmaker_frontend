@@ -21,7 +21,7 @@ export default function userReducer(state = defaultUser, action) {
         storyIds: [...state.storyIds, action.payload]
       }
       case userActionTypes.UPDATE_ENTIRE_USER:
-        return { ...state, ...action.payload}
+        return action.payload
     default:
       return state;
   }
