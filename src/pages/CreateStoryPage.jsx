@@ -36,16 +36,35 @@ const CreateStory = () => {
     
 
     //set the story title
-    const [storyTitle, setStoryTitle] = useState(story.title);
+
+    const [storyTitle, setStoryTitle] = useState("Untitled");
+
+    useEffect(() => {
+        if(story && !localStorage.getItem(storyId)){
+            setStoryTitle(story.title);
+            localStorage.setItem(storyId, story.title);
+        }
+        else if(story){
+            setStoryTitle(localStorage.getItem(storyId));
+        }
+    }, [story?.title]);
+
+    // if(story && !localStorage.getItem(storyId))
+    //     localStorage.setItem(storyId, storyTitle);
+    // else
+    //     setStoryTitle(localStorage.getItem(storyId));
+
 
     //handle the story title change in the input title form
     const handleStoryTitleChange = (event) => {
         setStoryTitle(event.target.value);
+        localStorage.setItem(storyId, event.target.value);
     };
 
     //handle the story save change
-    const handleSaveChanges = async () => {
+    const handleSaveChanges = async (e) => {
         try {
+            e.preventDefault();
             //updated on 07/17
             const updatedStory = {
                 _id: storyId,

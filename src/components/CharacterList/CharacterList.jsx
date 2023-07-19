@@ -37,6 +37,7 @@ function CharacterList({ storyId, onCharacterChange }) {
 
     //when the drop down meun character change the character id will change
     const handleCharacterChange = (event) => {
+        event.preventDefault();
         setSelectedCharacterId(event.target.value);
         onCharacterChange(event.target.value);
     };
