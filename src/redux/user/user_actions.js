@@ -2,6 +2,29 @@ import axios from "axios";
 import userActionTypes from "./user_type";
 import { defaultUser } from "./user_reducer";
 
+// UPDATE_ENTIRE_USER
+const updateEntireUser = (payload) =>{
+    return{
+        type: userActionTypes.UPDATE_ENTIRE_USER,
+        payload: payload,
+    }
+}
+
+// return async (dispatch) => {    };
+export const updateEntireUserThunk =  (userID, data) => {
+    return async (dispatch) => {  
+        console.log("FIRING UPDATE ENTIRE USER THUNK");
+        try{
+            const response = await axios.patch(`http://localhost:8080/api/users/${userID}`, data)
+            dispatch(updateEntireUser(response.data))
+            console.log(response, "updateEntireUserThunk successful")
+        } catch (error) {
+            console.log(error, "error occurerd on updateEntireUserThunk")
+      };
+   
+    }
+
+}
 
 //payload is the user
 const getUser = (user) => (
@@ -90,6 +113,7 @@ export const logout = () => async (dispatch) => {
 export const updatedUserThunk = (userId, storyId) => {
     return async (dispatch) => {
         try {
+            //editing story id
             const response = await axios.patch(`http://localhost:8080/api/users/${userId}`, { storyId });
             //dispatch the data
             dispatch({
