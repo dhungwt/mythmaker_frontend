@@ -17,6 +17,7 @@ import CreatorStoryCard from "../components/CreatorStoryCard";
 import HistoryCard from "../components/HistoryCard";
 import { addEventThunk } from "../redux/event/event_actions";
 import { editEventThunk } from "../redux/event/event_actions";
+import { updatedUserThunk } from "../redux/user/user_actions";
 
 //This the user's homepage
 //07/11 created: just simple page created
@@ -99,6 +100,11 @@ const UserHomepage = () => {
     const newStory = await dispatch(addStoryThunk(defaultStory));
     defaultEvent.storyId = newStory._id;
     await dispatch(editEventThunk(newEvent._id, defaultEvent));
+
+    //we push the new story id into the user storyids
+    
+    dispatch(updatedUserThunk(userID, newStory._id));
+
 
     console.log("I am done");
     //once we create the newstory, we will jump to the page to create the story
