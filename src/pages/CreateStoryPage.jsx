@@ -32,7 +32,13 @@ const CreateStory = () => {
     const story = useSelector(state => state.story.singleStory);
 
     //set the story title
-    const [storyTitle, setStoryTitle] = useState(story ? story.title : "Untitled");
+    const [storyTitle, setStoryTitle] = useState("Untitled");
+
+    useEffect(() => {
+        if(story)
+            setStoryTitle(story.title);
+    }, [story?.title]);
+
 
     //handle the story title change in the input title form
     const handleStoryTitleChange = (event) => {
@@ -40,8 +46,9 @@ const CreateStory = () => {
     };
 
     //handle the story save change
-    const handleSaveChanges = async () => {
+    const handleSaveChanges = async (e) => {
         try {
+            e.preventDefault();
             //updated on 07/17
             const updatedStory = {
                 _id: storyId,

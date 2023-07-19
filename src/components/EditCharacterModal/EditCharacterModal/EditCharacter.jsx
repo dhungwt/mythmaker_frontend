@@ -30,7 +30,7 @@ function EditCharacter({ character }) {
     const handleNameChange = (event) => {
         setCharacterName(event.target.value);
         //localStorage store the name in the local browser
-        localStorage.setItem('editedCharacterName', event.target.value);
+        // localStorage.setItem('editedCharacterName', event.target.value);
 
     };
 
@@ -42,7 +42,7 @@ function EditCharacter({ character }) {
         dispatch(editCharacterThunk(updatedCharacter));
 
         // reset local storage after successful update
-        localStorage.removeItem('editedCharacterName');
+        // localStorage.removeItem('editedCharacterName');
         setIsPop(false);
 
     };

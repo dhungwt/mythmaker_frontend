@@ -3,8 +3,8 @@ import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
@@ -12,6 +12,8 @@ const middleware = composeWithDevTools(
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist:['event', 'story', 'character'],
+  whitelist: ['user']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
