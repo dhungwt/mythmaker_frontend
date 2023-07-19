@@ -31,11 +31,13 @@ import './components.css'
 function StoryCard(props) {
     // const { title, event } = props;
     const story = props.story;
+    const searchBar = props.filterStudents; //filtered array from storiespage
 
     const handleClick = (e) =>{
         e.preventDefault();
         window.location.href= `/stories/${story._id}`; //redirects to the individual story page
     }
+      //does essentially the samething as the StoriesPage where we check if the input/title exists 
 
   return (
     // <div className="story-card" style={{maxWidth:"20%"}}>
