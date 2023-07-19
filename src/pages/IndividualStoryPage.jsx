@@ -7,12 +7,14 @@ import { fetchAllEventsByStoryThunk } from '../redux/event/event_actions';
 import EventDisplay from '../components/EventDisplay';
 import { TypeAnimation } from 'react-type-animation';
 import { useNavigate } from 'react-router-dom';
+import { updateEntireUserThunk } from '../redux/user/user_actions';
 
 
 function IndividualStoryPage() {
   const dispatch = useDispatch();
   const story = useSelector((state) => state.story.singleStory);
   const event = useSelector((state) => state.event.events);
+  const user = useSelector((state) => state.user);
 
   const [eventObj, setEventObj] = useState({});
   const [displayEvent, setDisplayEvent] = useState([]);
@@ -36,8 +38,33 @@ function IndividualStoryPage() {
 
   //fetch the event relate to this story
   useEffect(() => {
-    if (story && story._id === id) {
+    if (story && story?._id === id) {
+      console.log("FETCHING_EVENT_THUNK");
       dispatch(fetchAllEventsByStoryThunk(id));
+
+      let exist = false;
+
+      if (user) {
+        for (let i = 0; i < user.storyHistory.length; i++) {
+          if (user.storyHistory[i]?._id === id) {
+            exist = true;
+            break;
+          }
+        }
+        if (!exist && user.storyHistory.length >= 5) {
+          let newArr = [id,...user.storyHistory]
+          newArr.pop();
+          let newHistory = { storyHistory: newArr };
+          dispatch(updateEntireUserThunk(user._id, newHistory));
+        }else if (!exist){
+          let newArr = { storyHistory: [id, ...user.storyHistory] };
+          console.log("After NEWARR :",newArr )
+          dispatch(updateEntireUserThunk(user._id, newArr));
+          console.log(newArr, "im newArr and im working");
+        }
+      } else {
+        console.log("user DNE");
+      }
     }
   }, [story]);
 
