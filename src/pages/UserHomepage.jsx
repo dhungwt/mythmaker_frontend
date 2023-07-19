@@ -49,7 +49,7 @@ const UserHomepage = () => {
     title: "Untitled",
     events: [],
     characters: [],
-    //currentEvent: "Default Current Event",
+    currentEvent: null,
     creatorId: userID,
   };
 
@@ -93,6 +93,9 @@ const UserHomepage = () => {
 
     //put the new event into the story
     defaultStory.events.push(newEvent._id);
+
+    //put the current event by the dewfault event
+    defaultStory.currentEvent = newEvent._id;
 
     console.log("what is the character id:", newCharacter._id);
     console.log("I am ready to add story");
