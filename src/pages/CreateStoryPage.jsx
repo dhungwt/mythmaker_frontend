@@ -19,8 +19,7 @@ const CreateStory = () => {
     //get the all events
     const events = useSelector((state) => state.event.events);
 
-    
-    
+   
 
     //fetch the current story
     useEffect(() => {
@@ -30,8 +29,14 @@ const CreateStory = () => {
 
     //get the current story
     const story = useSelector(state => state.story.singleStory);
+    
+    useEffect(() => {
+        setStoryTitle(story.title);
+    }, [story.title]);
+    
 
     //set the story title
+
     const [storyTitle, setStoryTitle] = useState("Untitled");
 
     useEffect(() => {
@@ -48,6 +53,7 @@ const CreateStory = () => {
     //     localStorage.setItem(storyId, storyTitle);
     // else
     //     setStoryTitle(localStorage.getItem(storyId));
+
 
     //handle the story title change in the input title form
     const handleStoryTitleChange = (event) => {
