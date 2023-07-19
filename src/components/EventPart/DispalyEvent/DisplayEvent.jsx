@@ -27,7 +27,8 @@ const DisplayEvent = ({event}) =>{
 
     //use to handle the edit button
     // once we click this button, it will navigate to the edit event page
-    const editEvent = () =>{
+    const editEvent = (e) =>{
+        e.preventDefault();
         navigate(`/editEvent/${event.storyId}/${event._id}`);
     }
 

@@ -71,7 +71,8 @@ const EditEvent = () => {
     }
 
     // when we click the event it will take us to dispatch edit event thunk
-    const handleEditEvent = async () => {
+    const handleEditEvent = async (e) => {
+        e.preventDefault();
         if (!characterId) {
             alert("Please select a character before saving changes");
             return;
