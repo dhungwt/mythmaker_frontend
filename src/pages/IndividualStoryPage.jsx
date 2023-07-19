@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
@@ -7,10 +8,12 @@ import EventDisplay from '../components/EventDisplay';
 import { TypeAnimation } from 'react-type-animation';
 import { useNavigate } from 'react-router-dom';
 
+
 function IndividualStoryPage() {
   const dispatch = useDispatch();
   const story = useSelector((state) => state.story.singleStory);
   const event = useSelector((state) => state.event.events);
+
   const [eventObj, setEventObj] = useState({});
   const [displayEvent, setDisplayEvent] = useState([]);
   const [theEnd, setTheEnd] = useState(false);
@@ -177,9 +180,11 @@ function IndividualStoryPage() {
     return <h2>The END</h2>
   }
 
-  // typing animation when first displaying the event 
+
+  // typing animation when first displaying the event
   const typeEvent = () => {
     // Typing animation library, react-type-animation
+
     return <TypeAnimation
       key={displayEvent[displayEvent.length - 1]._id}
       sequence={[
@@ -232,6 +237,7 @@ function IndividualStoryPage() {
   return (
     <div>
       <h1>IndividualStoryPage : {id}</h1>
+
       {
         displayEvent.length !== 0
           ? (displayEvent.map((event) => {
@@ -249,12 +255,13 @@ function IndividualStoryPage() {
         theEnd
           ? finishScene()
           : playerChoice()
+
       }
       <button onClick={saveGame}>Save Game</button>
       <button onClick={handleGoBack}>Go Back</button>
       <button onClick={clearDataAndReload}>Clear</button>
     </div>
-  )
+  );
 }
 
 export default IndividualStoryPage;
