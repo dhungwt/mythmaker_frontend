@@ -78,7 +78,7 @@ const UserHomepage = () => {
     let defaultEvent = {
       name: "Default Name",
       text: "Default Text",
-      characterId: newCharacter._id,
+      characterId: newCharacter?._id,
       option1: defaultOption,
       option2: defaultOption,
       option3: defaultOption,
@@ -148,7 +148,6 @@ const UserHomepage = () => {
       ) : (
         <h1> nothing to return </h1>
       )}
-<img src="https://i.imgur.com/75vG9bO.png"></img>
       <h2>Stories Created</h2>
       {creatorIdSelector.length > 0 ? (
         creatorIdSelector.map((creatorStoryList) => {
