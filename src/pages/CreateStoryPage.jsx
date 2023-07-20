@@ -35,7 +35,7 @@ const CreateStory = () => {
     const [storyTitle, setStoryTitle] = useState("Untitled");
 
     useEffect(() => {
-        if(story && !localStorage.getItem(storyId)){
+        if(story && story?._id === storyId && !localStorage.getItem(storyId)){
             setStoryTitle(story.title);
             localStorage.setItem(storyId, story.title);
         }
