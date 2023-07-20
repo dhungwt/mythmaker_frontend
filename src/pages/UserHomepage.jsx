@@ -141,7 +141,7 @@ const UserHomepage = () => {
           return (
             <HistoryCard
               singleStoryHistory={singleStoryHistory}
-              key={singleStoryHistory._id}
+              key={singleStoryHistory?._id}
             />
           );
         })
@@ -155,7 +155,7 @@ const UserHomepage = () => {
           return (
             <CreatorStoryCard
               creatorIdSelector={creatorStoryList}
-              key={creatorStoryList._id}
+              key={creatorStoryList?._id}
             />
           );
         })
