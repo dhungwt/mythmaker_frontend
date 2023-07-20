@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {  Routes, Route, useNavigate } from "react-router-dom";
 import { Login,Signup } from './components/AuthForm';
 
 import CreateStory from './pages/CreateStoryPage';
@@ -13,14 +13,44 @@ import ErrorPage from './pages/ErrorPage';
 // import HafeefasQuest from  './components/HafeefasQuest';
 import StoriesPage from './pages/StoriesPage';
 import EditEvent from './components/EventPart/EditEventModal/EditEvent';
-
+import { useEffect } from 'react';
+import axios from 'axios';
+import { oAuth } from './redux/user/user_actions';
+import { useDispatch } from 'react-redux';
 
 //css imports
 import '../src/pages/pages.css';
 
+
+
 function App() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect (() =>{
+    const getAuthedUser = async () => {
+      try{
+        const response = await axios.get("http://localhost:8080/auth/login/success",{
+          withCredentials : true
+        })
+        console.log("LOGIN SUCCESS RESPONSE", response)
+        if(response.status==200){
+          await dispatch(oAuth(response.data.user._id,response.data.user.password, response.data.user.googleId )); 
+          navigate("/home");
+        }else{
+          throw new Error("AUTHENICATION HAS FAILED")
+        }
+
+      }catch(error){
+        console.log("ERROR GETTING AUTHED USER", error)
+      }
+    } 
+    getAuthedUser();
+  },[])
+
+
   return (
-    <Router className='home-page'>
+    
       <div id='home-page'>
       {/*NavBar is rendered across all routes */}
       <NavBar />
@@ -43,7 +73,7 @@ function App() {
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
       </div>
-    </Router>
+    
   );
 }
 
