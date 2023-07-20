@@ -141,20 +141,21 @@ const UserHomepage = () => {
           return (
             <HistoryCard
               singleStoryHistory={singleStoryHistory}
-              key={singleStoryHistory._id}
+              key={singleStoryHistory?._id}
             />
           );
         })
       ) : (
         <h1> nothing to return </h1>
       )}
+<img src="https://i.imgur.com/75vG9bO.png"></img>
       <h2>Stories Created</h2>
       {creatorIdSelector.length > 0 ? (
         creatorIdSelector.map((creatorStoryList) => {
           return (
             <CreatorStoryCard
               creatorIdSelector={creatorStoryList}
-              key={creatorStoryList._id}
+              key={creatorStoryList?._id}
             />
           );
         })

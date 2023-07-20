@@ -148,9 +148,9 @@ function IndividualStoryPage() {
       setDisplayEvent([...displayEvent, newEvent]);
       setCurrentEvent(newEvent);
     }
-    if (newEvent.option1.name === "Default Option Name" &&
-      newEvent.option2.name === "Default Option Name" &&
-      newEvent.option3.name === "Default Option Name") {
+    if (newEvent.option1.next &&
+      newEvent.option2.next &&
+      newEvent.option3.next) {
       console.log('End of the story');
       setTheEnd(true);
     }
@@ -166,37 +166,20 @@ function IndividualStoryPage() {
       return (
         <div>
           {
-            tempEvent.option1 && tempEvent.option1.name !== "Default Option Name" &&
-            <button onClick={() => addNextEvent(tempEvent.option1)}>{tempEvent.option1.name || "..."}</button>
+            tempEvent?.option1 && tempEvent.option1.name !== "Default Option Name" &&
+            <button onClick={() => addNextEvent(tempEvent?.option1)}>{tempEvent.option1.name || "..."}</button>
           }
           {
-            tempEvent.option2 && tempEvent.option2.name !== "Default Option Name" &&
+            tempEvent?.option2 && tempEvent.option2.name !== "Default Option Name" &&
             <button onClick={() => addNextEvent(tempEvent?.option2)}>{tempEvent.option2?.name || "..."}</button>
           }
           {
-            tempEvent.option3 && tempEvent.option3.name !== "Default Option Name" &&
+            tempEvent?.option3 && tempEvent.option3.name !== "Default Option Name" &&
             <button onClick={() => addNextEvent(tempEvent?.option3)}>{tempEvent.option3?.name || "..."}</button>
           }
         </div>
       )
     }
-    // } else if(tempEvent?.option2) {
-    //   // 2 options
-    //   return (
-    //     <div>
-    //       <button onClick={() => addNextEvent(tempEvent.option1)}>{tempEvent.option1.text || "..."}</button>
-    //       <button onClick={() => addNextEvent(tempEvent?.option2)}>{tempEvent?.option2.text || "..."}</button>
-    //     </div>
-    //   )
-
-    // } else {
-    //   // 1 options
-    //   return (
-    //     <div>
-    //       <button onClick={() => addNextEvent(tempEvent.option1)}>{tempEvent.option1.text || "..."}</button>
-    //     </div>
-    //   )
-    // }
   }
 
   // end of the story diplay

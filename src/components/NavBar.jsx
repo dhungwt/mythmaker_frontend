@@ -40,11 +40,11 @@ const NavBar = () => {
 
     return (
         <div className="navbar" id='background'>
-            <h1>MYTHMAKER</h1>
+            <h1>MYTH⚔MAKER</h1>
             <nav>
                 {/*condition rendering based on log in or not */}
                 {/* <LinkButton to="/gameplay"> game </LinkButton> */}
-                <LinkButton to="/stories"> story </LinkButton>
+                <LinkButton to="/stories"> Browse Stories </LinkButton>
 
                 {isLoggedIn ? (
 
