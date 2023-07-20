@@ -19,8 +19,12 @@ const CreateStory = () => {
     //get the all events
     const events = useSelector((state) => state.event.events);
 
-    
-    
+    //get the user
+    const userId = useSelector((state) => state.user._id);
+
+
+
+
 
     //fetch the current story
     useEffect(() => {
@@ -31,18 +35,31 @@ const CreateStory = () => {
     //get the current story
     const story = useSelector(state => state.story.singleStory);
 
+    console.log('userId:', userId);
+    console.log('story.creatorId:', story?.creatorId);
+
     //set the story title
     const [storyTitle, setStoryTitle] = useState("Untitled");
 
     useEffect(() => {
-        if(story && !localStorage.getItem(storyId)){
+        if (story && !localStorage.getItem(storyId)) {
             setStoryTitle(story.title);
             localStorage.setItem(storyId, story.title);
         }
-        else if(story){
+        else if (story) {
             setStoryTitle(localStorage.getItem(storyId));
         }
     }, [story?.title]);
+
+
+    // check the user has the right to edit this page
+    if (story && userId !== story.creatorId._id) {
+        return (
+            <div>
+                <h2>You are not authorized to edit this story.</h2>
+            </div>
+        )
+    }
 
     // if(story && !localStorage.getItem(storyId))
     //     localStorage.setItem(storyId, storyTitle);
@@ -75,10 +92,10 @@ const CreateStory = () => {
     const handleDeleteStory = async () => {
 
         try {
-          
+
             //delete all characters associated with the story
-            for (let character of story.characters){
-                console.log("I try to delete the character",character);
+            for (let character of story.characters) {
+                console.log("I try to delete the character", character);
                 await dispatch(deleteCharacterThunk(character._id));
 
             }
@@ -106,7 +123,7 @@ const CreateStory = () => {
             </div>
 
             <div className="Add_Character_Field">
-                <CharacterList storyId={storyId} onCharacterChange={()=>{}} />
+                <CharacterList storyId={storyId} onCharacterChange={() => { }} />
             </div>
 
             <div className="Display_Event_Field">
@@ -116,7 +133,7 @@ const CreateStory = () => {
                 ))}
 
             </div>
-            
+
             <div className="Save_Delete_CreateStory_Buttton">
                 <h1>Please Click the Delete button right now. NO SAVE!!!</h1>
                 <button onClick={handleSaveChanges}>Save Changes</button>
