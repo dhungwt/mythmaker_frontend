@@ -21,7 +21,7 @@ import '../src/pages/pages.css';
 function App() {
   return (
     <Router className='home-page'>
-      <div id='home-page'>
+      {/* <div id='home-page' className="cssGradientMotion"> */}
       {/*NavBar is rendered across all routes */}
       <NavBar />
       <Routes>
@@ -42,7 +42,16 @@ function App() {
 
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
-      </div>
+        <div className='bubbles'> 
+            <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
+            <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
+            <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
+            <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
+            <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
+            <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
+            <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
+        </div>
+      {/* </div> */}
     </Router>
   );
 }

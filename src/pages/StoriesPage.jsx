@@ -46,7 +46,8 @@ function StoriesPage() {
     // backgroundSize: 'cover', 
     // backgroundRepeat: 'no-repeat', 
     // minHeight: '100vh',
-      backgroundPosition: 'center' }}>
+      backgroundPosition: 'center' 
+      }}>
 
       <h1>StoriesPage</h1>
 
@@ -56,6 +57,7 @@ function StoriesPage() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search by title..."
+        style={{height:"32px", margin:"20px"}}
       />
 
       {isLoading ? (

@@ -28,4 +28,94 @@
     background-color: black;
     /* @apply text-white font-bold py-2 px-4 rounded-full bg-blue-500 hover:bg:blue-700; */
   }
+
+  /* AUTHFORM CSS */
+  .authform {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+  }
   
+  .container {
+    margin-top: 50px;
+    border-radius: 20px;
+    display: flex;
+    /* height: 500px; */
+    width: 800px;
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: 15px 15px black;
+  }
+  
+  /* LOGIN FORM */
+  .form {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* To make the form take up the left side */
+    align-items: center;
+    /* background-color: whitesmoke; */
+    padding: 20px; /* Adjust the padding for spacing */
+  }
+  .signInText{
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+    font-size:3rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  .box{
+    padding: 12px;
+    width: 65%;
+    margin: 15px; 
+    border: 1px solid black;
+    outline: none;
+    border-radius: 20px;
+  }
+  .emailinput{
+    padding-right: 2px;
+    margin-left: 20px;
+  }
+  #emailBox{
+    /* margin-right:15%; */
+    /* padding-right:50px */
+  }
+  .authformsubmit{
+    padding: 12px 20px;
+    width:40%;
+    margin-top: 40px;
+    background-color: black;
+    color:white;
+    /* padding: 12px 50px; */
+    border:none;
+    outline:none;
+    border-radius: 20px;
+  }
+  .submitText{
+    background-color: black;
+    color:white;
+    border:none;
+    outline:none;
+    /* padding-left: 35%; */
+    font-weight: bold;
+  }
+  .authformsubmit:hover{
+    cursor:hover;
+    background-color: #750000;
+  }
+  .side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .side img {
+    width: 460px;
+    height: 470px;
+    object-fit: cover;
+    border-radius: 2px; /* Apply border-radius to the image */
+    margin-left: 14px;
+    padding-left: 20px;
+    
+
+  }

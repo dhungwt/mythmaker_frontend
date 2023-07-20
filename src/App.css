@@ -37,10 +37,65 @@
   }
 }
 #home-page {
-  /* background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1186083443667681557/B8E12850839EC32D058C52AF310E45E1F9EDC36A/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false');*/
-  /* background-image: url('https://cdn.cloudflare.steamstatic.com/store/promo/summer2023/social_media_share.jpg'); */
+  /* background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1186083443667681557/B8E12850839EC32D058C52AF310E45E1F9EDC36A/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'); */
+  background-image: url('https://i.pinimg.com/originals/73/bc/d0/73bcd00f68afc64146c50956c8acc615.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
-  
+  width:100%;
+  background-position:center;
+  position: relative;
+  overflow: hidden;
+}
+.bubbles img{
+  width:60px;
+  animation: bubble 5s linear infinite;
+}
+.bubbles{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content: space-around;
+  position: absolute;
+  bottom:0;
+}
+@keyframes bubble {
+  0%{
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70%{
+    transform: translateY(0);
+    opacity: 1;
+  }
+ 100%{
+    transform: translateY(-80vh);
+    opacity: 0;
+  }
+
+}
+.bubbles img:nth-child(1){
+  animation-delay:2s;
+}
+.bubbles img:nth-child(2){
+  animation-delay:1s;
+}
+.bubbles img:nth-child(3){
+  animation-delay:3.8s;
+}
+.bubbles img:nth-child(4){
+  animation-delay:4s;
+}
+.bubbles img:nth-child(5){
+  animation-delay:3s;
+}
+.bubbles img:nth-child(6){
+  animation-delay:3.2s;
+}
+.bubbles img:nth-child(7){
+  animation-delay:2.3s;
 }
