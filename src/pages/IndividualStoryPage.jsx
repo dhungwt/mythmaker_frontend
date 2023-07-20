@@ -38,8 +38,7 @@ function IndividualStoryPage() {
 
   //fetch the event relate to this story
   useEffect(() => {
-    if (story && story?._id === id) {
-      console.log("FETCHING_EVENT_THUNK");
+    if (story && story._id === id) {
       dispatch(fetchAllEventsByStoryThunk(id));
 
       let exist = false;
@@ -148,9 +147,9 @@ function IndividualStoryPage() {
       setDisplayEvent([...displayEvent, newEvent]);
       setCurrentEvent(newEvent);
     }
-    if (newEvent.option1.next &&
-      newEvent.option2.next &&
-      newEvent.option3.next) {
+    if (newEvent.option1.name === "Default Option Name" &&
+      newEvent.option2.name === "Default Option Name" &&
+      newEvent.option3.name === "Default Option Name") {
       console.log('End of the story');
       setTheEnd(true);
     }
