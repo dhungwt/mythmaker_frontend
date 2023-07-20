@@ -136,7 +136,7 @@ const UserHomepage = () => {
       <button onClick={handleCreateStory}>Create Story</button>
       {/* <h3>Welcome, {email}</h3> */}
       <h2>Play History</h2>
-      {user.storyHistory.length > 0 ? (
+      {user.storyHistory?.length > 0 ? (
         user.storyHistory.map((singleStoryHistory) => {
           return (
             <HistoryCard
