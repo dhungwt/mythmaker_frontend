@@ -47,7 +47,7 @@ const AuthForm = ({ name, displayName }) => {
 
     return (
         <div className="authform" style={{marginTop:"10%"}}>
-            <section class="container">
+            <section class="container" style={{backgroundColor:"lightblue"}}>
             <form onSubmit={handleSubmit} name={name} className="form">
                 <h1 className="signInText"> SIGN IN FORM </h1>
                 {/*email input*/}
