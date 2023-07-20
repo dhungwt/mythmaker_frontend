@@ -148,6 +148,7 @@ const UserHomepage = () => {
       ) : (
         <h1> nothing to return </h1>
       )}
+<img src="https://i.imgur.com/75vG9bO.png"></img>
       <h2>Stories Created</h2>
       {creatorIdSelector.length > 0 ? (
         creatorIdSelector.map((creatorStoryList) => {
