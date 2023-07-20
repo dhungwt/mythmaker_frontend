@@ -1,3 +1,4 @@
+import "./StyleSheets/individualStoryPage.css"
 
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,6 +23,7 @@ function IndividualStoryPage() {
   //store and fetch the currentevent
   const [currentEvent, setCurrentEvent] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [typing, setTyping] = useState(true);
 
   //navigate between the pages
   const navigate = useNavigate();
@@ -90,67 +92,22 @@ function IndividualStoryPage() {
   }, [eventObj]);
 
 
-  // // after story data is receive, fire fetchEventByStoryIdThunk to fill all event with event data
-  // useEffect(() => {
-  //   if (story && story?._id === id) {
-  //     console.log("FETCHING_EVENT_THUNK")
-  //     dispatch(fetchAllEventsByStoryThunk(id))
-  //   }
-  // }, [story])
-
-  // // convert event array to object with their id as key, fill eventObj
-  // useEffect(() => {
-  //   console.log("UseEffect event : ", event);
-  //   if ((eventObj === null || eventObj[0] === null) && event.length > 0) {
-  //     //console.log("eventObj : ", eventObj);
-  //     let newObj = {};
-
-  //     //convert event array into object
-  //     event.forEach((data) => {
-  //       newObj[data._id] = data;
-  //       if (story.currentEvent === data._id) {
-  //         //console.log("SET DISPLAY EVENT \n", data)
-  //         setDisplayEvent([data]);
-  //       }
-  //     });
-
-  //     setEventObj(newObj);
-  //     //console.log("After EventObj : ", eventObj)
-  //   }
-
-  //   // return () => { 
-  //   //   setEventObj(null); 
-  //   //   setDisplayEvent([]);
-  //   // }
-
-  // }, [event]);
-
-  // useEffect(() => {
-  //   setLoading(false);
-  // }, [eventObj])
-
-  // //console.log("eventObj outside useEffect ", eventObj);
-
+  //if the page is still loading(loading === true)
   if (loading) {
     return <h1>LOADING...</h1>
   }
 
 
-
   //add next event to the end of displayEvent once player has click on an option
   const addNextEvent = (option) => {
-    const newEvent = eventObj[option.next]
+    const newEvent = eventObj[option?.next]
     console.log('End of the story?', newEvent);
 
-    // if option.next is null, trigger the end of the story instead
-    if (newEvent) {
+  // if option.next is null, trigger the end of the story instead
+  if (newEvent) {
       setDisplayEvent([...displayEvent, newEvent]);
       setCurrentEvent(newEvent);
-    }
-    if (newEvent.option1.name === "Default Option Name" &&
-      newEvent.option2.name === "Default Option Name" &&
-      newEvent.option3.name === "Default Option Name") {
-      console.log('End of the story');
+    } else {
       setTheEnd(true);
     }
 
@@ -159,6 +116,19 @@ function IndividualStoryPage() {
   //if options exist, wait for player to click one
   const playerChoice = () => {
     const tempEvent = displayEvent[displayEvent.length - 1];
+    if (tempEvent && 
+      tempEvent.option1.name === "Default Option Name" &&
+      tempEvent.option2.name === "Default Option Name" &&
+      tempEvent.option3.name === "Default Option Name"
+    ) {
+    console.log('End of the story');
+    
+      return <div>
+            {
+              <button onClick={() => addNextEvent(null)}>End</button>
+            }
+      </div>
+  }
 
     if (tempEvent) {
       // 3 options
@@ -166,15 +136,15 @@ function IndividualStoryPage() {
         <div>
           {
             tempEvent?.option1 && tempEvent.option1.name !== "Default Option Name" &&
-            <button onClick={() => addNextEvent(tempEvent?.option1)}>{tempEvent.option1.name || "..."}</button>
+            <button onClick={() => addNextEvent(tempEvent?.option1)}>{tempEvent.option1.name || "End"}</button>
           }
           {
             tempEvent?.option2 && tempEvent.option2.name !== "Default Option Name" &&
-            <button onClick={() => addNextEvent(tempEvent?.option2)}>{tempEvent.option2?.name || "..."}</button>
+            <button onClick={() => addNextEvent(tempEvent?.option2)}>{tempEvent.option2?.name || "End"}</button>
           }
           {
             tempEvent?.option3 && tempEvent.option3.name !== "Default Option Name" &&
-            <button onClick={() => addNextEvent(tempEvent?.option3)}>{tempEvent.option3?.name || "..."}</button>
+            <button onClick={() => addNextEvent(tempEvent?.option3)}>{tempEvent.option3?.name || "End"}</button>
           }
         </div>
       )
@@ -194,17 +164,20 @@ function IndividualStoryPage() {
   const typeEvent = () => {
     // Typing animation library, react-type-animation
 
-    return <TypeAnimation
-      key={displayEvent[displayEvent.length - 1]._id}
-      sequence={[
-        // Same substring at the start will only be typed out once, initially
-        displayEvent[displayEvent.length - 1].text,
-        1000
-      ]}
-      cursor={false}
-      wrapper="h2"
-      speed={50}
-    />
+    return <div className="eventDialogue">
+        <TypeAnimation
+        key={displayEvent[displayEvent.length - 1]._id}
+        className="eventDialogueText"
+        sequence={[
+          // Same substring at the start will only be typed out once, initially
+          displayEvent[displayEvent.length - 1].text,
+          1000
+        ]}
+        cursor={false}
+        wrapper="h2"
+        speed={50}
+      />
+    </div>
   }
 
   //once the user click the save if will save the current event to the local storage
@@ -244,28 +217,36 @@ function IndividualStoryPage() {
   }
 
   return (
-    <div>
-      <h1>IndividualStoryPage : {id}</h1>
+    <div className="eventOuterContainer">
+      <h1>{story.title || "No Story"}</h1>
 
-      {
-        displayEvent.length !== 0
-          ? (displayEvent.map((event) => {
-            //console.log("event id :", event._id)
-            if (event !== displayEvent[displayEvent.length - 1] || theEnd) {
-              return <EventDisplay key={event._id} event={event} />
+      <div className="eventContainer">
+        <div className="eventDisplayBox">
+          {
+          // if event has 2 or more available option wait for player to click on an option, else display next event
+          theEnd
+            ? finishScene()
+            : playerChoice()
+          }
+          {typeEvent()}
+        </div>
+        
+        <div className="eventLogBox">
+          <div className="eventLog">
+            {
+            displayEvent.length !== 0
+              ? (displayEvent.map((event) => {
+                //console.log("event id :", event._id)
+                if (event !== displayEvent[displayEvent.length - 1] || theEnd) {
+                  return <EventDisplay key={event._id} event={event} />
+                }
+              }))
+              : (<h1>NO EVENT</h1>)
             }
-            else
-              return typeEvent()
-          }))
-          : (<h1>NO EVENT</h1>)
-      }
-      {
-        // if event has 2 or more available option wait for player to click on an option, else display next event
-        theEnd
-          ? finishScene()
-          : playerChoice()
+          </div>
+        </div>
+      </div>
 
-      }
       <button onClick={saveGame}>Save Game</button>
       <button onClick={handleGoBack}>Go Back</button>
       <button onClick={clearDataAndReload}>Clear</button>

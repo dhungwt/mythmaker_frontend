@@ -1,0 +1,45 @@
+/* .eventOuterContainer{
+    display: grid;
+} */
+
+.eventContainer{
+    display: grid;
+    grid-template-columns: 67% auto;
+}
+
+.eventDisplayBox{
+    display: grid;
+    grid-template-rows: auto 200px;
+    background-color: aqua;
+    height: 80vh;
+}
+
+.eventDialogue{
+    grid-row: 2;
+    background-color: grey;
+}
+
+.eventDialogueText{
+    margin: 10px;
+}
+
+.eventLogBox{
+    background-color: red;
+    height: 80vh;
+}
+
+.eventLog{
+    margin: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+    .eventContainer{
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    /* hides on smaller device */
+    .eventLogBox{
+        height: 20vh;
+    }
+  }
