@@ -8,23 +8,68 @@
 }
 
 .eventDisplayBox{
-    display: grid;
-    grid-template-rows: auto 200px;
     background-color: aqua;
+    display: grid;
+    grid-template-rows: auto 45px 170px;
     height: 80vh;
 }
 
+.eventChoiceBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.eventChoiceButton{
+    min-width: 200px;
+    max-width: 80%;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.eventCharacter{
+    background-color: burlywood;
+    width: fit-content;
+    font-size: 27px;
+    font-weight: bold;
+    margin-left: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px 10px 0 0;
+    user-select: none;
+}
+
 .eventDialogue{
-    grid-row: 2;
     background-color: grey;
+    grid-row: 3;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: auto;
+}
+
+.eventDialogue::-webkit-scrollbar {
+    height: 1rem;
+  }
+
+.eventDialogue::-webkit-scrollbar-track {
+    margin: 5px;
+}
+
+.eventDialogue::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 10px;
 }
 
 .eventDialogueText{
     margin: 10px;
+    user-select: none;
 }
 
 .eventLogBox{
-    background-color: red;
+    background-color:indianred;
     height: 80vh;
 }
 
