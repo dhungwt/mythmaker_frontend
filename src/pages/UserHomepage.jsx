@@ -74,6 +74,7 @@ const UserHomepage = () => {
     const defaultOption = {
       name: "Default Option Name",
       text: "Default Option Text",
+      next: null,
     };
     //set the default Event
     let defaultEvent = {

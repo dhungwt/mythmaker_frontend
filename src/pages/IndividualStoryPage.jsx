@@ -1,6 +1,6 @@
 import "./StyleSheets/individualStoryPage.css"
 
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { fetchIndividualStoryThunk } from '../redux/story/story_actions';
@@ -45,7 +45,7 @@ function IndividualStoryPage() {
 
       let exist = false;
 
-      if (user) {
+      if (user && user.storyHistory) {
         for (let i = 0; i < user.storyHistory.length; i++) {
           if (user.storyHistory[i]?._id === id) {
             exist = true;
@@ -64,6 +64,8 @@ function IndividualStoryPage() {
           console.log(newArr, "im newArr and im working");
         }
       } else {
+        let newArr = { storyHistory: [id] };
+        dispatch(updateEntireUserThunk(user._id, newArr))
         console.log("user DNE");
       }
     }
@@ -125,7 +127,7 @@ function IndividualStoryPage() {
     
       return <div>
             {
-              <button onClick={() => addNextEvent(null)}>End</button>
+              <button className="eventChoiceButton" onClick={() => addNextEvent(null)}>End</button>
             }
       </div>
   }
@@ -133,20 +135,20 @@ function IndividualStoryPage() {
     if (tempEvent) {
       // 3 options
       return (
-        <div>
+        <Fragment>
           {
             tempEvent?.option1 && tempEvent.option1.name !== "Default Option Name" &&
-            <button onClick={() => addNextEvent(tempEvent?.option1)}>{tempEvent.option1.name || "End"}</button>
+            <button className="eventChoiceButton" onClick={() => addNextEvent(tempEvent?.option1)}>{tempEvent.option1.name || "End"}</button>
           }
           {
             tempEvent?.option2 && tempEvent.option2.name !== "Default Option Name" &&
-            <button onClick={() => addNextEvent(tempEvent?.option2)}>{tempEvent.option2?.name || "End"}</button>
+            <button className="eventChoiceButton" onClick={() => addNextEvent(tempEvent?.option2)}>{tempEvent.option2?.name || "End"}</button>
           }
           {
             tempEvent?.option3 && tempEvent.option3.name !== "Default Option Name" &&
-            <button onClick={() => addNextEvent(tempEvent?.option3)}>{tempEvent.option3?.name || "End"}</button>
+            <button className="eventChoiceButton" onClick={() => addNextEvent(tempEvent?.option3)}>{tempEvent.option3?.name || "End"}</button>
           }
-        </div>
+        </Fragment>
       )
     }
   }
@@ -165,7 +167,7 @@ function IndividualStoryPage() {
     // Typing animation library, react-type-animation
 
     return <div className="eventDialogue">
-        <TypeAnimation
+      <TypeAnimation
         key={displayEvent[displayEvent.length - 1]._id}
         className="eventDialogueText"
         sequence={[
@@ -222,12 +224,17 @@ function IndividualStoryPage() {
 
       <div className="eventContainer">
         <div className="eventDisplayBox">
-          {
-          // if event has 2 or more available option wait for player to click on an option, else display next event
-          theEnd
-            ? finishScene()
-            : playerChoice()
-          }
+          <div className="eventChoiceBox">
+            {
+            // if event has 2 or more available option wait for player to click on an option, else display next event
+            theEnd
+              ? finishScene()
+              : playerChoice()
+            }
+          </div>
+          <div className="eventCharacter">
+            {displayEvent[displayEvent.length - 1].characterId.name}
+          </div>
           {typeEvent()}
         </div>
         
