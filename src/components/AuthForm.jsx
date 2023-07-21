@@ -74,7 +74,7 @@ const AuthForm = ({ name, displayName }) => {
                 <a href="http://localhost:8080/auth/google" >{displayName} with Google</a>
             </form>
             <div class="side"> 
-                <img src="https://th.bing.com/th/id/R.b6acdd1c51f98273c00f30fe3d790e00?rik=%2frAFCYCNgGI75w&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f3%2f3%2f4%2f490956.jpg&ehk=ZeJXCAdIr1OhW6vBsS8rasfFea9TWgtdhSN0tEGEopM%3d&risl=&pid=ImgRaw&r=0"/>
+                {/* <img src="https://th.bing.com/th/id/R.b6acdd1c51f98273c00f30fe3d790e00?rik=%2frAFCYCNgGI75w&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f3%2f3%2f4%2f490956.jpg&ehk=ZeJXCAdIr1OhW6vBsS8rasfFea9TWgtdhSN0tEGEopM%3d&risl=&pid=ImgRaw&r=0"/> */}
             </div>
             
             </section>

@@ -81,29 +81,42 @@
   /* margin-right:15%; */
   /* padding-right:50px */
 }
-.authformsubmit{
+.authformsubmit {
   padding: 12px 20px;
-  width:40%;
+  width: 40%;
   margin-top: 40px;
-  background-color: black;
-  color:white;
-  /* padding: 12px 50px; */
-  border:none;
-  outline:none;
-  border-radius: 20px;
+  display: flex; /* Added: Make the button a flex container */
+  justify-content: center; /* Added: Center the text horizontally */
+  align-items: center; /* Added: Center the text vertically */
 }
-.submitText{
-  background-color: black;
-  color:white;
-  border:none;
-  outline:none;
-  /* padding-left: 35%; */
-  font-weight: bold;
+
+.submitText {
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgba(220, 0, 0, 1);
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  /* Set the button to fill the entire available space */
+  flex: 1;
 }
-.authformsubmit:hover{
-  cursor:hover;
-  background-color: #750000;
+
+.authformsubmit:hover {
+  /* Removed: "cursor:hover" is not a valid property */
+  /* background-color: #750000; */
 }
+
 .side {
   display: flex;
   justify-content: center;
@@ -117,4 +130,7 @@
   border-radius: 2px; /* Apply border-radius to the image */
   margin-left: 14px;
   padding-left: 20px;
+}
+.entirePage{
+  background-color: #750000;
 }

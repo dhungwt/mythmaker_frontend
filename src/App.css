@@ -38,10 +38,11 @@
 }
 #home-page {
   /* background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1186083443667681557/B8E12850839EC32D058C52AF310E45E1F9EDC36A/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'); */
-  background-image: url('https://i.pinimg.com/originals/73/bc/d0/73bcd00f68afc64146c50956c8acc615.jpg');
+  background-image: url('https://as1.ftcdn.net/v2/jpg/05/70/92/46/1000_F_570924674_NVELSxtSjzNU39B0s43V2qSQND8BFF6s.jpg');
   background-size: cover;
+  background-attachment: fixed;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  min-height: 120vh;
   width:100%;
   background-position:center;
   position: relative;

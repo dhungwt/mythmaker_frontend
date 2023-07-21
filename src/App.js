@@ -42,7 +42,7 @@ function App() {
 
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
-        <div className='bubbles'> 
+        {/* <div className='bubbles'> 
             <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
             <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
             <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
@@ -50,7 +50,7 @@ function App() {
             <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
             <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
             <img src = "https://www.pngitem.com/pimgs/m/2-29355_soap-bubbles-png-free-image-blue-bubble-png.png"/>
-        </div>
+        </div> */}
       {/* </div> */}
     </Router>
   );

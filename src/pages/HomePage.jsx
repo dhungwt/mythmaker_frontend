@@ -6,7 +6,7 @@ import '../App.css'
 export default function HomePage() {
   return (
     <div id='home-page' className="cssGradientMotion">
-        <h1>Welcome to This or That</h1>
+        <h1>Welcome to MythMaker! </h1>
 
       <p>Choose wisely as you navigate through different scenarios and decide between two options in this fun and challenging "This or That" game.</p>
 
