@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // import  {useEffect} from "react";
 import { useDispatch } from "react-redux";
 import "../App.css";
@@ -12,7 +12,7 @@ import {
   addStoryThunk,
   fetchIndividualStoryByCreatorIdThunk,
 } from "../redux/story/story_actions";
-import CreateStory from "./CreateStoryPage";
+//import CreateStory from "./CreateStoryPage";
 import CreatorStoryCard from "../components/CreatorStoryCard";
 import HistoryCard from "../components/HistoryCard";
 import { addEventThunk } from "../redux/event/event_actions";
@@ -69,6 +69,7 @@ const UserHomepage = () => {
   const handleCreateStory = async () => {
     //create the new character
     const newCharacter = await dispatch(addCharacterThunk(defaultCharacter));
+    console.log("Where si the new Character:",newCharacter);
     //create the default option
     const defaultOption = {
       name: "Default Option Name",
@@ -78,7 +79,7 @@ const UserHomepage = () => {
     let defaultEvent = {
       name: "Default Name",
       text: "Default Text",
-      characterId: newCharacter._id,
+      characterId: newCharacter?._id,
       option1: defaultOption,
       option2: defaultOption,
       option3: defaultOption,
@@ -137,25 +138,24 @@ const UserHomepage = () => {
       {/* <h3>Welcome, {email}</h3> */}
       <h2>Play History</h2>
       {user.storyHistory?.length > 0 ? (
-        user.storyHistory.map((singleStoryHistory) => {
+        user.storyHistory.map((singleStoryHistory, index) => {
           return (
             <HistoryCard
               singleStoryHistory={singleStoryHistory}
-              key={singleStoryHistory?._id}
+              key={index}
             />
           );
         })
       ) : (
         <h1> nothing to return </h1>
       )}
-<img src="https://i.imgur.com/75vG9bO.png"></img>
       <h2>Stories Created</h2>
       {creatorIdSelector.length > 0 ? (
-        creatorIdSelector.map((creatorStoryList) => {
+        creatorIdSelector.map((creatorStoryList, index) => {
           return (
             <CreatorStoryCard
               creatorIdSelector={creatorStoryList}
-              key={creatorStoryList?._id}
+              key={index}
             />
           );
         })
