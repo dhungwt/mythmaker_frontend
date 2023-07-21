@@ -10,7 +10,7 @@ function CreatorStoryCard(props) {
 
   const handleEditStoryClick = () => {
     console.log("INSIDE EDIT STORY CLICK HANDLER");
-    window.location.href = `./createStory/${creatorStory._id}`;
+    navigate(`/createStory/${creatorStory._id}`);
   };
 
   const handlePlayClick = () =>{

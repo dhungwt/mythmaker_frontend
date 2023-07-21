@@ -98,10 +98,10 @@ export const auth = (email, password, method) => async (dispatch) => {
     }
 };
 
-export const oAuth = (_id, password, googleId) => async (dispatch) => {
+export const oAuth = (_id, password, googleId, storyHistory, storyIds) => async (dispatch) => {
 
     try {
-        dispatch(getUser({_id, password, googleId}));
+        dispatch(getUser({_id, password, googleId, storyHistory, storyIds}));
     } catch (dispatchOrHistoryErr) {
         console.error(dispatchOrHistoryErr);
     }
