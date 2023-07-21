@@ -27,15 +27,17 @@
 //this card is for the browse all stories page
 import React, { useEffect, useState } from 'react'
 import './components.css'
+import { useNavigate } from 'react-router-dom';
 
 function StoryCard(props) {
     // const { title, event } = props;
     const story = props.story;
     const searchBar = props.filterStudents; //filtered array from storiespage
+    const navigate = useNavigate();
 
     const handleClick = (e) =>{
         e.preventDefault();
-        window.location.href= `/stories/${story._id}`; //redirects to the individual story page
+        navigate(`/stories/${story._id}`); //redirects to the individual story page
     }
       //does essentially the samething as the StoriesPage where we check if the input/title exists 
 

@@ -13,19 +13,19 @@ import ErrorPage from './pages/ErrorPage';
 // import HafeefasQuest from  './components/HafeefasQuest';
 import StoriesPage from './pages/StoriesPage';
 import EditEvent from './components/EventPart/EditEventModal/EditEvent';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { oAuth } from './redux/user/user_actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 //css imports
 import '../src/pages/pages.css';
 
 
-
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isLogin = useSelector((state) => !!state.user._id);
 
   useEffect (() =>{
     const getAuthedUser = async () => {
@@ -35,8 +35,8 @@ function App() {
         })
         console.log("LOGIN SUCCESS RESPONSE", response)
         if(response.status==200){
-          await dispatch(oAuth(response.data.user._id,response.data.user.password, response.data.user.googleId )); 
-          navigate("/home");
+          await dispatch(oAuth(response.data.user._id,response.data.user.password, response.data.user.googleId, response.data.user.storyHistory, response.data.user.storyIds )); 
+          
         }else{
           throw new Error("AUTHENICATION HAS FAILED")
         }
@@ -45,7 +45,12 @@ function App() {
         console.log("ERROR GETTING AUTHED USER", error)
       }
     } 
-    getAuthedUser();
+
+    if(!isLogin){
+      getAuthedUser();
+      navigate("/home");
+    }
+      
   },[])
 
 
