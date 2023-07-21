@@ -1,15 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 //this card displays stories the user has played
 function HistoryCard(props) {
   //history will hold all the information within
   // the individual stories in the user's history
+  const navigate = useNavigate();
   const history = props.singleStoryHistory;
 
   const handleHistoryClick = () => {
     console.log("INSIDE HISTORY CLICK HANDLER");
     //will redirect user to the url of the individual story
-    window.location.href = `./stories/${history?._id}`;
+    navigate(`/stories/${history?._id}`);
   };
 
   return <div onClick={handleHistoryClick}>{history?.Title}</div>;

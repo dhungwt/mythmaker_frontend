@@ -101,9 +101,9 @@ const UserHomepage = () => {
     console.log("what is the character id:", newCharacter._id);
     console.log("I am ready to add story");
     //create the new story
-    const newStory = dispatch(addStoryThunk(defaultStory));
+    const newStory = await dispatch(addStoryThunk(defaultStory));
     defaultEvent.storyId = newStory._id;
-    dispatch(editEventThunk(newEvent._id, defaultEvent));
+    await dispatch(editEventThunk(newEvent._id, defaultEvent));
 
     //we push the new story id into the user storyids
     

@@ -35,7 +35,7 @@ function App() {
         })
         console.log("LOGIN SUCCESS RESPONSE", response)
         if(response.status==200){
-          await dispatch(oAuth(response.data.user._id,response.data.user.password, response.data.user.googleId )); 
+          await dispatch(oAuth(response.data.user._id,response.data.user.password, response.data.user.googleId, response.data.user.storyHistory, response.data.user.storyIds )); 
           navigate("/home");
         }else{
           throw new Error("AUTHENICATION HAS FAILED")
