@@ -163,6 +163,11 @@
   /* margin-left: 14px; */
   /* padding-left: 20px; */
 }
+@media screen and (max-width: 767px) {
+  .side img {
+    display: none; /* Hide the image on smaller screens */
+  }
+}
 .entirePage{
   background-color: #750000;
 }
