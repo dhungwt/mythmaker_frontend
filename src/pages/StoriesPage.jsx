@@ -65,13 +65,13 @@ function StoriesPage() {
       ) : (
         filterStories.length > 0 ? (
           filterStories.map((storyList) => (
-            <StoryCard story={storyList} key={storyList.id} />
+            <StoryCard story={storyList} key={storyList._id} />
           ))
         ) : (
           // checking if there are any stories
           stories.length > 0 ? (
             stories.map((storyList) => (
-              <StoryCard story={storyList} key={storyList.id} />
+              <StoryCard story={storyList} key={storyList._id} />
             ))
           ) : (
             // if there are no stories then return this

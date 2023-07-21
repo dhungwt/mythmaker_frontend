@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {persistor} from './redux/store.js'
 import { PersistGate } from 'redux-persist/integration/react' //for persisting to localStorage
-
+import { BrowserRouter as Router } from "react-router-dom";
 
 //Redux
 import { Provider } from "react-redux";
@@ -13,13 +13,15 @@ import {store} from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-    <React.StrictMode>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-      </PersistGate>
-    </React.StrictMode>
-  </Provider>
+  <Router>
+    <Provider store={store}>
+      <React.StrictMode>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+        </PersistGate>
+      </React.StrictMode>
+    </Provider>
+  </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function
