@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../redux/user/user_actions";
 import '../pages/pages.css'
+import logoMM from './logoMM.jpg'
 
 
 //this component will display different links based on whether user is logged in or not
@@ -39,34 +40,48 @@ const NavBar = () => {
 
 
     return (
-        <div className="navbar" id='background'>
-            <h1>MYTHMAKER</h1>
-            <nav>
-                {/*condition rendering based on log in or not */}
-                {/* <LinkButton to="/gameplay"> game </LinkButton> */}
-                <LinkButton to="/stories"> story </LinkButton>
-
-                {isLoggedIn ? (
-
-                    <div className="haslogin">
-                        {/* Show these links if the user is logged in */}
-                        {/*add more link when other page ready */}
-                        <LinkButton to="/home">Home</LinkButton>
-                        <LinkButton onClick={handleLogOut}>Log out</LinkButton>
-
-                    </div>
-
-                ) : (
-                    <div className="notlogin">
-                        {/*show the links if the user is not logged in */}
-                        <LinkButton to="/login">Login</LinkButton>
-                        <LinkButton to="/signup">Sign Up</LinkButton>
-                    </div>
-                )}
-            </nav>
-            <hr />
-
+        <nav class="navbar navbar-expand-lg" style= {{backgroundColor:"#232946"}}>
+        <a class="navbar-brand" href="/">
+            {/* MYTHMAKER */}
+          <img src={logoMM} alt="myth maker logo" style={{ width: "25vh" }} className="logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/stories">
+                <LinkButton to="/stories">Story</LinkButton>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Features
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Pricing
+              </a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            {isLoggedIn ? (
+              <div className="haslogin">
+                <LinkButton to="/home">Home</LinkButton>
+                <LinkButton onClick={handleLogOut}>Log out</LinkButton>
+              </div>
+            ) : (
+              <div className="notlogin">
+                <LinkButton to="/login">Login</LinkButton>
+                <LinkButton to="/signup">Sign Up</LinkButton>
+              </div>
+            )}
+          </span>
         </div>
+      </nav>
+      
     );
 
 

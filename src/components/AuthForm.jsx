@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { auth } from "../redux/user/user_actions";
 import { useNavigate } from "react-router-dom";
 import './components.css'
+import mythmakerpic from './mythmakerpic.png'
 
 
 const AuthForm = ({ name, displayName }) => {
@@ -46,21 +47,21 @@ const AuthForm = ({ name, displayName }) => {
     };
 
     return (
-        <div className="authform" style={{marginTop:"10%"}}>
-            <section class="container" style={{backgroundColor:"lightblue"}}>
+        <div className="authform" style={{}}>
+            <section className="container" style={{backgroundColor:"#000612", paddingLeft:"20px", border:"20px #b8c1ec solid"}}>
             <form onSubmit={handleSubmit} name={name} className="form">
-                <h1 className="signInText"> SIGN IN FORM </h1>
+                <h1 className="signInText" style={{color:"white"}}> SIGN IN FORM </h1>
                 {/*email input*/}
                 <div className="emailinput">
                     <label htmlFor="email" >
-                        <small>Email</small>
+                        Email
                     </label>
                     <input name="email" type="email" className="box" id="emailBox" placeholder="Enter email..."/>
                 </div>
                 {/*password input*/}
                 <div className="passwordinput">
                     <label htmlFor="password">
-                        <small>Password</small>
+                        Password
                     </label>
                     <input name="password" type="password" className="box" placeholder="Enter password..."/>
                 </div>
@@ -74,7 +75,7 @@ const AuthForm = ({ name, displayName }) => {
                 <a href="http://localhost:8080/auth/google" >{displayName} with Google</a>
             </form>
             <div class="side"> 
-                {/* <img src="https://th.bing.com/th/id/R.b6acdd1c51f98273c00f30fe3d790e00?rik=%2frAFCYCNgGI75w&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f3%2f3%2f4%2f490956.jpg&ehk=ZeJXCAdIr1OhW6vBsS8rasfFea9TWgtdhSN0tEGEopM%3d&risl=&pid=ImgRaw&r=0"/> */}
+                 <img src={mythmakerpic} alt="myth maker logo" style={{maxWidth:"100%"}} />
             </div>
             
             </section>

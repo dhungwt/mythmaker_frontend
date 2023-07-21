@@ -31,63 +31,78 @@
 
 /* AUTHFORM CSS */
 .authform {
-  margin: 0;
+  /* background-color: #000; */
+  /* height: 100vh; */
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  
+  margin: 100px 0px;
   padding: 0;
   box-sizing: border-box;
- 
+  border: none;
+
 }
 
 .container {
+  background-color: #000;
   margin-top: 50px;
-  border-radius: 20px;
+  border-radius: 24px;
+  border: 30px solid black;
   display: flex;
-  padding: 10px;
+  padding: 0px;
   /* height: 500px; */
   width: 1000px;
   border: 1px solid black;
   margin: auto;
   margin-top: 50px;
-  box-shadow: 15px 15px black;
+  /* box-shadow: 15px 15px black; */
+  box-shadow: 12px 12px #eebbc3
 }
 
 /* LOGIN FORM */
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex: 1; /* To make the form take up the left side */
   align-items: center;
   /* background-color: whitesmoke; */
-  padding: 20px; /* Adjust the padding for spacing */
+  /* background-color: pink; */
+}
+.form label{
+  /* centering the form */
+  display: block;
+  color: #f071a6;
+  font-weight: 700;
 }
 .signInText{
   margin-top: 5vh;
   margin-bottom: 2vh;
   font-size:3rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color:#232946;
+   letter-Spacing: 3px;
+   padding-left: 20px;
 }
 .box{
-  padding: 12px;
+  padding: 5px;
   width: 65%;
-  margin: 15px; 
+  margin: 3px 0px 25px; 
   border: 1px solid black;
   outline: none;
-  border-radius: 20px;
+  min-width: 250px;
+  border-radius: 8px;
+  background-color: #b8c1ec;
 }
 .emailinput{
-  padding-right: 2px;
-  margin-left: 20px;
+  /* padding-right: 2px;
+  margin-left: 20px; */
 }
 #emailBox{
   /* margin-right:15%; */
   /* padding-right:50px */
-}
-.authformsubmit {
-  padding: 12px 20px;
-  width: 40%;
-  margin-top: 40px;
-  display: flex; /* Added: Make the button a flex container */
-  justify-content: center; /* Added: Center the text horizontally */
-  align-items: center; /* Added: Center the text vertically */
+  /* width: 71%; */
 }
 
 .submitText {
@@ -99,7 +114,8 @@
   color: #fff;
   text-shadow: 1px 1px 1px #000;
   border-radius: 10px;
-  background-color: rgba(220, 0, 0, 1);
+  background-color: #eebbc3;
+  /* background-color: rgba(220, 0, 0, 1); */
   background-image: linear-gradient(
     to top left,
     rgba(0, 0, 0, 0.2),
@@ -112,9 +128,23 @@
   flex: 1;
 }
 
+.authformsubmit {
+  padding: 12px 20px;
+  width: 40%;
+  margin-top: 10px;
+  display: flex; /* Added: Make the button a flex container */
+  justify-content: center; /* Added: Center the text horizontally */
+  align-items: center; /* Added: Center the text vertically */
+  transition: background-color 0.3s ease, border-radius 0.3s ease;
+  transition: all 0.2s ease-in 0s;
+
+}
+
 .authformsubmit:hover {
-  /* Removed: "cursor:hover" is not a valid property */
-  /* background-color: #750000; */
+  background-color: #fffffe;
+  border-radius: 20px;
+    right: -7px;
+  
 }
 
 .side {
@@ -128,9 +158,15 @@
   height: 450px;
   object-fit: cover;
   border-radius: 2px; /* Apply border-radius to the image */
-  margin-left: 14px;
-  padding-left: 20px;
+  /* margin-left: 14px; */
+  /* padding-left: 20px; */
 }
 .entirePage{
   background-color: #750000;
+}
+/* END OF AUTH FORM CSS  */
+
+/* START OF NAVBAR CSS */
+.logo{
+  display: block;
 }

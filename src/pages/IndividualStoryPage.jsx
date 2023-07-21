@@ -166,7 +166,6 @@ function IndividualStoryPage() {
     />
   }
 
-
   return (
     <div>
       <h1>IndividualStoryPage : {id}</h1>
