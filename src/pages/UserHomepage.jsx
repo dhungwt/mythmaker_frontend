@@ -138,11 +138,11 @@ const UserHomepage = () => {
       {/* <h3>Welcome, {email}</h3> */}
       <h2>Play History</h2>
       {user.storyHistory?.length > 0 ? (
-        user.storyHistory.map((singleStoryHistory) => {
+        user.storyHistory.map((singleStoryHistory, index) => {
           return (
             <HistoryCard
               singleStoryHistory={singleStoryHistory}
-              key={singleStoryHistory?._id}
+              key={index}
             />
           );
         })
@@ -151,11 +151,11 @@ const UserHomepage = () => {
       )}
       <h2>Stories Created</h2>
       {creatorIdSelector.length > 0 ? (
-        creatorIdSelector.map((creatorStoryList) => {
+        creatorIdSelector.map((creatorStoryList, index) => {
           return (
             <CreatorStoryCard
               creatorIdSelector={creatorStoryList}
-              key={creatorStoryList?._id}
+              key={index}
             />
           );
         })
