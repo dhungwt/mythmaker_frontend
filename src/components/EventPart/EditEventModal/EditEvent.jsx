@@ -60,14 +60,21 @@ const EditEvent = () => {
         const option = options[index];
         setUnsavedChanges(false);
         //check the user has the selected character
-        if (!characterId) {
-            alert("Please select a character before saving changes");
-            return;
-        }
         if (option.name !== "Default Option Name") {
-            setNewEventOptions(old => [...old, { index, option }]);
+            // Check if the option already exists in newEventOptions
+            const existingOptionIndex = newEventOptions.findIndex(e => e.index === index);
+            if (existingOptionIndex > -1) {
+                // If the option already exists, update it
+                setNewEventOptions(old => {
+                    const newOptions = [...old];
+                    newOptions[existingOptionIndex] = { index, option };
+                    return newOptions;
+                });
+            } else {
+                // If the option does not exist, add it
+                setNewEventOptions(old => [...old, { index, option }]);
+            }
         }
-
     }
 
     // when we click the event it will take us to dispatch edit event thunk
@@ -116,13 +123,13 @@ const EditEvent = () => {
                 console.error('An error occurred:', createdEvent.error);
             } else {
                 options[index].next = createdEvent._id;
-                
 
-           
+
+
                 console.log("What is the new story lloks like after new event:", story);
 
                 if (story && !story.error) {
-                    console.log("This is the story i am looking for:" , story);
+                    console.log("This is the story i am looking for:", story);
                     story.events.push(createdEvent._id);
                     await dispatch(editStoryThunk(story));
 
