@@ -52,7 +52,7 @@ function StoryCard(props) {
     
     <div className="story-card" style={{margin:"3%", marginTop:"15vh", boxShadow: "10px 10px 15px 0 rgba(0, 0, 0, 0.2)" }}>
     <div className="card" style={{height: '60%', border:"none"}}> 
-      <img className="card-img-top" src="https://1.bp.blogspot.com/-htXGmmH_VLg/V5Xcs8-HM9I/AAAAAAAA8sI/xlIGocvnKFUUptdQbYuVsg2RY8emjrIUgCLcB/s800/book_cover_kawa.png" alt="Card image cap"
+      <img className="card-img-top" src="https://i.imgur.com/t1lXeFj.png" alt="Card image cap"
         style={{ height: '320px', objectFit:"cover" }} // Set a fixed height for the card image
  />
       
