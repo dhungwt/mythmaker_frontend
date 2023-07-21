@@ -31,7 +31,7 @@ function StoriesPage() {
   const filterStories = stories.filter((story) => {
     // allows the user to search in uppercase, lowercase, or whatever and the user input will still be lowercased
     // story.title.toLowerCase().includes(search.toLowerCase()) other way of doing it but takes O(N^2) time
-    return story.title.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+    //return story.title.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     // indexOf returns the index of the first occurrence of the search term in the story title, and -1 if nothing is found
   });
 
