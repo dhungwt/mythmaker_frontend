@@ -26,13 +26,20 @@ const CreateStory = () => {
     useEffect(() => {
         dispatch(fetchIndividualStoryThunk(storyId))
         dispatch(fetchAllEventsByStoryThunk(storyId))
+
+        // Check if the title exists in local storage, if not set it
+        const savedTitle = localStorage.getItem(storyId);
+        if (!savedTitle && story) {
+            setStoryTitle(story.title);
+            localStorage.setItem(storyId, story.title);
+        }
     }, [dispatch, storyId]);
 
     //get the current story
     const story = useSelector(state => state.story.singleStory);
 
     //set the story title
-    const [storyTitle, setStoryTitle] = useState("Untitled");
+    const [storyTitle, setStoryTitle] = useState("");
 
     useEffect(() => {
         if(story && story?._id === storyId && !localStorage.getItem(storyId)){
@@ -40,7 +47,7 @@ const CreateStory = () => {
             localStorage.setItem(storyId, story.title);
         }
         else if(story){
-            setStoryTitle(localStorage.getItem(storyId));
+            setStoryTitle(localStorage.getItem(storyId || ""));
         }
     }, [story?.title]);
 
