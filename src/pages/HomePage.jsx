@@ -17,7 +17,7 @@ export default function HomePage() {
          <p>Choose wisely as you navigate through different scenarios and decide <br/> between two options in this fun and challenging "This or That" game.</p>
           
           <Link to = "/signup" style={{textDecoration:"none", border:"none"}}>
-              <button type='button' > Sign Up Now </button>  
+              <button type='button' className="buttonSignup" > Sign Up </button>  
           </Link>
       </section>
     </div>

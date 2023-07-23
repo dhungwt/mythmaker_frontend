@@ -57,10 +57,16 @@
   width: 1000px;
   border: 1px solid black;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 12vh;
   /* box-shadow: 15px 15px black; */
   box-shadow: 12px 12px #eebbc3
 }
+/* @media (max-width: 768px) */
+@media (max-width: 768px){
+  .container{
+    margin-top: 26%;
+  }
+} 
 
 /* LOGIN FORM */
 .form {
@@ -163,7 +169,7 @@
   /* margin-left: 14px; */
   /* padding-left: 20px; */
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 992px) {
   .side img {
     display: none; /* Hide the image on smaller screens */
   }
@@ -176,4 +182,13 @@
 /* START OF NAVBAR CSS */
 .logo{
   display: block;
+}
+@media (max-width: 768px) {
+  .navbar-light .navbar-nav .nav-link {
+    flex: 1;
+    text-align: center;
+    margin-bottom: 5px;
+    color: rgb(17, 15, 15);
+    font-weight: 600;
+  }
 }
