@@ -1,6 +1,6 @@
 import "./StyleSheets/individualStoryPage.css"
 
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { fetchIndividualStoryThunk } from '../redux/story/story_actions';
@@ -16,6 +16,8 @@ function IndividualStoryPage() {
   const story = useSelector((state) => state.story.singleStory);
   const event = useSelector((state) => state.event.events);
   const user = useSelector((state) => state.user);
+  
+  //const logRef = useRef(null);
 
   const [eventObj, setEventObj] = useState({});
   const [displayEvent, setDisplayEvent] = useState([]);
@@ -24,6 +26,7 @@ function IndividualStoryPage() {
   const [currentEvent, setCurrentEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [typing, setTyping] = useState(true);
+  const [speedUp, setSpeedUp] = useState(false); //show choice and full dialogue early
 
   //navigate between the pages
   const navigate = useNavigate();
@@ -93,6 +96,16 @@ function IndividualStoryPage() {
     }
   }, [eventObj]);
 
+  // //scroll to the end(where ref is at)
+  // const scrollToEnd = (ref) => {
+  //   ref.current?.scrollIntoView({ behavior: "smooth", block: 'end'})
+  // }
+
+  // // scroll log to end everytime it's updated
+  // useEffect(() => {
+  //   scrollToEnd(logRef);
+  // }, [displayEvent]);
+
 
   //if the page is still loading(loading === true)
   if (loading) {
@@ -105,9 +118,11 @@ function IndividualStoryPage() {
     const newEvent = eventObj[option?.next]
     console.log('End of the story?', newEvent);
 
-  // if option.next is null, trigger the end of the story instead
-  if (newEvent) {
-      setDisplayEvent([...displayEvent, newEvent]);
+    setSpeedUp(false);
+
+    // if option.next is null, trigger the end of the story instead
+    if (newEvent) {
+      setDisplayEvent([newEvent, ...displayEvent]);
       setCurrentEvent(newEvent);
     } else {
       setTheEnd(true);
@@ -117,8 +132,8 @@ function IndividualStoryPage() {
 
   //if options exist, wait for player to click one
   const playerChoice = () => {
-    const tempEvent = displayEvent[displayEvent.length - 1];
-    if (tempEvent && 
+    const tempEvent = displayEvent[0];
+    if (!typing && tempEvent && 
       tempEvent.option1.name === "Default Option Name" &&
       tempEvent.option2.name === "Default Option Name" &&
       tempEvent.option3.name === "Default Option Name"
@@ -130,9 +145,9 @@ function IndividualStoryPage() {
               <button className="eventChoiceButton" onClick={() => addNextEvent(null)}>End</button>
             }
       </div>
-  }
+    }
 
-    if (tempEvent) {
+    if (tempEvent && !typing) {
       // 3 options
       return (
         <Fragment>
@@ -158,7 +173,13 @@ function IndividualStoryPage() {
     //if the user reach the end of the story, remove all saved
     localStorage.removeItem(`savedEvent_${id}`);
     localStorage.removeItem(`currentEvent_${id}`);
+      
     return <h2>The END</h2>
+  }
+
+  const handleSpeedUp = () => {
+    setSpeedUp(true);
+    setTyping(false);
   }
 
 
@@ -166,18 +187,41 @@ function IndividualStoryPage() {
   const typeEvent = () => {
     // Typing animation library, react-type-animation
 
-    return <div className="eventDialogue">
+    if(theEnd){
+      return <div className="eventDialogue">
+      <div className="eventDialogueTop"></div>
+        <div className="eventDialogueText"></div>
+    </div>
+    }
+
+    if(speedUp){
+      return <div className="eventDialogue">
+      <div className="eventDialogueTop"></div>
+        <div
+          key={displayEvent[0]?._id}
+          className="eventDialogueText"
+        >
+          {displayEvent[0]?.text}
+        </div>
+    </div>
+    }
+
+    return <div className="eventDialogue" onClick={handleSpeedUp}>
+      <div className="eventDialogueTop"></div>
       <TypeAnimation
-        key={displayEvent[displayEvent.length - 1]._id}
+        key={displayEvent[0]._id}
         className="eventDialogueText"
         sequence={[
+          () => {setTyping(true)},
+          "",
+          500,
           // Same substring at the start will only be typed out once, initially
-          displayEvent[displayEvent.length - 1].text,
-          1000
+          displayEvent[0].text,
+          () => {setTyping(false)},
         ]}
         cursor={false}
-        wrapper="h2"
-        speed={50}
+        wrapper="div"
+        speed={60}
       />
     </div>
   }
@@ -220,10 +264,9 @@ function IndividualStoryPage() {
 
   return (
     <div className="eventOuterContainer">
-      <h1>{story.title || "No Story"}</h1>
-
       <div className="eventContainer">
         <div className="eventDisplayBox">
+        <h1 className="eventTitle">{story.title || "No Story"}</h1>
           <div className="eventChoiceBox">
             {
             // if event has 2 or more available option wait for player to click on an option, else display next event
@@ -232,31 +275,34 @@ function IndividualStoryPage() {
               : playerChoice()
             }
           </div>
-          <div className="eventCharacter">
-            {displayEvent[displayEvent.length - 1].characterId.name}
+          <div className="eventCharacter capitalizeName">
+            {theEnd ? <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> :displayEvent[0]?.characterId.name}
           </div>
           {typeEvent()}
         </div>
         
         <div className="eventLogBox">
+          <div className="eventLogTitle">HISTORY LOG</div>
           <div className="eventLog">
+            <div className="eventLogTop"></div>
             {
             displayEvent.length !== 0
               ? (displayEvent.map((event) => {
                 //console.log("event id :", event._id)
-                if (event !== displayEvent[displayEvent.length - 1] || theEnd) {
+                if (event !== displayEvent[0] || theEnd) {
                   return <EventDisplay key={event._id} event={event} />
                 }
               }))
               : (<h1>NO EVENT</h1>)
             }
           </div>
+          <div className="eventButtons">
+            <button className="eventButt" onClick={saveGame}>Save Game</button>
+            <button className="eventButt" onClick={handleGoBack}>Go Back</button>
+            <button className="eventButt" onClick={clearDataAndReload}>Clear</button>
+          </div>
         </div>
       </div>
-
-      <button onClick={saveGame}>Save Game</button>
-      <button onClick={handleGoBack}>Go Back</button>
-      <button onClick={clearDataAndReload}>Clear</button>
     </div>
   );
 }
