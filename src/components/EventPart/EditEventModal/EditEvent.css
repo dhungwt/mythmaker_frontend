@@ -68,3 +68,15 @@ body.edit-event-body {
     width: 100%;
 }
 
+.Edit_Event_Page_Particles{
+    position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.Edit_Event_Page_Container{
+    position: relative;
+    z-index: 2;
+}
+

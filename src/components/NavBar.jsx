@@ -24,22 +24,25 @@ const NavBar = () => {
 
     //determine the user logged in or not
     const isLoggedIn = useSelector((state) => !!state.user._id);
-    console.log("isloggen in:",isLoggedIn);
-  
+    console.log("isloggen in:", isLoggedIn);
 
-    
+
+
     //handle the log out bytton
     const handleLogOut = (event) => {
         event.preventDefault();
         dispatch(logout())
             .then(() => navigate("/login"))
             .catch(err => console.error(err));
-            console.log("isloggen in:",isLoggedIn);
+        console.log("isloggen in:", isLoggedIn);
     };
 
 
     return (
-        <div className="navbar" id='background'>
+        <div className="navbar" id='background' style={{
+            position: "relative",
+            zIndex: "1000",
+        }}>
             <h1>MYTH⚔MAKER</h1>
             <nav>
                 {/*condition rendering based on log in or not */}
@@ -66,7 +69,7 @@ const NavBar = () => {
             </nav>
             <hr />
 
-        </div>
+        </div >
     );
 
 
