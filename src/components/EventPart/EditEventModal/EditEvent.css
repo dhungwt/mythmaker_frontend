@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Center the elements inside your React component */
+  .Edit_Event_Title,
+  .Edit_Event_Character_List,
+  .Edit_Event_Name,
+  .Edit_Event_Option,
+  .Edit_Event_Button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Style the options in a row */
+  .Edit_Event_Option {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }

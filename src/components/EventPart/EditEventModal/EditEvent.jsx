@@ -7,6 +7,7 @@ import { editEventThunk } from "../../../redux/event/event_actions";
 import { editStoryThunk, fetchIndividualStoryThunk } from "../../../redux/story/story_actions";
 import { addEventThunk } from "../../../redux/event/event_actions";
 import CharacterList from "../../CharacterList/CharacterList";
+import './EditEvent.css';
 
 
 
@@ -62,13 +63,13 @@ const EditEvent = () => {
         newOptions[index] = option;
         setOptions(newOptions);
         setUnsavedChanges(true);
-        
+
     };
 
     const handleSaveOption = (index) => {
         const option = options[index];
         setUnsavedChanges(false);
-    
+
         // If an option already has an event linked to it, consider it as an existing option
         if (option.name !== "Default Option Name" && initialOptionNextValues[index] !== null) {
             // Add logic to update existing option
@@ -97,7 +98,7 @@ const EditEvent = () => {
         }
     };
 
-    
+
 
     // when we click the event it will take us to dispatch edit event thunk
     const handleEditEvent = async (e) => {
@@ -106,26 +107,26 @@ const EditEvent = () => {
             alert("Please select a character before saving changes");
             return;
         }
-    
+
         if (unsavedChanges) {
             alert('Please save your changes before editing the event.');
             return;
         }
-    
-        
-    
+
+
+
         for (let i = 0; i < newEventOptions.length; i++) {
             const { index, option } = newEventOptions[i];
-    
+
             //create the default option
             const defaultOption = {
                 name: "Default Option Name",
                 text: "Default Option Text",
                 next: null,
             };
-    
+
             // If the linked event of this option does not exist or has been deleted, create a new one
-           if (option.next === null || !(allEvents.some(event => event._id === option.next))) {
+            if (option.next === null || !(allEvents.some(event => event._id === option.next))) {
                 //define new event
                 const newEvent = {
                     name: option.name,
@@ -136,9 +137,9 @@ const EditEvent = () => {
                     option3: defaultOption,
                     storyId: eventStoryId
                 }
-    
+
                 const createdEvent = await dispatch(addEventThunk(newEvent));
-    
+
                 if (!createdEvent) {
                     console.error('An error occurred when creating the event:', createdEvent);
                 } else if (createdEvent.error) {
@@ -146,7 +147,7 @@ const EditEvent = () => {
                 } else {
                     options[index].next = createdEvent._id;
                     console.log("What is the new story looks like after new event:", story);
-    
+
                     if (story && !story.error) {
                         console.log("This is the story I am looking for:", story);
                         story.events.push(createdEvent._id);
@@ -165,7 +166,7 @@ const EditEvent = () => {
                 }));
             }
         }
-    
+
         await dispatch(editEventThunk(eventId, {
             name,
             text,
@@ -174,7 +175,7 @@ const EditEvent = () => {
             option2: options[1],
             option3: options[2]
         }));
-    
+
         setNewEventOptions([]);
         navigate(`/createStory/${eventStoryId}`);
     };
@@ -206,25 +207,32 @@ const EditEvent = () => {
 
 
     return (
-        <div>
+        <div className="Edit_Event_Page">
+            <div className="Edit_Event_Title">
+                <h1>Edit Event</h1>
+            </div>
             <div className="Edit_Event_Character_List">
-                <p>Select your character</p>
+                <h2>Select your character</h2>
                 <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} />
             </div>
             <div className="Edit_Event_Name">
-                <p>Event Name</p>
+                <h2>Descripe your event:</h2>
+                <p>Event Name:</p>
                 <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
-            </div>
-            <div className="Edit_Event_Text">
-                <p>Event Text</p>
+
+
+                <p>Event Text:</p>
                 <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Event Text" />
+
             </div>
             <div className="Edit_Event_Option">
-                <p>Options:</p>
+                <h2>Add Options:</h2>
                 {options.map((option, index) => (
                     option ? (
                         <div key={index}>
+                            <p>Option Name:</p>
                             <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
+                            <p>Option Text:</p>
                             <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
                             <button onClick={() => handleSaveOption(index)}>Save Changes</button>
                         </div>
