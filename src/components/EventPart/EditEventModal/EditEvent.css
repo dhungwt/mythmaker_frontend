@@ -31,3 +31,28 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
   }
+
+
+/* for def height and width of text input areas */
+.CustomEventTextArea {
+  height: 20vh; 
+  width: 60vw; 
+}
+/* for the titles */
+.CustomTitleArea {
+  height: 5vh; 
+  width: 60vw; 
+}
+
+/* for options text */
+.CustomOptionTextArea {
+  height: 20vh; 
+  width: 60vw; 
+}
+
+/* for sorting options into a column */
+.OptionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adjust the gap between options (optional) */
+}
