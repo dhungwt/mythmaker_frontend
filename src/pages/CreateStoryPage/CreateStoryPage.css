@@ -1,7 +1,7 @@
 /* CreateStory.css */
 
 /* Center the content vertically and horizontally */
-body {
+body.story-body {
     display: flex;
     justify-content: center;
     align-items: center;

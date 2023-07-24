@@ -2,7 +2,7 @@ import './App.css';
 import {  Routes, Route, useNavigate } from "react-router-dom";
 import { Login,Signup } from './components/AuthForm';
 
-import CreateStory from './pages/CreateStoryPage';
+import CreateStory from './pages/CreateStoryPage/CreateStoryPage';
 
 import NavBar from './components/NavBar';
 import UserHomepage from './pages/UserHomepage';

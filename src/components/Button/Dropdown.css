@@ -1,93 +1,96 @@
 /* Button CSS adapted for the dropdowns */
 .custom-dropdown {
-    position: relative;
-    display: inline-block;
-    user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width:85%;
+  margin-left: 15px;
+}
+
+/* Button styles */
+.custom-dropdown .btn {
+  position: relative;
+  width: 120px;
+  height: 30px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 60px;
+  transition: background-position 8s linear infinite;
+  margin: 10px;
+}
+
+.custom-dropdown .btn:hover {
+  animation: animate 8s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0%;
   }
-  
-  /* Button styles */
-  .custom-dropdown .btn {
-    position: relative;
-    width: 120px;
-    height: 30px;
-    line-height: 20px;
-    text-align: center;
-    color: #fff;
-    font-size: 12px;
-    text-transform: uppercase;
-    cursor: pointer;
-    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
-    background-size: 400%;
-    border-radius: 60px;
-    transition: background-position 8s linear infinite;
-    margin: 10px;
+
+  100% {
+    background-position: 400%;
   }
-  
-  .custom-dropdown .btn:hover {
-    animation: animate 8s linear infinite;
-  }
-  
-  @keyframes animate {
-    0% {
-      background-position: 0%;
-    }
-    100% {
-      background-position: 400%;
-    }
-  }
-  
-  .custom-dropdown .btn::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    z-index: -1;
-    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
-    background-size: 400%;
-    border-radius: 40px;
-    opacity: 0;
-    transition: 0.5s;
-  }
-  
-  .custom-dropdown .btn:hover::before {
-    filter: blur(20px);
-    opacity: 1;
-    animation: animate 8s linear infinite;
-  }
-  
-  /* Dropdown options styles */
-  .custom-dropdown ul {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 120px;
-    list-style: none;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    padding: 0;
-    margin: 0;
-  }
-  
-  .custom-dropdown ul li {
-    padding: 8px 12px;
-    cursor: pointer;
-  }
-  
-  .custom-dropdown ul li:hover {
-    background-color: #f0f0f0;
-  }
-  
-  /* Dropdown open styles */
-  .custom-dropdown.open ul {
-    display: block;
-  }
-  
-  /* Dropdown close styles */
-  .custom-dropdown ul {
-    display: none;
-  }
-  
+}
+
+.custom-dropdown .btn::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 40px;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.custom-dropdown .btn:hover::before {
+  filter: blur(20px);
+  opacity: 1;
+  animation: animate 8s linear infinite;
+}
+
+/* Dropdown options styles */
+.custom-dropdown ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 120px;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  margin: 0;
+}
+
+.custom-dropdown ul li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.custom-dropdown ul li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Dropdown open styles */
+.custom-dropdown.open ul {
+  display: block;
+}
+
+/* Dropdown close styles */
+.custom-dropdown ul {
+  display: none;
+}
