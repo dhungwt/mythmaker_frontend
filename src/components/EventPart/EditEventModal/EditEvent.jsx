@@ -228,7 +228,7 @@ const EditEvent = () => {
                 <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} />
             </div>
             <div className="Edit_Event_Name">
-                <h2>Descripe your event:</h2>
+                <h2>Describe your event:</h2>
                 <p>Event Name:</p>
                 <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
 
