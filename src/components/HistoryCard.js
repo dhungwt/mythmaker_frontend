@@ -7,7 +7,6 @@ function HistoryCard(props) {
   // the individual stories in the user's history
   const navigate = useNavigate();
   const history = props.singleStoryHistory;
-  const navigate = useNavigate();
 
   const handleHistoryClick = () => {
     console.log("INSIDE HISTORY CLICK HANDLER");

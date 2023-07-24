@@ -1,8 +1,13 @@
-/* .eventOuterContainer{
-    display: grid;
-} */
+.capitalizeName {
+    text-transform: capitalize;
+}
+
+.eventOuterContainer{
+    overflow: clip;
+} 
 
 .eventContainer{
+    background-color: black;
     display: grid;
     grid-template-columns: 67% auto;
 }
@@ -10,8 +15,15 @@
 .eventDisplayBox{
     background-color: aqua;
     display: grid;
-    grid-template-rows: auto 45px 170px;
-    height: 80vh;
+    grid-template-rows: 50px auto 45px 170px;
+    height: 92vh;
+}
+
+.eventTitle{
+    background-color: #00000020;
+    height: fit-content;
+    text-align: center;
+    font-size: 35px;
 }
 
 .eventChoiceBox{
@@ -45,39 +57,75 @@
 
 .eventDialogue{
     background-color: grey;
-    grid-row: 3;
+    display: flex;
+    flex-direction: column-reverse;
+    grid-row: 4;
     overflow-x: auto;
     -webkit-overflow-scrolling: auto;
+    cursor: pointer;
 }
 
-.eventDialogue::-webkit-scrollbar {
-    height: 1rem;
-  }
-
-.eventDialogue::-webkit-scrollbar-track {
-    margin: 5px;
-}
-
-.eventDialogue::-webkit-scrollbar-thumb {
-    background-color: black;
-    border-radius: 10px;
+.eventDialogueTop, .eventLogTop{
+    margin-top: auto;
 }
 
 .eventDialogueText{
-    margin: 10px;
+    margin: 15px;
+    font-size: 23px;
     user-select: none;
 }
 
 .eventLogBox{
     background-color:indianred;
-    height: 80vh;
+    display: grid;
+    grid-template-rows: 45px auto 50px;
+    height: 92vh;
+}
+
+.eventLogTitle{
+    background-color: #00000020;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 30px;
 }
 
 .eventLog{
-    margin: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 5px;
+    margin-right: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: auto;
+}
+
+.eventLogText{
+    margin: 7px;
+    margin-right: 10px;
+}
+
+.eventButtons{
+    background-color: cadetblue;
+    margin: 10px
+}
+
+.eventDialogue::-webkit-scrollbar, .eventLog::-webkit-scrollbar {
+    height: 1rem;
+  }
+
+.eventDialogue::-webkit-scrollbar-track, .eventLog::-webkit-scrollbar-track {
+    margin: 5px;
+}
+
+.eventDialogue::-webkit-scrollbar-thumb, .eventLog::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 10px;
 }
 
 @media only screen and (max-width: 700px) {
+    .eventTitle{
+        font-size: 7vw;
+    }
+
     .eventContainer{
         display: grid;
         grid-template-columns: auto;
@@ -85,6 +133,6 @@
 
     /* hides on smaller device */
     .eventLogBox{
-        height: 20vh;
+        height: 35vh;
     }
   }
