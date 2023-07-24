@@ -4,6 +4,7 @@ import { fetchIndividualStoryThunk } from "../../redux/story/story_actions";
 import { deleteCharacterThunk } from "../../redux/character/character_action";
 import AddCharacter from "../AddCharacterModal/AddCharacter";
 import EditCharacter from "../EditCharacterModal/EditCharacterModal/EditCharacter";
+import "../../components/Button/StreamingButton.css";
 
 function CharacterList({ storyId, onCharacterChange }) {
     //dispatch the thunk
@@ -51,7 +52,7 @@ function CharacterList({ storyId, onCharacterChange }) {
                 <form>
                     <select onChange={handleCharacterChange} required>
 
-                        <option>Select a Character</option>
+                        <option className="btn">Select a Character</option>
                         {story.characters.map((character, index) => (
                             <option key={index} value={character._id}>
                                 {character.name}
@@ -68,7 +69,7 @@ function CharacterList({ storyId, onCharacterChange }) {
             {selectedCharacter && (
                 <>
                     <EditCharacter character={selectedCharacter} />
-                    <button onClick={() => handleCharacterDelete(selectedCharacter._id)}>Delete</button>
+                    <button className="btn" onClick={() => handleCharacterDelete(selectedCharacter._id)}>Delete</button>
                 </>
             )}
         </div>

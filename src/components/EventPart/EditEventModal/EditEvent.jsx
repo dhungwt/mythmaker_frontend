@@ -224,6 +224,7 @@ const EditEvent = () => {
             <div className="Edit_Event_Page_Particles">
                 <ParticleBackground />
             </div>
+
             <div className="Edit_Event_Page_Container">
                 <div className="Edit_Event_Title">
                     <h1>Edit Event</h1>
@@ -236,6 +237,7 @@ const EditEvent = () => {
                     <h2>Descripe your event:</h2>
                     <p>Event Name:</p>
                     <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
+
 
 
                     <p>Event Text:</p>

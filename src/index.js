@@ -14,13 +14,13 @@ import {store} from "./redux/store";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-  <Provider store={store}>
-    <React.StrictMode>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-      </PersistGate>
-    </React.StrictMode>
-  </Provider>
+    <Provider store={store}>
+      <React.StrictMode>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+        </PersistGate>
+      </React.StrictMode>
+    </Provider>
   </Router>
 );
 
