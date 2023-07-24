@@ -107,7 +107,7 @@ const CreateStory = () => {
     }
 
     return (
-        <div>
+        <div style={{color:"white"}}>
             <div className="Create_Story_Title">
                 <input type="text" value={storyTitle} onChange={handleStoryTitleChange} />
             </div>

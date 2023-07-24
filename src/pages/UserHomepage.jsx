@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 // import  {useEffect} from "react";
 import { useDispatch } from "react-redux";
+import Grid from '@mui/material/Grid'
 import "../App.css";
 // import { fetchAllStories } from "../redux/story/story_actions";
 import { useSelector } from "react-redux";
@@ -128,7 +129,7 @@ const UserHomepage = () => {
   console.log(creatorIdSelector, "the creator id selectorr");
 
   return (
-    <div className="background">
+    <div className="background-container">
       <p>
         {/* {user
 
@@ -137,9 +138,10 @@ const UserHomepage = () => {
       </p>
       <button onClick={handleCreateStory}>Create Story</button>
       {/* <h3>Welcome, {email}</h3> */}
-      <h2>Play History</h2>
+      <h2 className="stories-history">Play History</h2>
       {user.storyHistory?.length > 0 ? (
         user.storyHistory.map((singleStoryHistory, index) => {
+          <Grid item key={index} xs={12} sm={6} md={4} lg={3}> </Grid>
           return (
             <HistoryCard
               singleStoryHistory={singleStoryHistory}
@@ -150,7 +152,7 @@ const UserHomepage = () => {
       ) : (
         <h1> nothing to return </h1>
       )}
-      <h2>Stories Created</h2>
+      <h2 className="created-stories">Stories Created</h2>
       {creatorIdSelector.length > 0 ? (
         creatorIdSelector.map((creatorStoryList, index) => {
           return (
