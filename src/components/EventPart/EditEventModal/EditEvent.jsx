@@ -8,6 +8,7 @@ import { editStoryThunk, fetchIndividualStoryThunk } from "../../../redux/story/
 import { addEventThunk } from "../../../redux/event/event_actions";
 import CharacterList from "../../CharacterList/CharacterList";
 import './EditEvent.css';
+import '../../Button/StreamingButton.css';
 
 
 
@@ -249,11 +250,11 @@ const EditEvent = () => {
                                 <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
                                 <p>Option Text:</p>
                                 <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
-                                <button className="Edit_Event_Page_Button" onClick={() => handleSaveOption(index)}>Save Changes</button>
+                                <button className="btn" onClick={() => handleSaveOption(index)}>Save Changes</button>
                             </div>
                         ) : (
                          
-                                <button className="Edit_Event_Page_Button" key={index} onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
+                                <button className="btn" key={index} onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
                             
                         )
 
@@ -261,7 +262,7 @@ const EditEvent = () => {
                 </div>
             </div>
             
-                <button className="Edit_Event_Page_Button" onClick={handleEditEvent}>Edit Event</button>
+                <button className="btn" onClick={handleEditEvent}>Edit Event</button>
             
         </div>
     );
