@@ -200,6 +200,17 @@ const EditEvent = () => {
 
     }, [event]);
 
+    //style the body
+    useEffect(() => {
+        // When the component is mounted, add the class
+        document.body.classList.add("edit-event-body");
+
+        // When the component is unmounted, remove the class
+        return () => {
+            document.body.classList.remove("edit-event-body");
+        };
+    }, []);
+
     //if no event exist, give the loading page
     if (!event) {
         return <div>Loading...</div>
@@ -225,25 +236,33 @@ const EditEvent = () => {
                 <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Event Text" />
 
             </div>
-            <div className="Edit_Event_Option">
-                <h2>Add Options:</h2>
-                {options.map((option, index) => (
-                    option ? (
-                        <div key={index}>
-                            <p>Option Name:</p>
-                            <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
-                            <p>Option Text:</p>
-                            <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
-                            <button onClick={() => handleSaveOption(index)}>Save Changes</button>
-                        </div>
-                    ) : (
-                        <button key={index} onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
-                    )
-                ))}
+            <div className="Edit_Event_Option_Part">
+                <div className="Edit_Event_Option_Part">
+                    <h2>Add Options:</h2>
+                </div>
+                <div className="Edit_Event_Option">
+
+                    {options.map((option, index) => (
+                        option ? (
+                            <div className="option-card" key={index}>
+                                <p>Option Name:</p>
+                                <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
+                                <p>Option Text:</p>
+                                <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
+                                <button className="Edit_Event_Page_Button" onClick={() => handleSaveOption(index)}>Save Changes</button>
+                            </div>
+                        ) : (
+                         
+                                <button className="Edit_Event_Page_Button" key={index} onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
+                            
+                        )
+
+                    ))}
+                </div>
             </div>
-            <div className="Edit_Event_Button">
-                <button onClick={handleEditEvent}>Edit Event</button>
-            </div>
+            
+                <button className="Edit_Event_Page_Button" onClick={handleEditEvent}>Edit Event</button>
+            
         </div>
     );
 }
