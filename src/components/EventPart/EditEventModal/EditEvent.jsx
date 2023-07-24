@@ -246,9 +246,9 @@ const EditEvent = () => {
                     {options.map((option, index) => (
                         option ? (
                             <div className="option-card" key={index}>
-                                <p>Option Name:</p>
+                                <p>Option {index+1} Name:</p>
                                 <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
-                                <p>Option Text:</p>
+                                <p>Option {index+1} Text:</p>
                                 <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
                                 <button className="btn" onClick={() => handleSaveOption(index)}>Save Changes</button>
                             </div>
@@ -261,9 +261,9 @@ const EditEvent = () => {
                     ))}
                 </div>
             </div>
-            
+                <div className="Edit_Event_Page_Edit">
                 <button className="btn" onClick={handleEditEvent}>Edit Event</button>
-            
+                </div>
         </div>
     );
 }
