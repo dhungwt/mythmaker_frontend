@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteEventThunk } from "../../../redux/event/event_actions";
-
+import "../../../components/Button/StreamingButton.css";
 
 const DisplayEvent = ({event}) =>{
     const dispatch = useDispatch();
@@ -40,8 +40,8 @@ const DisplayEvent = ({event}) =>{
             {event.option1 && event.option1.name && <div>{event.option1.name}</div>}
             {event.option2 && event.option2.name && <div>{event.option2.name}</div>}
             {event.option3 && event.option3.name && <div>{event.option3.name}</div>}
-            <button onClick={handleDeleteEvent}>Delete</button>
-            <button onClick={editEvent}>Edit</button>
+            <button className="btn"  onClick={handleDeleteEvent}>Delete</button>
+            <button className="btn"  onClick={editEvent}>Edit</button>
         </div>
     );
 }

@@ -11,6 +11,7 @@ import CharacterList from "../../components/CharacterList/CharacterList";
 import DisplayEvent from "../../components/EventPart/DispalyEvent/DisplayEvent";
 import "./CreateStoryPage.css";
 import "../../components/Button/StreamingButton.css";
+import "../../components/Button/Dropdown.css";
 
 const CreateStory = () => {
   const dispatch = useDispatch();
@@ -120,7 +121,7 @@ const CreateStory = () => {
         {events.map((event, index) => (
           <div key={index} className="event-card">
 
-              <DisplayEvent event={event} />
+              <DisplayEvent event={event}/>
 
           </div>
         ))}
@@ -128,7 +129,7 @@ const CreateStory = () => {
 
       <div className="save-delete-create-story-button">
         <h3>
-          To save the changes to your story, please click save below. To discard
+          To save the changes to your story, please click Save Story below. To discard
           your story, click Delete Story
         </h3>
         <button className="btn" onClick={handleSaveChanges}>

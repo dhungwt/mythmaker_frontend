@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editCharacterThunk } from "../../../redux/character/character_action";
 import "./StyleEditCharacter.css";
+import "../../../components/Button/StreamingButton.css";
 
 //This component use to edit the character,pass by the 
 function EditCharacter({ character }) {
@@ -57,8 +58,8 @@ function EditCharacter({ character }) {
                         <label htmlFor="name">Name:</label>
                         <input type="text" id="character-name" name="name"
                             value={characterName} onChange={handleNameChange} required />
-                        <button type="submit">Submit</button>
-                        <button type="button" onClick={handleCancel}>Cancel</button>
+                        <button className="btn" type="submit">Submit</button>
+                        <button className="btn" type="button" onClick={handleCancel}>Cancel</button>
 
 
                     </form>
