@@ -18,7 +18,7 @@ function CreatorStoryCard(props) {
   }
 
   return (
-    <div>
+    <div className="creatorStoryTitle"style={{}}>
       CreatorStoryCard: Title: {creatorStory.title} &nbsp;
       <button onClick={handleEditStoryClick}>✎ Edit ✎</button>
       <button onClick={handlePlayClick}>Play</button>

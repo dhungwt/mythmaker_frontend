@@ -62,7 +62,7 @@
   box-shadow: 12px 12px #eebbc3
 }
 /* @media (max-width: 768px) */
-@media (max-width: 768px){
+@media (max-width: 992px){
   .container{
     margin-top: 26%;
   }
@@ -75,8 +75,7 @@
   justify-content: center;
   flex: 1; /* To make the form take up the left side */
   align-items: center;
-  /* background-color: whitesmoke; */
-  /* background-color: pink; */
+ 
 }
 .form label{
   /* centering the form */
@@ -87,19 +86,19 @@
 .signInText{
   margin-top: 5vh;
   margin-bottom: 2vh;
+  padding-left: 20px;
   font-size:3rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color:#232946;
-   letter-Spacing: 3px;
-   padding-left: 20px;
+  letter-Spacing: 3px;
 }
 .box{
   padding: 5px;
-  width: 65%;
   margin: 3px 0px 25px; 
+  min-width: 250px;
+  width: 65%;
   border: 1px solid black;
   outline: none;
-  min-width: 250px;
   border-radius: 8px;
   background-color: #b8c1ec;
 }
@@ -132,7 +131,6 @@
   );
   box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
     inset -2px -2px 3px rgba(0, 0, 0, 0.6);
-  /* Set the button to fill the entire available space */
   flex: 1;
 }
 
@@ -151,7 +149,7 @@
 .authformsubmit:hover {
   background-color: #fffffe;
   border-radius: 20px;
-    right: -7px;
+  right: -7px;
   
 }
 
@@ -166,8 +164,6 @@
   height: 450px;
   object-fit: cover;
   border-radius: 2px; /* Apply border-radius to the image */
-  /* margin-left: 14px; */
-  /* padding-left: 20px; */
 }
 @media screen and (max-width: 992px) {
   .side img {
@@ -179,11 +175,10 @@
 }
 /* END OF AUTH FORM CSS  */
 
-/* START OF NAVBAR CSS */
 .logo{
-  display: block;
+  /* display: block; */
 }
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .navbar-light .navbar-nav .nav-link {
     flex: 1;
     text-align: center;
@@ -191,4 +186,11 @@
     color: rgb(17, 15, 15);
     font-weight: 600;
   }
+}
+.creatorStoryTitle{
+  border:solid 5px pink;
+  border-Radius:20px;
+  padding:20px; 
+  display:flex;
+  justify-Content:center;
 }
