@@ -1,9 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 
 
 //this card displays stories the user has played
@@ -12,6 +10,9 @@ function HistoryCard(props) {
   // the individual stories in the user's history
   const navigate = useNavigate();
   const history = props.singleStoryHistory;
+
+  // const navigate = useNavigate();
+
 
   const handleHistoryClick = () => {
     console.log("INSIDE HISTORY CLICK HANDLER");
