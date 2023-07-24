@@ -4,7 +4,10 @@ function EventDisplay(props) {
     const event = props.event;
 
   return (
-    <div>{event.characterId.name}: {event.text}</div>
+    <div className="eventLogText">
+      <b className="capitalizeName">{event.characterId.name}: </b> 
+      {event.text}
+    </div>
   )
 }
 
