@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import { auth } from "../redux/user/user_actions";
 import { useNavigate } from "react-router-dom";
+import './components.css'
+import mythmakerpic from './mythmakerpic.png'
 
 
 const AuthForm = ({ name, displayName }) => {
@@ -45,32 +47,38 @@ const AuthForm = ({ name, displayName }) => {
     };
 
     return (
-        <div className="authform">
-            <form onSubmit={handleSubmit} name={name}>
+        <div className="authform" style={{}}>
+            <section className="container" style={{backgroundColor:"#000612", paddingLeft:"20px", border:"20px #b8c1ec solid"}}>
+            <form onSubmit={handleSubmit} name={name} className="form">
+                <h1 className="signInText" style={{color:"white"}}> SIGN IN FORM </h1>
                 {/*email input*/}
                 <div className="emailinput">
-                    <label htmlFor="email">
-                        <small>Email</small>
+                    <label htmlFor="email" >
+                        Email
                     </label>
-                    <input name="email" type="email" />
+                    <input name="email" type="email" className="box" id="emailBox" placeholder="Enter email..."/>
                 </div>
                 {/*password input*/}
                 <div className="passwordinput">
                     <label htmlFor="password">
-                        <small>Password</small>
+                        Password
                     </label>
-                    <input name="password" type="password" />
+                    <input name="password" type="password" className="box" placeholder="Enter password..."/>
                 </div>
                 {/*for the submit button */}
                 <div className="authformsubmit">
-                    <button type="submit">{displayName}</button>
+                    <button type="submit" className="submitText">{displayName}</button>
                 </div>
                 {/*if there is error we can handle the error message */}
                 {error && error.response && <div> {error.response.data.message} </div>}
-
+                {/*Google Oauth button */}
+                <a href="http://localhost:8080/auth/google" >{displayName} with Google</a>
             </form>
-            {/*Google Oauth button */}
-            <a href="http://localhost:8080/auth/google">{displayName} with Google</a>
+            <div class="side"> 
+                 <img src={mythmakerpic} alt="myth maker logo" style={{maxWidth:"100%"}} />
+            </div>
+            
+            </section>
         </div>
 
     );

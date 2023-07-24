@@ -1,31 +1,196 @@
 .story-card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    justify-items: center;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.story-card {
+  /* background-color: #171a21; */
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.card-title btn btn-primary{
+  background-color: black;
+  /* @apply text-white font-bold py-2 px-4 rounded-full bg-blue-500 hover:bg:blue-700; */
+}
+
+/* AUTHFORM CSS */
+.authform {
+  /* background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1186083443667681557/B8E12850839EC32D058C52AF310E45E1F9EDC36A/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'); */
+
+  /* background-color: #000; */
+  /* height: 100vh; */
+  display:flex;
+  align-items: center;
+  justify-content: center;
   
-  .story-card {
-    /* background-color: #171a21; */
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 100px 0px;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+
+}
+
+.container {
+  background-color: #000;
+  margin-top: 50px;
+  border-radius: 24px;
+  border: 30px solid black;
+  display: flex;
+  padding: 0px;
+  /* height: 500px; */
+  width: 1000px;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 12vh;
+  /* box-shadow: 15px 15px black; */
+  box-shadow: 12px 12px #eebbc3
+}
+/* @media (max-width: 768px) */
+@media (max-width: 992px){
+  .container{
+    margin-top: 26%;
   }
+} 
+
+/* LOGIN FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1; /* To make the form take up the left side */
+  align-items: center;
+ 
+}
+.form label{
+  /* centering the form */
+  display: block;
+  color: #f071a6;
+  font-weight: 700;
+}
+.signInText{
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  padding-left: 20px;
+  font-size:3rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color:#232946;
+  letter-Spacing: 3px;
+}
+.box{
+  padding: 5px;
+  margin: 3px 0px 25px; 
+  min-width: 250px;
+  width: 65%;
+  border: 1px solid black;
+  outline: none;
+  border-radius: 8px;
+  background-color: #b8c1ec;
+}
+.emailinput{
+  /* padding-right: 2px;
+  margin-left: 20px; */
+}
+#emailBox{
+  /* margin-right:15%; */
+  /* padding-right:50px */
+  /* width: 71%; */
+}
+
+.submitText {
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: #eebbc3;
+  /* background-color: rgba(220, 0, 0, 1); */
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  flex: 1;
+}
+
+.authformsubmit {
+  padding: 12px 20px;
+  width: 40%;
+  margin-top: 10px;
+  display: flex; /* Added: Make the button a flex container */
+  justify-content: center; /* Added: Center the text horizontally */
+  align-items: center; /* Added: Center the text vertically */
+  transition: background-color 0.3s ease, border-radius 0.3s ease;
+  transition: all 0.2s ease-in 0s;
+
+}
+
+.authformsubmit:hover {
+  background-color: #fffffe;
+  border-radius: 20px;
+  right: -7px;
   
-  .card-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+}
+
+.side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side img {
+  width: 500px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 2px; /* Apply border-radius to the image */
+}
+@media screen and (max-width: 992px) {
+  .side img {
+    display: none; /* Hide the image on smaller screens */
   }
-  
-  .card-title {
-    font-size: 18px;
-    font-weight: bold;
+}
+.entirePage{
+  background-color: #750000;
+}
+/* END OF AUTH FORM CSS  */
+
+.logo{
+  /* display: block; */
+}
+@media (max-width: 992px) {
+  .navbar-light .navbar-nav .nav-link {
+    flex: 1;
+    text-align: center;
     margin-bottom: 5px;
+    color: rgb(17, 15, 15);
+    font-weight: 600;
   }
-  .card-title btn btn-primary{
-    background-color: black;
-    /* @apply text-white font-bold py-2 px-4 rounded-full bg-blue-500 hover:bg:blue-700; */
-  }
-  
+}
+.creatorStoryTitle{
+  border:solid 5px pink;
+  border-Radius:20px;
+  padding:20px; 
+  display:flex;
+  justify-Content:center;
+}

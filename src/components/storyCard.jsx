@@ -32,7 +32,6 @@ import { useNavigate } from 'react-router-dom';
 function StoryCard(props) {
     // const { title, event } = props;
     const story = props.story;
-    const searchBar = props.filterStudents; //filtered array from storiespage
     const navigate = useNavigate();
 
     const handleClick = (e) =>{
@@ -52,7 +51,8 @@ function StoryCard(props) {
     //    </button>
     // </div>
     
-    <div className="story-card" style={{margin:"3%", marginTop:"15vh", boxShadow: "10px 10px 15px 0 rgba(0, 0, 0, 0.2)" }}>
+    <div className="story-card" 
+    style={{margin:"3%", marginTop:"15vh", boxShadow: "10px 10px 15px 0 rgba(0, 0, 0, 0.2)" }}>
     <div className="card" style={{height: '60%', border:"none"}}> 
       <img className="card-img-top" src="https://i.imgur.com/t1lXeFj.png" alt="Card image cap"
         style={{ height: '320px', objectFit:"cover" }} // Set a fixed height for the card image
