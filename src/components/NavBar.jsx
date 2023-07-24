@@ -25,20 +25,32 @@ const NavBar = () => {
 
     //determine the user logged in or not
     const isLoggedIn = useSelector((state) => !!state.user._id);
-    console.log("isloggen in:",isLoggedIn);
 
-    
+    console.log("isloggen in:", isLoggedIn);
+
+
     //handle the log out bytton
     const handleLogOut = (event) => {
         event.preventDefault();
         dispatch(logout())
             .then(() => navigate("/login"))
             .catch(err => console.error(err));
-            console.log("isloggen in:",isLoggedIn);
+        console.log("isloggen in:", isLoggedIn);
     };
 
 
     return (
+
+        <div className="navbar" id='background' style={{
+            position: "relative",
+            zIndex: "1000",
+        }}>
+            <h1>MYTH⚔MAKER</h1>
+            <nav>
+                {/*condition rendering based on log in or not */}
+                {/* <LinkButton to="/gameplay"> game </LinkButton> */}
+                <LinkButton to="/stories"> Browse Stories </LinkButton>
+
 
         <nav class="navbar navbar-expand-md navbar-light" style= {{backgroundColor:"#232946", zIndex:"100"}}>
             {isLoggedIn ? (
@@ -111,6 +123,9 @@ const NavBar = () => {
             {/* can use media query of when the hamburger shows up when the screen gets smaller on span */}
         {/* first check if bootstrap has it and if not then do media query */}
 
+
+        </div >
+
            <span class="navbar-text"> 
              {isLoggedIn ? (
               <div className="haslogin">
@@ -130,6 +145,7 @@ const NavBar = () => {
         </div>
       </nav>
       
+
     );
 }
 

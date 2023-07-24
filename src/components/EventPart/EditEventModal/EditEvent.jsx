@@ -9,6 +9,7 @@ import { addEventThunk } from "../../../redux/event/event_actions";
 import CharacterList from "../../CharacterList/CharacterList";
 import './EditEvent.css';
 import '../../Button/StreamingButton.css';
+import ParticleBackground from "../../Particles/ParticleBackground";
 
 
 
@@ -220,50 +221,57 @@ const EditEvent = () => {
 
     return (
         <div className="Edit_Event_Page">
-            <div className="Edit_Event_Title">
-                <h1>Edit Event</h1>
+            <div className="Edit_Event_Page_Particles">
+                <ParticleBackground />
             </div>
-            <div className="Edit_Event_Character_List">
-                <h2>Select your character</h2>
-                <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} />
-            </div>
-            <div className="Edit_Event_Name">
-                <h2>Describe your event:</h2>
-                <p>Event Name:</p>
-                <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
+
+            <div className="Edit_Event_Page_Container">
+                <div className="Edit_Event_Title">
+                    <h1>Edit Event</h1>
+                </div>
+                <div className="Edit_Event_Character_List">
+                    <h2>Select your character</h2>
+                    <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} />
+                </div>
+                <div className="Edit_Event_Name">
+                    <h2>Descripe your event:</h2>
+                    <p>Event Name:</p>
+                    <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
 
 
-                <p>Event Text:</p>
-                <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Event Text" />
 
-            </div>
-            <div className="Edit_Event_Option_Part">
+                    <p>Event Text:</p>
+                    <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Event Text" />
+
+                </div>
                 <div className="Edit_Event_Option_Part">
-                    <h2>Add Options:</h2>
-                </div>
-                <div className="Edit_Event_Option">
+                    <div className="Edit_Event_Option_Part">
+                        <h2>Add Options:</h2>
+                    </div>
+                    <div className="Edit_Event_Option">
 
-                    {options.map((option, index) => (
-                        option ? (
-                            <div className="option-card" key={index}>
-                                <p>Option Name:</p>
-                                <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
-                                <p>Option Text:</p>
-                                <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
-                                <button className="btn" onClick={() => handleSaveOption(index)}>Save Changes</button>
-                            </div>
-                        ) : (
-                         
+                        {options.map((option, index) => (
+                            option ? (
+                                <div className="option-card" key={index}>
+                                    <p>Option {index + 1} Name:</p>
+                                    <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
+                                    <p>Option {index + 1} Text:</p>
+                                    <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
+                                    <button className="btn" onClick={() => handleSaveOption(index)}>Save Changes</button>
+                                </div>
+                            ) : (
+
                                 <button className="btn" key={index} onClick={() => handleOptionChange(index, { name: '', text: '' })}>Add Option {index + 1}</button>
-                            
-                        )
 
-                    ))}
+                            )
+
+                        ))}
+                    </div>
+                </div>
+                <div className="Edit_Event_Page_Edit">
+                    <button className="btn" onClick={handleEditEvent}>Edit Event</button>
                 </div>
             </div>
-            
-                <button className="btn" onClick={handleEditEvent}>Edit Event</button>
-            
         </div>
     );
 }
