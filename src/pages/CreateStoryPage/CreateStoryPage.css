@@ -1,0 +1,106 @@
+/* CreateStory.css */
+
+/* Center the content vertically and horizontally */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  /* Container for the CreateStory component */
+  .create-story-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Title and Input field */
+  .create-story-title {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .create-story-title h1 {
+    margin-right: 10px;
+  }
+  
+  .create-story-title input {
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Character Field */
+  .add-character-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-character-field h1 {
+    margin-bottom: 10px;
+    
+  }
+  
+  /* Event Field */
+  .display-event-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .display-event-field h1 {
+    margin-bottom: 10px;
+  }
+  
+  /* Card for each event */
+  .event-card {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive adjustments for event cards */
+  @media (min-width: 480px) {
+    /* For screen widths of 480px and above */
+    .event-card {
+      width: 400px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    /* For screen widths of 768px and above */
+    .event-card {
+      width: 600px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    /* For screen widths of 1024px and above */
+    .event-card {
+      width: 800px;
+    }
+  }
+  
+  /* Save and Delete Buttons */
+  .save-delete-create-story-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .save-delete-create-story-button h1 {
+    margin-bottom: 10px;
+  }
+  
+  .save-delete-create-story-button button {
+    margin: 5px;
+  }
+  
