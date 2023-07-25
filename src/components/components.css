@@ -5,13 +5,13 @@
   justify-items: center;
 }
 
-.story-card {
-  /* background-color: #171a21; */
+/* .story-card {
+ 
   color: #ffffff;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .card-button {
   background-color: transparent;
@@ -19,15 +19,12 @@
   cursor: pointer;
 }
 
-.card-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.card-title btn btn-primary{
+
+
+/* .card-title btn btn-primary{
   background-color: black;
-  /* @apply text-white font-bold py-2 px-4 rounded-full bg-blue-500 hover:bg:blue-700; */
-}
+  @apply text-white font-bold py-2 px-4 rounded-full bg-blue-500 hover:bg:blue-700;
+} */
 
 /* AUTHFORM CSS */
 .authform {
@@ -194,3 +191,83 @@
   display:flex;
   justify-Content:center;
 }
+
+.story-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.story-card {
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin: 15%;
+  margin-top: 15vh;
+  box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 400px;
+  background-color: transparent;
+}
+
+/* CSS rules applied for screens smaller than 600px */
+@media (max-width: 900px) {
+  .story-card {
+    width: 100%;
+    /* margin-right: 100px; */
+  }
+}
+
+.card-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-title btn btn-primary {
+  background-color: black;
+  width:100%;
+  
+}
+
+.card-body {
+  height: 100%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Make the items stack vertically */
+  width: 100%;
+}
+
+.card-img-top {
+  height: 50%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-title {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  
+}
+
+.card-text {
+  position: absolute;
+  bottom: 40px;
+}
+
+.card {
+  background-color:#ffffffc0;
+}
+
