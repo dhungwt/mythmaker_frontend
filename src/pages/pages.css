@@ -2,9 +2,10 @@
 
   .navbar {
     height: 64px;
+    width: 100%;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0;
     padding-bottom: 2px;
     font-family: 'Cinzel Decorative', cursive;
     font-family: 'EB Garamond', serif;  
@@ -18,7 +19,7 @@
   }
   
   .navbar nav {
-    margin-left: auto;
+    /* margin-left: auto; */
   }
   
   .navbar a {
