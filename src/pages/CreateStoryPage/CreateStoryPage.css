@@ -1,10 +1,4 @@
-/* CreateStory.css */
 
-/* Center the content vertically and horizontally */
-body {
- 
-  }
-  
   /* Container for the CreateStory component */
   .create-story-container {
     display: flex;
@@ -14,13 +8,13 @@ body {
   
   /* Title and Input field */
   .create-story-title {
-    display: flex;
-    align-items: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px
   }
   
   .create-story-title h1 {
-    margin-right: 10px;
+    margin-bottom: 20px
   }
   
   .create-story-title input {
@@ -30,15 +24,12 @@ body {
   
   /* Character Field */
   .add-character-field {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px
   }
   
-  .add-character-field h1 {
-    margin-bottom: 10px;
-    
+  .add-character-field h2 {
+    display: inline; /* To make the heading appear inline with the dropdown */
+    margin-right: 10px;
   }
   
   /* Event Field */

@@ -114,7 +114,7 @@ const CreateStory = () => {
   return (
     <div className="create-story-container">
       <div className="create-story-title">
-        <h1>Title: &nbsp; </h1> &nbsp;
+        <h2>Title: &nbsp; </h2> &nbsp;
         <input
           type="text"
           value={storyTitle}
@@ -123,12 +123,12 @@ const CreateStory = () => {
       </div>
       <br />
       <div className="add-character-field">
-        <h1>Select Character Speaking: &nbsp;</h1>
+        <h2>Select Character Speaking: &nbsp;</h2>
         <CharacterList storyId={storyId} onCharacterChange={() => {}} />
       </div>
       <br />
       <div className="display-event-field">
-        <h1>Current Story Events:</h1>
+        <h2>Current Story Events:</h2>
         {events.map((event, index) => (
           <div key={index} className="event-card">
 
