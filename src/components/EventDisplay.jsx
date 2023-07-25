@@ -5,7 +5,7 @@ function EventDisplay(props) {
 
   return (
     <div className="eventLogText">
-      <b className="capitalizeName">{event.characterId.name}: </b> 
+      <b className="eventLogName capitalizeName">{event.characterId.name} : </b> 
       {event.text}
     </div>
   )
