@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../redux/user/user_actions";
 import '../pages/pages.css'
-import logoMM from './logoMM.jpg'
-
+// import logoMM from './logoMM.jpg'
+import mythmakerbeanie from './mythmakerbeanie.png'
 // this component will display different links based on whether user is logged in or not
 
 //define the linkbutton that create navigational link with option onclick behavior
@@ -37,7 +37,8 @@ const NavBar = () => {
     };
 
     return (
-        <div className="navbar" id='background' style={{
+        <div className="navbar" id='background' style=
+        {{
             position: "relative",
             zIndex: "1000",
         }}>
@@ -45,13 +46,13 @@ const NavBar = () => {
                 {isLoggedIn ? (
                     <div className="logo-container">
                         <a className="navbar-item" href="/home">
-                            <img src={logoMM} alt="myth maker logo" style={{ width: "25vh" }} className="logo" />
+                            <img src={mythmakerbeanie} alt="myth maker logo" style={{ width: "25vh" }} className="logo" />
                         </a>
                     </div>
                 ) : (
                     <div className="logo-container">
                         <a className="navbar-item mx-a" href="/">
-                            <img src={logoMM} alt="myth maker logo" style={{ width: "25vh" }} className="logo" />
+                            <img src={mythmakerbeanie} alt="myth maker logo" style={{ width: "25vh", height:"2px" }} className="logo" />
                         </a>
                     </div>
                 )}

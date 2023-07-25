@@ -41,16 +41,6 @@ function StoryCard(props) {
       //does essentially the samething as the StoriesPage where we check if the input/title exists 
 
   return (
-    // <div className="story-card" style={{maxWidth:"20%"}}>
-    //     <button className="card-button" onClick={handleClick}>
-    //     <h1 className="card-title"> Title: {story.title} </h1>
-    //     <div key={story.id}>
-
-    
-    //       </div>
-    //    </button>
-    // </div>
-    
     <div className="story-card" 
     style={{margin:"3%", marginTop:"15vh", boxShadow: "10px 10px 15px 0 rgba(0, 0, 0, 0.2)" }}>
     <div className="card" style={{height: '60%', border:"none"}}> 

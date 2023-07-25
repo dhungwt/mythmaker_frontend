@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 // import { fetchUserStoriesThunk} from "../redux/user/user_actions";
 import { useNavigate } from "react-router-dom";
 import { addCharacterThunk } from "../redux/character/character_action";
+import './pages.css'
 
 import {
   addStoryThunk,
@@ -131,28 +132,30 @@ const UserHomepage = () => {
   return (
     <div className="background-container">
       <p>
-        {/* {user
-
-                ?JSON.stringify(user)
-                :"No User"} */}
+      
       </p>
-      <button onClick={handleCreateStory}>Create Story</button>
+      <button onClick={handleCreateStory} className="createStoryButton">Create Story</button>
       {/* <h3>Welcome, {email}</h3> */}
-      <h2 className="stories-history">Play History</h2>
-      {user.storyHistory?.length > 0 ? (
-        user.storyHistory.map((singleStoryHistory, index) => {
-          <Grid item key={index} xs={12} sm={6} md={4} lg={3}> </Grid>
-          return (
-            <HistoryCard
-              singleStoryHistory={singleStoryHistory}
-              key={index}
-            />
-          );
-        })
-      ) : (
-        <h1> nothing to return </h1>
-      )}
-      <h2 className="created-stories">Stories Created</h2>
+      <h2 className="stories-history" style={{textAlign:"center", color:"white"}}>Play History</h2>
+
+      <div className="playhistory">
+          {user.storyHistory?.length > 0 ? (
+            user.storyHistory.map((singleStoryHistory, index) => {
+              <Grid item key={index} xs={12} sm={6} md={4} lg={3}> </Grid>
+              return (
+                <HistoryCard
+                  singleStoryHistory={singleStoryHistory}
+                  key={index}
+                />
+              );
+            })
+          ) : (
+            <h1> nothing to return </h1>
+          )}
+      </div>
+
+    <h2 className="created-stories" style={{color:"white"}}>Stories Created</h2>
+      <div className="storiesContainer">
       {creatorIdSelector.length > 0 ? (
         creatorIdSelector.map((creatorStoryList, index) => {
           return (
@@ -165,6 +168,7 @@ const UserHomepage = () => {
       ) : (
         <h1> nothing to return </h1>
       )}
+      </div>
     </div>
   );
 };

@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllStoriesThunk } from '../redux/story/story_actions';
 import StoryCard from '../components/StoryCard';
 import './pages.css';
-// import Pagination from '../components/Pagination';
 // import * as React from 'react';
+import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 function StoriesPage() {
   const dispatch = useDispatch();
@@ -77,28 +79,63 @@ function StoriesPage() {
       )
     }).slice(firstPostIndex, lastPostIndex)
   }
+
+  const theme = createTheme({
+    // palette: {
+    //   primary: {
+    //     main: '#EEBBC3', // Set your desired custom primary color here
+    //   },
+    //   secondary: {
+    //     main: '#EEBBC3', // Set your desired custom secondary color here
+    //   },
+    // },
+  });
+
+  
   
   return (
     <div 
-    className="story-card-container" 
-    style={{ 
-      // display: 'flex', 
-      // flexWrap: 'wrap', 
-    // backgroundImage: 'url(https://wallpapercave.com/wp/wp2635945.jpg)' ,
-      backgroundPosition: 'center' 
-      }}>
+      className="story-card-container" 
+      style={{ 
+        // display: 'flex', 
+        // flexWrap: 'wrap', 
+        // backgroundImage: 'url(https://wallpapercave.com/wp/wp2635945.jpg)' ,
+        backgroundPosition: 'center' 
+        }}>
 
-      <h1>StoriesPage</h1>
+        <section style=
+            {{
+              display:"grid",
+              justifyContent:"center"
+            }}
+          >
 
-          <button>
-              <Pagination 
-              //The total number of pages is calculated based on the total number of stories and the 'postPerPage'
-                count = {Math.ceil(filterStories.length / postPerPage)}
-                //place currentPage number to be stored in currentPage and passed into the pagination component
-                page = {currentPage}
-                onChange={(event, value) => paginate(value)}
-              />
-          </button>
+      <h1 style={{textAlign:"center", paddingTop:"10vh"}}>StoriesPage</h1>
+      
+      <ThemeProvider theme={theme}>zzzzz
+    <Stack spacing={1}>
+        <div
+          style={{
+            display: "grid",
+            flexDirection: "column",
+            alignItems: "center",
+            backgroundColor: "",
+            border: "none",
+            cursor: "pointer",
+            outline: "none", // Add this to remove focus outline when the button is clicked
+            padding: 0, // Add this to remove default button padding
+          }}
+        >
+          <Pagination
+            color="secondary" 
+            count={Math.ceil(filterStories.length / postPerPage)}
+            page={currentPage}
+            onChange={(event, value) => paginate(value)}
+          />
+        </div>
+      {/* <Pagination count={10} color="secondary" /> */}
+    </Stack>
+    </ThemeProvider>
 
       {/* for search... */}
       <input
@@ -106,9 +143,16 @@ function StoriesPage() {
         value={search}
         onChange={handleSearch}
         placeholder="Search by title..."
-        style={{height:"32px", margin:"20px"}}
+        style={{
+          height:"32px", 
+          margin:"20px", 
+          display:"flex", 
+          flex:"1"
+      }}
       />
+      </section>
 
+  <div className='story-card-wrapper'>
       {isLoading ? (
         <h1>Loading..</h1>
       ) 
@@ -137,6 +181,7 @@ function StoriesPage() {
     }
         
     </div>
+  </div>
   );
 }
 
