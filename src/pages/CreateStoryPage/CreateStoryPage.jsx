@@ -12,6 +12,7 @@ import DisplayEvent from "../../components/EventPart/DispalyEvent/DisplayEvent";
 import "./CreateStoryPage.css";
 import "../../components/Button/StreamingButton.css";
 import "../../components/Button/Dropdown.css";
+import ParticleBackground from "../../components/Particles/ParticleBackground.js";
 
 const CreateStory = () => {
   const dispatch = useDispatch();
@@ -107,48 +108,54 @@ const CreateStory = () => {
 
     // When the component is unmounted, remove the class
     return () => {
-        document.body.classList.remove("story-body");
+      document.body.classList.remove("story-body");
     };
-}, []);
+  }, []);
 
   return (
-    <div className="create-story-container">
-      <div className="create-story-title">
-        <h1>Title: &nbsp; </h1> &nbsp;
-        <input
-          type="text"
-          value={storyTitle}
-          onChange={handleStoryTitleChange}
-        />
-      </div>
-      <br />
-      <div className="add-character-field">
-        <h1>Select Character Speaking: &nbsp;</h1>
-        <CharacterList storyId={storyId} onCharacterChange={() => {}} />
-      </div>
-      <br />
-      <div className="display-event-field">
-        <h1>Current Story Events:</h1>
-        {events.map((event, index) => (
-          <div key={index} className="event-card">
-
-              <DisplayEvent event={event}/>
-
+    <div>
+      <div className="card-bg">
+        <div className="particlebackground">
+          <ParticleBackground />
+        </div>
+        <div className="create-story-container">
+          <div className="create-story-title card-bg">
+            <h2>Title: &nbsp; </h2> &nbsp;
+            <input
+              type="text"
+              value={storyTitle}
+              onChange={handleStoryTitleChange}
+            />
           </div>
-        ))}
-      </div>
 
-      <div className="save-delete-create-story-button">
-        <h3>
-          To save the changes to your story, please click Save Story below. To discard
-          your story, click Delete Story
-        </h3>
-        <button className="btn" onClick={handleSaveChanges}>
-          Save Changes
-        </button>
-        <button className="btn" onClick={handleDeleteStory}>
-          Delete Story
-        </button>
+          <div className="add-character-field card-bg">
+            <h2>Select Character Speaking: &nbsp;</h2>
+            <CharacterList storyId={storyId} onCharacterChange={() => {}} />
+          </div>
+          <div className="display-event-field">
+            <h2>Current Story Events:</h2>
+            {events.map((event, index) => (
+              <div key={index} className="event-card">
+                <DisplayEvent event={event} />
+              </div>
+            ))}
+          </div>
+
+          <div className="save-delete-create-story-button">
+            <h3 className="warningText">
+              To save the changes to your story, please click Save Story below.
+              <br />To discard your story, click Delete Story.
+            </h3>
+            <div className="bottomBtns">
+              <button className="btn" onClick={handleSaveChanges}>
+                Save Changes
+              </button>
+              <button className="btn" onClick={handleDeleteStory}>
+                Delete Story
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

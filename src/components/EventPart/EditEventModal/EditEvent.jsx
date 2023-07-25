@@ -230,11 +230,11 @@ const EditEvent = () => {
                     <h1>Edit Event</h1>
                 </div>
                 <div className="Edit_Event_Character_List">
-                    <h2>Select your character</h2>
+                    <h2>Select your character:</h2>
                     <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} />
                 </div>
                 <div className="Edit_Event_Name">
-                    <h2>Descripe your event:</h2>
+                    <h2>Describe your event:</h2>
                     <p>Event Name:</p>
                     <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
 
@@ -246,7 +246,7 @@ const EditEvent = () => {
                 </div>
                 <div className="Edit_Event_Option_Part">
                     <div className="Edit_Event_Option_Part">
-                        <h2>Add Options:</h2>
+                        <h2>Add Event Options:</h2>
                     </div>
                     <div className="Edit_Event_Option">
 
