@@ -1,7 +1,7 @@
 .btn {
     position: relative;
     
-    width: 120px;
+    width: auto;
     height: 30px;
     line-height: 20px;
     text-align: center;

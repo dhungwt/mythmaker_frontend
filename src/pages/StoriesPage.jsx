@@ -6,6 +6,7 @@ import './pages.css';
 // import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
+import ParticleBackground from '../components/Particles/ParticleBackground';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -35,7 +36,7 @@ function StoriesPage() {
     }
   }, [stories]);
 
-  
+
   //Function that handles pagination when the user clicks on a different page number
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -46,7 +47,7 @@ function StoriesPage() {
     setCurrentPage(1);
     setSearch(event.target.value);
   };
-  
+
 
   //Calculate the index of the last story that will be shown on the page
   const lastPostIndex = currentPage * postPerPage;  //0*5 = 0th index
@@ -56,8 +57,8 @@ function StoriesPage() {
 
   // const currentPosts = filterStories.slice(firstPostIndex, lastPostIndex);
 
-   // Filter students based on their search terms:
-   const filterStories = stories.filter((story, ind, arr) => {
+  // Filter students based on their search terms:
+  const filterStories = stories.filter((story, ind, arr) => {
     // allows the user to search in uppercase, lowercase, or whatever and the user input will still be lowercased
     // indexOf returns the index of the first occurrence of the search term in the story title, and -1 if nothing is found
     console.log("is search is working? ", story.title.toLowerCase().indexOf(search.toLowerCase()) !== -1)
@@ -67,9 +68,9 @@ function StoriesPage() {
   const paginatedStories = () => {
     const currentPosts = stories.slice(firstPostIndex, lastPostIndex);
     console.log("currentpost", currentPosts)
-     return currentPosts.map((storyList) => (
-        <StoryCard story={storyList} key={storyList._id} />
-     ))
+    return currentPosts.map((storyList) => (
+      <StoryCard story={storyList} key={storyList._id} />
+    ))
   }
 
   const searchedStories = () => {
@@ -112,7 +113,7 @@ function StoriesPage() {
 
       <h1 style={{textAlign:"center", paddingTop:"10vh"}}>StoriesPage</h1>
       
-      <ThemeProvider theme={theme}>zzzzz
+      <ThemeProvider theme={theme}>
     <Stack spacing={1}>
         <div
           style={{
@@ -171,17 +172,18 @@ function StoriesPage() {
             //   <StoryCard story={storyList} key={storyList._id} />
             // )
             // )
-          // ) : (
+            // ) : (
             // if there are no stories then return this
 
             // <h1>Nothing to return</h1>
-          // )
-        // )
-      // )
-    }
-        
-    </div>
-  </div>
+            // )
+            // )
+            // )
+          }
+        </div>
+
+      </div>
+    
   );
 }
 
