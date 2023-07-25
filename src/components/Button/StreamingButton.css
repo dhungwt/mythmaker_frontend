@@ -1,5 +1,6 @@
 .btn {
     position: relative;
+    
     width: 120px;
     height: 30px;
     line-height: 20px;
@@ -12,6 +13,7 @@
     background-size: 400%;
     border-radius: 60px;
     transition: background-position 8s linear infinite;
+   
     margin:10px;
 }
 

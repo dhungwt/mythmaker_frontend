@@ -69,7 +69,9 @@ const AddCharacter = ({ storyId }) => {
 
     return (
         <div className="AddCharacter">
+            <div className="Add-Character-Button">
             <button className="btn" onClick={handleAdd}>Add Character</button>
+            </div>
             {isPop && (
                 <div className="add-character-form">
                     <form onSubmit={handleSubmit}>

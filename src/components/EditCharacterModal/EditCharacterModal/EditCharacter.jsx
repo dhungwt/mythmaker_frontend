@@ -58,8 +58,8 @@ function EditCharacter({ character }) {
                         <label htmlFor="name">Name:</label>
                         <input type="text" id="character-name" name="name"
                             value={characterName} onChange={handleNameChange} required />
-                        <button type="submit">Submit</button>
-                        <button type="button" onClick={handleCancel}>Cancel</button>
+                        <button className="btn" type="submit">Submit</button>
+                        <button className="btn" type="button" onClick={handleCancel}>Cancel</button>
 
 
                     </form>

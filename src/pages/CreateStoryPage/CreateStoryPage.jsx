@@ -100,6 +100,17 @@ const CreateStory = () => {
     }
   };
 
+  //style the body
+  useEffect(() => {
+    // When the component is mounted, add the class
+    document.body.classList.add("story-body");
+
+    // When the component is unmounted, remove the class
+    return () => {
+        document.body.classList.remove("story-body");
+    };
+}, []);
+
   return (
     <div className="create-story-container">
       <div className="create-story-title">
