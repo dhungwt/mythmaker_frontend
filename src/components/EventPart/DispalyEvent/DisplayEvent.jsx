@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteEventThunk } from "../../../redux/event/event_actions";
 import "../../../components/Button/StreamingButton.css";
+import "../../../components/EventPart/DispalyEvent/DisplayEvent.css"
 
 const DisplayEvent = ({event}) =>{
     const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const DisplayEvent = ({event}) =>{
 
     return (
         <div className="single_event_field">
-            {event.characterId && <h3>{event.characterId.name}</h3>}
+            {event.characterId && <h3 className="character_name"><b>{event.characterId.name}</b></h3>}
             <p>{event.name}</p>
             <p>{event.text}</p>
             {event.option1 && event.option1.name && <div>{event.option1.name}</div>}
