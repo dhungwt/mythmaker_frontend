@@ -5,6 +5,7 @@ import { deleteCharacterThunk } from "../../redux/character/character_action";
 import AddCharacter from "../AddCharacterModal/AddCharacter";
 import EditCharacter from "../EditCharacterModal/EditCharacterModal/EditCharacter";
 import "../../components/Button/StreamingButton.css";
+import "../Button/Dropdown.css";
 
 function CharacterList({ storyId, onCharacterChange }) {
     //dispatch the thunk
@@ -46,11 +47,15 @@ function CharacterList({ storyId, onCharacterChange }) {
 
 
     return (
-        <div className="characterList">
+        <div className="characterList" style={{
+            justifyContent: "center",
+            alignItems: "center",
+            
+        }}>
             <AddCharacter storyId={storyId} />
             {story && story.characters && (
                 <form>
-                    <select onChange={handleCharacterChange} required>
+                    <select className="custom-dropdown" onChange={handleCharacterChange} required>
 
                         <option className="btn">Select a Character</option>
                         {story.characters.map((character, index) => (
