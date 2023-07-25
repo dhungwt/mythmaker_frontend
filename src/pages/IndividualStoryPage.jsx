@@ -174,7 +174,7 @@ function IndividualStoryPage() {
     localStorage.removeItem(`savedEvent_${id}`);
     localStorage.removeItem(`currentEvent_${id}`);
       
-    return <h2>The END</h2>
+    return <h2 className="theEnd">The END</h2>
   }
 
   const handleSpeedUp = () => {
@@ -279,6 +279,7 @@ function IndividualStoryPage() {
             {theEnd ? <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> :displayEvent[0]?.characterId.name}
           </div>
           {typeEvent()}
+          <div className="userNote">*Click Dialogue Box To Fast Forward {'>>'} </div>
         </div>
         
         <div className="eventLogBox">
@@ -297,9 +298,14 @@ function IndividualStoryPage() {
             }
           </div>
           <div className="eventButtons">
-            <button className="eventButt" onClick={saveGame}>Save Game</button>
-            <button className="eventButt" onClick={handleGoBack}>Go Back</button>
-            <button className="eventButt" onClick={clearDataAndReload}>Clear</button>
+            <div>
+              <button className="eventButt" onClick={saveGame}>Save Game</button>
+              <button className="eventButt" onClick={clearDataAndReload}>Clear Game</button>
+            </div>
+            <div>
+              <button className="eventButt" onClick={handleGoBack}>Back</button>
+            </div>
+            
           </div>
         </div>
       </div>
