@@ -25,7 +25,7 @@
 }
 
 .eventDisplayBox{
-    background-image: url(../assets/pexel-stock-sky.jpg);
+    background-image: url("../assets/pexel-stock-sky.jpg");
     background-size: cover;
     background-color: #eebbc3;
     display: grid;
