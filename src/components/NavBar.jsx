@@ -14,7 +14,7 @@ const LinkButton = ({ to, children, onClick }) => (
      </NavLink>
 );
 
-// //define the component part
+// // //define the component part
 const NavBar = () => {
     //dispatch the redux
     const dispatch = useDispatch();
