@@ -1,12 +1,8 @@
 /* CreateStory.css */
 
 /* Center the content vertically and horizontally */
-body.story-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+body {
+ 
   }
   
   /* Container for the CreateStory component */
