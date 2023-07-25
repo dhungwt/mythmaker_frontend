@@ -6,6 +6,10 @@ import './pages.css';
 // import Pagination from '../components/Pagination';
 // import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
+import ParticleBackground from '../components/Particles/ParticleBackground';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
+
 
 function StoriesPage() {
   const dispatch = useDispatch();
@@ -33,7 +37,7 @@ function StoriesPage() {
     }
   }, [stories]);
 
-  
+
   //Function that handles pagination when the user clicks on a different page number
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -44,7 +48,7 @@ function StoriesPage() {
     setCurrentPage(1);
     setSearch(event.target.value);
   };
-  
+
 
   //Calculate the index of the last story that will be shown on the page
   const lastPostIndex = currentPage * postPerPage;  //0*5 = 0th index
@@ -54,8 +58,8 @@ function StoriesPage() {
 
   // const currentPosts = filterStories.slice(firstPostIndex, lastPostIndex);
 
-   // Filter students based on their search terms:
-   const filterStories = stories.filter((story, ind, arr) => {
+  // Filter students based on their search terms:
+  const filterStories = stories.filter((story, ind, arr) => {
     // allows the user to search in uppercase, lowercase, or whatever and the user input will still be lowercased
     // indexOf returns the index of the first occurrence of the search term in the story title, and -1 if nothing is found
     console.log("is search is working? ", story.title.toLowerCase().indexOf(search.toLowerCase()) !== -1)
@@ -65,9 +69,9 @@ function StoriesPage() {
   const paginatedStories = () => {
     const currentPosts = stories.slice(firstPostIndex, lastPostIndex);
     console.log("currentpost", currentPosts)
-     return currentPosts.map((storyList) => (
-        <StoryCard story={storyList} key={storyList._id} />
-     ))
+    return currentPosts.map((storyList) => (
+      <StoryCard story={storyList} key={storyList._id} />
+    ))
   }
 
   const searchedStories = () => {
@@ -77,65 +81,110 @@ function StoriesPage() {
       )
     }).slice(firstPostIndex, lastPostIndex)
   }
-  
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#EEBBC3', // Set your desired custom primary color here
+      },
+      secondary: {
+        main: '#EEBBC3', // Set your desired custom secondary color here
+      },
+    },
+  });
+
   return (
-    <div 
-    className="story-card-container" 
-    style={{ 
-      // display: 'flex', 
-      // flexWrap: 'wrap', 
-    // backgroundImage: 'url(https://wallpapercave.com/wp/wp2635945.jpg)' ,
-      backgroundPosition: 'center' 
-      }}>
+    <div>
+      <div className="Stories_Page_Particles">
+        <ParticleBackground />
+      </div>
+      <div
+        className="story-card-container"
+        style={{
+          // display: 'flex', 
+          // flexWrap: 'wrap', 
+          // backgroundImage: 'url(https://wallpapercave.com/wp/wp2635945.jpg)' ,
+          backgroundPosition: 'center'
+        }}>
 
-      <h1>StoriesPage</h1>
+        <div className='Stories_Page_Name'>
+          <h1>StoriesPage</h1>
+        </div>
+        <div className='Stories-Page-Pagination'>
+          <ThemeProvider theme={theme}>
+            <Stack spacing={1}>
+              <div
+                style={{
+                  display: "grid",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  border: "5px",
 
-          <button>
-              <Pagination 
-              //The total number of pages is calculated based on the total number of stories and the 'postPerPage'
-                count = {Math.ceil(filterStories.length / postPerPage)}
-                //place currentPage number to be stored in currentPage and passed into the pagination component
-                page = {currentPage}
-                onChange={(event, value) => paginate(value)}
-              />
-          </button>
 
-      {/* for search... */}
-      <input
-        type="text"
-        value={search}
-        onChange={handleSearch}
-        placeholder="Search by title..."
-        style={{height:"32px", margin:"20px"}}
-      />
+                  cursor: "pointer",
+                  outline: "none", // Add this to remove focus outline when the button is clicked
+                  padding: 0, // Add this to remove default button padding
+                  backgroundColor: "#ffffffc0"
+                }}
+              >
+                <Pagination
+                  color="secondary"
+                  count={Math.ceil(filterStories.length / postPerPage)}
+                  page={currentPage}
+                  onChange={(event, value) => paginate(value)}
+                />
+              </div>
+              {/* <Pagination count={10} color="secondary" /> */}
+            </Stack>
+          </ThemeProvider>
+        </div>
 
-      {isLoading ? (
-        <h1>Loading..</h1>
-      ) 
-      : search.length > 0 ? searchedStories() : paginatedStories()
-      // (
-      //   filterStories.length > 0 ? (
-      //     filterStories.map((storyList) => (
-      //       <StoryCard story={storyList} key={storyList._id} />
-      //     ))
-        // ) 
-        // : 
-        // (
-          // checking if there are any stories
-          // currentPosts.length > 0 ? (
+        {/* for search... */}
+        <div className='Stories_Page_Search_Bar'>
+          <div className="inputBox">
+            <input
+              type="text"
+              value={search}
+              onChange={handleSearch}
+              required="required"
+              style={{ height: "32px", margin: "20px" }}
+            />
+            <span>Search by title...</span>
+            <i></i>
+          </div>
+        </div>
+
+        <div className='Stories_Page_Display_Stories'>
+          {isLoading ? (
+            <h1>Loading..</h1>
+          )
+            : search.length > 0 ? searchedStories() : paginatedStories()
+
+
+            // (
+            //   filterStories.length > 0 ? (
+            //     filterStories.map((storyList) => (
+            //       <StoryCard story={storyList} key={storyList._id} />
+            //     ))
+            // ) 
+            // : 
+            // (
+            // checking if there are any stories
+            // currentPosts.length > 0 ? (
             // currentPosts.map((storyList) => (
             //   <StoryCard story={storyList} key={storyList._id} />
             // )
             // )
-          // ) : (
+            // ) : (
             // if there are no stories then return this
 
             // <h1>Nothing to return</h1>
-          // )
-        // )
-      // )
-    }
-        
+            // )
+            // )
+            // )
+          }
+        </div>
+
+      </div>
     </div>
   );
 }
