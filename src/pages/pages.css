@@ -54,21 +54,20 @@
   } */
 
 .background-container {
-  border:solid 10px;
   margin-top:10vh;
   display: grid;
   padding: 20px;
   color: #232946;
   top: 50%;
   transform: translateY(+1%);
-  background-color: #232946;
+  background-color: #232946c5;
   /* background-image: linear-gradient(
     to top left,
     rgba(0, 0, 0, 0.2),
     rgba(0, 0, 0, 0.2) 30%,
     rgba(0, 0, 0, 0)
   ); */
-  box-shadow: 0px 0px 0.05px 0.05px #000612;
+  /* box-shadow: 0px 0px 0.05px 0.05px #000612; */
   border-radius: 20px;
   
 }
