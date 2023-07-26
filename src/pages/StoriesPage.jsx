@@ -163,7 +163,6 @@ function StoriesPage() {
             </Stack>
           </ThemeProvider>
         </div>
-
       </div>
     </div>
   );

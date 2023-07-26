@@ -24,8 +24,8 @@ function CreatorStoryCard(props) {
     <div className="" style={{}}>
       <div className="creatorStoryTitle"style={{}}>
          {creatorStory.title} &nbsp;
-        <button className="btn" onClick={handleEditStoryClick}>✎ Edit ✎</button>
-        <button className="btn" onClick={handlePlayClick}>Play</button>
+        <button className="btn" onClick={handleEditStoryClick} style={{fontSize:"18px",}}>✎ Edit ✎</button>
+        <button className="btn" onClick={handlePlayClick} style={{fontSize:"17px",}}>Play</button>
       </div>
     </div>
   );
