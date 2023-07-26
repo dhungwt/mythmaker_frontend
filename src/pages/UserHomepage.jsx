@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 // import  {useEffect} from "react";
 import { useDispatch } from "react-redux";
-import Grid from '@mui/material/Grid'
+import Grid from "@mui/material/Grid";
 import "../App.css";
 // import { fetchAllStories } from "../redux/story/story_actions";
 import { useSelector } from "react-redux";
 // import { fetchUserStoriesThunk} from "../redux/user/user_actions";
 import { useNavigate } from "react-router-dom";
 import { addCharacterThunk } from "../redux/character/character_action";
-import './pages.css'
+import "./pages.css";
 
 import {
   addStoryThunk,
@@ -20,12 +20,12 @@ import HistoryCard from "../components/HistoryCard";
 import { addEventThunk } from "../redux/event/event_actions";
 import { editEventThunk } from "../redux/event/event_actions";
 import { updatedUserThunk } from "../redux/user/user_actions";
+import ParticleBackground from "../components/Particles/ParticleBackground.js";
 
 //This the user's homepage
 //07/11 created: just simple page created
 
 const UserHomepage = () => {
-
   const dispatch = useDispatch();
   //useSelctor for the logged in user
   const user = useSelector((state) => state.user); //looks into the global store(state) to recieve the info of current user thats logged in
@@ -71,7 +71,7 @@ const UserHomepage = () => {
   const handleCreateStory = async () => {
     //create the new character
     const newCharacter = await dispatch(addCharacterThunk(defaultCharacter));
-    console.log("Where si the new Character:",newCharacter);
+    console.log("Where si the new Character:", newCharacter);
     //create the default option
     const defaultOption = {
       name: "Default Option Name",
@@ -109,9 +109,8 @@ const UserHomepage = () => {
     await dispatch(editEventThunk(newEvent._id, defaultEvent));
 
     //we push the new story id into the user storyids
-    
-    dispatch(updatedUserThunk(userID, newStory._id));
 
+    dispatch(updatedUserThunk(userID, newStory._id));
 
     console.log("I am done");
     //once we create the newstory, we will jump to the page to create the story
@@ -130,39 +129,46 @@ const UserHomepage = () => {
   console.log(creatorIdSelector, "the creator id selectorr");
 
   return (
-    <div className="background-container">
-
-      <button onClick={handleCreateStory} 
-          className="btn-6" 
+    <div>
+      <div className="particlebackground">
+        <ParticleBackground />
+      </div>
+      <div className="background-container">
+        <button
+          onClick={handleCreateStory}
+          className="btn-6"
           // style={{marginBottom:"20px", backgroundColor:"#b8c1ec", borderRadius:"25px", color:"#232946", }}
-          >
-            <strong>
-              Create a New Story
-            </strong>
+        >
+          <strong>Create a New Story</strong>
         </button>
 
-      <h2 className="stories-history" style={{paddingTop:"3vh"}}> 
-        <strong>Play History</strong>
-      </h2>
+        <h2 className="stories-history" style={{ paddingTop: "3vh" }}>
+          <strong>Play History</strong>
+        </h2>
 
-      <div className="playhistory-grid" >
-            {user.storyHistory?.length > 0 ? (
-              user.storyHistory.map((singleStoryHistory, index) => {
-                <Grid item key={index} xs={12} sm={6} md={4} lg={3}> </Grid>
-                return (
-                  <HistoryCard
-                    singleStoryHistory={singleStoryHistory}
-                    key={index}
-                  />
-                );
-              })
-            ) : (
-              <h1> nothing to return </h1>
-            )}
-      </div>
+        <div className="playhistory-grid">
+          {user.storyHistory?.length > 0 ? (
+            user.storyHistory.map((singleStoryHistory, index) => {
+              <Grid item key={index} xs={12} sm={6} md={4} lg={3}>
+                {" "}
+              </Grid>;
+              return (
+                <HistoryCard
+                  singleStoryHistory={singleStoryHistory}
+                  key={index}
+                />
+              );
+            })
+          ) : (
+            <h1> nothing to return </h1>
+          )}
+        </div>
 
-    <h2 className="created-stories" style={{}}> <strong>Stories Created</strong></h2>
-      <div className="storiesContainer">
+        <h2 className="created-stories" style={{}}>
+          {" "}
+          <strong>Stories Created</strong>
+        </h2>
+        <div className="storiesContainer">
           {creatorIdSelector.length > 0 ? (
             creatorIdSelector.map((creatorStoryList, index) => {
               return (
@@ -175,6 +181,7 @@ const UserHomepage = () => {
           ) : (
             <h1> nothing to return </h1>
           )}
+        </div>
       </div>
     </div>
   );
