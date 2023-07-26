@@ -84,8 +84,8 @@ const NavBar = () => {
                     </ul>
                     <span className="navbar-text"> 
                         {isLoggedIn ? (
-                            <div className="haslogin">
-                                <a className="nav-link" onClick={handleLogOut}  style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </a>
+                            <div>
+                                <a className="nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </a>
                             </div>
                         ) : (
                             <div className="notlogin" style={{display:"flex"}}>

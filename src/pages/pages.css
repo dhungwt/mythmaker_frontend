@@ -10,39 +10,14 @@
     font-family: 'Cinzel Decorative', cursive;
     font-family: 'EB Garamond', serif;  
   }
-  .logo-container{
-        
-  }
 
   .navbar h1 {
     margin: 0;
-  }
-  #logout-navbar{
-    cursor:"pointer"
-  }
-
-  .navbar nav {
-    /* margin-left: auto; */
   }
   
   .navbar a {
     margin-left: 16px;
     text-decoration: none;
-  }
-  .nav-link {
-    cursor: pointer;
-  }
-  
-  .nav-link:hover {
-    text-decoration: underline;
-    border-bottom:solid;
-  }  
-  
-  
-  .navbar a:hover {
-    text-decoration: underline;
-  }
-  .navbar a {
     color:white;
     font-size: 1rem;
     text-align: center;
@@ -52,6 +27,13 @@
     inset -2px -2px 3px rgba(0, 0, 0, 0.6); 
  
   }
+
+  .navbar a:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+    border-bottom: solid white;
+  }
+
   .navbar .nav-link {
     color: white;
     font-size: 1rem;
@@ -62,9 +44,14 @@
                 inset -2px -2px 3px rgba(0, 0, 0, 0.6); 
   }
   
-.navbar .nav-link:hover {
+
+  /* .nav-link:hover{
     text-decoration: underline;
   }
+  
+.navbar .nav-link:hover {
+    text-decoration: underline;
+  } */
 
 .background-container {
   border:solid 10px;
@@ -95,7 +82,7 @@ z-index: 1;
 
 .story-card-container{
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
 .Stories_Page_Name{
@@ -119,18 +106,21 @@ z-index: 1;
   /* background-color: white; Change this to match your color scheme */
 }
 
+
+
 .Stories_Page_Search_Bar .inputBox {
   position: relative;
+  display: block;
+  margin: 0 auto;
   width: 300px; 
   height: 40px; 
   /* bottom:20px; */
   border-radius: 5px;
   /* overflow: hidden; */
-  margin-top: 100px;
 }
 
 .Stories_Page_Search_Bar .inputBox:last-child {
-  margin-bottom: 0;
+  margin-bottom: 30px;
 }
 
 .Stories_Page_Search_Bar .inputBox input {
@@ -189,13 +179,14 @@ z-index: 1;
 }
 
 .Stories_Page_Display_Stories{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5rem;
   justify-content: center; 
-  margin-right: 1150px;
+  /* margin-right: 150px;
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 100px; */
   
 }
 
@@ -207,7 +198,7 @@ z-index: 1;
   }
   
   .Stories_Page_Display_Stories {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
@@ -324,4 +315,14 @@ z-index: 1;
 
 .btn-6 span:hover:after {
   width: 100%;
+}
+
+
+.particlebackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
 }
