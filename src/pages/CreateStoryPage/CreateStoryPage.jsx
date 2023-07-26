@@ -114,7 +114,7 @@ const CreateStory = () => {
 
   return (
     <div>
-      <div className="card-bg">
+      <div>
         <div className="particlebackground">
           <ParticleBackground />
         </div>
