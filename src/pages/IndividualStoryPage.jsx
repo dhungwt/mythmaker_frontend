@@ -115,6 +115,7 @@ function IndividualStoryPage() {
 
   //add next event to the end of displayEvent once player has click on an option
   const addNextEvent = (option) => {
+    setTyping(true);
     const newEvent = eventObj[option?.next]
     console.log('End of the story?', newEvent);
 
@@ -212,7 +213,6 @@ function IndividualStoryPage() {
         key={displayEvent[0]._id}
         className="eventDialogueText"
         sequence={[
-          () => {setTyping(true)},
           "",
           500,
           // Same substring at the start will only be typed out once, initially
