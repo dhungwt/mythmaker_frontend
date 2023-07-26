@@ -131,20 +131,43 @@ const UserHomepage = () => {
 
   return (
     <div className="background-container">
-      <p>
-      
-      </p>
-      <button onClick={handleCreateStory} className="createStoryButton">Create Story</button>
-      {/* <h3>Welcome, {email}</h3> */}
-      <h2 className="stories-history" style={{textAlign:"center", color:"white"}}>Play History</h2>
 
-      <div className="playhistory">
-          {user.storyHistory?.length > 0 ? (
-            user.storyHistory.map((singleStoryHistory, index) => {
-              <Grid item key={index} xs={12} sm={6} md={4} lg={3}> </Grid>
+      <button onClick={handleCreateStory} 
+          className="btn-6" 
+          // style={{marginBottom:"20px", backgroundColor:"#b8c1ec", borderRadius:"25px", color:"#232946", }}
+          >
+            <strong>
+              Create a New Story
+            </strong>
+        </button>
+
+      <h2 className="stories-history" style={{paddingTop:"3vh"}}> 
+        <strong>Play History</strong>
+      </h2>
+
+      <div className="playhistory-grid" >
+            {user.storyHistory?.length > 0 ? (
+              user.storyHistory.map((singleStoryHistory, index) => {
+                <Grid item key={index} xs={12} sm={6} md={4} lg={3}> </Grid>
+                return (
+                  <HistoryCard
+                    singleStoryHistory={singleStoryHistory}
+                    key={index}
+                  />
+                );
+              })
+            ) : (
+              <h1> nothing to return </h1>
+            )}
+      </div>
+
+    <h2 className="created-stories" style={{}}> <strong>Stories Created</strong></h2>
+      <div className="storiesContainer">
+          {creatorIdSelector.length > 0 ? (
+            creatorIdSelector.map((creatorStoryList, index) => {
               return (
-                <HistoryCard
-                  singleStoryHistory={singleStoryHistory}
+                <CreatorStoryCard
+                  creatorIdSelector={creatorStoryList}
                   key={index}
                 />
               );
@@ -152,22 +175,6 @@ const UserHomepage = () => {
           ) : (
             <h1> nothing to return </h1>
           )}
-      </div>
-
-    <h2 className="created-stories" style={{color:"white"}}>Stories Created</h2>
-      <div className="storiesContainer">
-      {creatorIdSelector.length > 0 ? (
-        creatorIdSelector.map((creatorStoryList, index) => {
-          return (
-            <CreatorStoryCard
-              creatorIdSelector={creatorStoryList}
-              key={index}
-            />
-          );
-        })
-      ) : (
-        <h1> nothing to return </h1>
-      )}
       </div>
     </div>
   );
