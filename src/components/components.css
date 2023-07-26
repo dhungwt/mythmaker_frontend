@@ -180,7 +180,8 @@
     text-align: center;
     margin-bottom: 5px;
     color: rgb(17, 15, 15);
-    font-weight: 600;
+    /* font-weight: 600; */
+    /* is this font weight needed for a feature? */
   }
 }
 
