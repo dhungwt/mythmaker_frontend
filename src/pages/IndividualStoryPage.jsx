@@ -9,6 +9,7 @@ import EventDisplay from '../components/EventDisplay';
 import { TypeAnimation } from 'react-type-animation';
 import { useNavigate } from 'react-router-dom';
 import { updateEntireUserThunk } from '../redux/user/user_actions';
+import ErrorPage from "./ErrorPage";
 
 
 function IndividualStoryPage() {
@@ -109,7 +110,7 @@ function IndividualStoryPage() {
 
   //if the page is still loading(loading === true)
   if (loading) {
-    return <h1>LOADING...</h1>
+    return <ErrorPage msg="Loading..." />
   }
 
 
