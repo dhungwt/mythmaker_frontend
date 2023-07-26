@@ -95,91 +95,75 @@ function StoriesPage() {
   
   
   return (
-    <div 
-      className="story-card-container" 
-      style={{ 
-        // display: 'flex', 
-        // flexWrap: 'wrap', 
-        // backgroundImage: 'url(https://wallpapercave.com/wp/wp2635945.jpg)' ,
-        backgroundPosition: 'center' 
-        }}>
+    <div>
+      <div className="Stories_Page_Particles">
+        <ParticleBackground />
+      </div>
 
-        <section style=
-            {{
-              display:"grid",
-              justifyContent:"center"
-            }}
-          >
+      <div className='Stories_Page_Name'>
+          <h1>StoriesPage</h1>
+      </div>
 
-      <h1 style={{textAlign:"center", paddingTop:"10vh"}}>StoriesPage</h1>
-      
-      <ThemeProvider theme={theme}>
-    <Stack spacing={1}>
-        <div
-          style={{
-            display: "grid",
-            flexDirection: "column",
-            alignItems: "center",
-            backgroundColor: "",
-            border: "none",
-            cursor: "pointer",
-            outline: "none", // Add this to remove focus outline when the button is clicked
-            padding: 0, // Add this to remove default button padding
-          }}
-        >
-          <Pagination
-            color="secondary" 
-            count={Math.ceil(filterStories.length / postPerPage)}
-            page={currentPage}
-            onChange={(event, value) => paginate(value)}
-          />
-        </div>
-      {/* <Pagination count={10} color="secondary" /> */}
-    </Stack>
-    </ThemeProvider>
-
-      {/* for search... */}
-      <input
-        type="text"
-        value={search}
-        onChange={handleSearch}
-        placeholder="Search by title..."
+      <div
+        className="story-card-container"
         style={{
-          height:"32px", 
-          margin:"20px", 
-          display:"flex", 
-          flex:"1"
-      }}
-      />
-      </section>
+          // display: 'flex', 
+          // flexWrap: 'wrap', 
+          // backgroundImage: 'url(https://wallpapercave.com/wp/wp2635945.jpg)' ,
+          backgroundPosition: 'center'
+        }}
+      >
 
-  <div className='story-card-wrapper'>
-      {isLoading ? (
-        <h1>Loading..</h1>
-      ) 
-      : search.length > 0 ? searchedStories() : paginatedStories()
-      // (
-      //   filterStories.length > 0 ? (
-      //     filterStories.map((storyList) => (
-      //       <StoryCard story={storyList} key={storyList._id} />
-      //     ))
-        // ) 
-        // : 
-        // (
-          // checking if there are any stories
-          // currentPosts.length > 0 ? (
-            // currentPosts.map((storyList) => (
-            //   <StoryCard story={storyList} key={storyList._id} />
-            // )
-            // )
-            // ) : (
-            // if there are no stories then return this
+        {/* for search... */}
+        <div className='Stories_Page_Search_Bar'>
+          <div className="inputBox">
+            <input
+              type="text"
+              value={search}
+              onChange={handleSearch}
+              required="required"
+              style={{ height: "32px", margin: "20px" }}
+            />
+            <span>Search by title...</span>
+            <i></i>
+          </div>
+        </div>
 
-            // <h1>Nothing to return</h1>
-            // )
-            // )
-            // )
+        <div className='Stories_Page_Display_Stories'>
+          {isLoading ? (
+            <h1>Loading..</h1>
+          )
+            : search.length > 0 ? searchedStories() : paginatedStories()
           }
+        </div>
+
+        <div className='Stories-Page-Pagination'>
+          <ThemeProvider theme={theme}>
+            <Stack spacing={1}>
+              <div
+                style={{
+                  display: "grid",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  border: "5px",
+
+
+                  cursor: "pointer",
+                  outline: "none", // Add this to remove focus outline when the button is clicked
+                  padding: 0, // Add this to remove default button padding
+                  backgroundColor: "#ffffffc0"
+                }}
+              >
+                <Pagination
+                  color="secondary"
+                  count={Math.ceil(filterStories.length / postPerPage)}
+                  page={currentPage}
+                  onChange={(event, value) => paginate(value)}
+                />
+              </div>
+              {/* <Pagination count={10} color="secondary" /> */}
+            </Stack>
+          </ThemeProvider>
         </div>
 
       </div>

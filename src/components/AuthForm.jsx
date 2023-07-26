@@ -74,7 +74,7 @@ const AuthForm = ({ name, displayName }) => {
                 {/*Google Oauth button */}
                 <a href="http://localhost:8080/auth/google" >{displayName} with Google</a>
             </form>
-            <div class="side"> 
+            <div className="side"> 
                  <img src={mythmakerpic} alt="myth maker logo" style={{maxWidth:"100%"}} />
             </div>
             
