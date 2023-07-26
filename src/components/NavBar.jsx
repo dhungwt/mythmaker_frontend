@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../redux/user/user_actions";
 import '../pages/pages.css'
-// import logoMM from './logoMM.jpg'
-import mythmakerbeanie from './mythmakerbeanie.png'
+import MMlogo from "../pages/assets/MMlogo.png"
 // this component will display different links based on whether user is logged in or not
 
 //define the linkbutton that create navigational link with option onclick behavior
@@ -36,6 +35,10 @@ const NavBar = () => {
         console.log("isloggen in:", isLoggedIn);
     };
 
+    const handleLogoClick = () => {
+        navigate('/');
+    }
+
     return (
         <div className="navbar" id='background' style=
         {{
@@ -44,19 +47,15 @@ const NavBar = () => {
         }}>
             <nav className="navbar navbar-expand-md navbar-light" style= {{backgroundColor:"#232946", zIndex:"100"}}>
                 {isLoggedIn ? (
-                    <div className="logo-container">
-                        <a className="navbar-item" href="/home">
-                            <img src={mythmakerbeanie} alt="myth maker logo" style={{ width: "25vh" }} className="logo" />
-                        </a>
+                    <div className="logo-container" onClick={handleLogoClick}>
+                        <img src={MMlogo} alt="myth maker logo" style={{ width: "25vh"}} className="logo" />
                     </div>
                 ) : (
-                    <div className="logo-container">
-                        <a className="navbar-item mx-a" href="/">
-                            <img src={mythmakerbeanie} alt="myth maker logo" style={{ width: "25vh", height:"2px" }} className="logo" />
-                        </a>
+                    <div className="logo-container" onClick={handleLogoClick}>
+                        <img src={MMlogo} alt="myth maker logo" style={{ width: "25vh"}} className="logo" />
                     </div>
                 )}
-                <button className="navbar-toggler" style={{backgroundColor:"white", color:"#232946", margin:"15px"}} type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <button className="navbar-toggler" style={{backgroundColor:"#d4939d", color:"#232946", margin:"15px"}} type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarText">
@@ -85,10 +84,10 @@ const NavBar = () => {
                     <span className="navbar-text"> 
                         {isLoggedIn ? (
                             <div>
-                                <a className="nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </a>
+                                <a className="logBtn nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </a>
                             </div>
                         ) : (
-                            <div className="notlogin" style={{display:"flex"}}>
+                            <div className="logBtn notlogin" style={{display:"flex"}}>
                                 <a  className="nav-link"  id="login" href="/login" style={{backgroundColor:"#232946",color:"white"}} > Login </a>
                                 <a className="nav-link" id="signup" href="/signup" style={{backgroundColor:"#232946", color:"white"}}> Sign up </a>
                             </div>

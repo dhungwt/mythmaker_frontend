@@ -133,7 +133,7 @@ const CreateStory = () => {
             <CharacterList storyId={storyId} onCharacterChange={() => {}} />
           </div>
           <div className="display-event-field">
-            <h2>Current Story Events:</h2>
+            <h2 className="whiteTitle">Current Story Events:</h2>
             {events.map((event, index) => (
               <div key={index} className="event-card">
                 <DisplayEvent event={event} />
