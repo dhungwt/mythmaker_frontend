@@ -18,12 +18,6 @@
   .navbar a {
     margin-left: 16px;
     text-decoration: none;
-  }
-  
-  .navbar a:hover {
-    text-decoration: underline;
-  }
-  .navbar a {
     color:white;
     font-size: 1rem;
     text-align: center;
@@ -31,8 +25,13 @@
     border-radius: 10px;
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
     inset -2px -2px 3px rgba(0, 0, 0, 0.6); 
- 
   }
+  
+  .navbar a:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+  }
+
   .navbar .nav-link {
     color: white;
     font-size: 1rem;
@@ -43,30 +42,29 @@
                 inset -2px -2px 3px rgba(0, 0, 0, 0.6); 
   }
 
-  .nav-link:hover{
+  /* .nav-link:hover{
     text-decoration: underline;
   }
   
 .navbar .nav-link:hover {
     text-decoration: underline;
-  }
+  } */
 
 .background-container {
-  border:solid 10px;
   margin-top:10vh;
   display: grid;
   padding: 20px;
   color: #232946;
   top: 50%;
   transform: translateY(+1%);
-  background-color: #232946;
+  background-color: #232946c5;
   /* background-image: linear-gradient(
     to top left,
     rgba(0, 0, 0, 0.2),
     rgba(0, 0, 0, 0.2) 30%,
     rgba(0, 0, 0, 0)
   ); */
-  box-shadow: 0px 0px 0.05px 0.05px #000612;
+  /* box-shadow: 0px 0px 0.05px 0.05px #000612; */
   border-radius: 20px;
   
 }

@@ -7,13 +7,13 @@
     z-index: -1; 
 }
 
-.homePage {
+.homePage, .errorPage {
     color: #b8c1ec;
     text-align: center;
     margin-top: 5%;
 }
 
-.homePageTitle {
+.homePageTitle, .errorPageTitle {
     color: #fffffe;
     font-size: 60px;
 }
@@ -32,6 +32,7 @@
 .logoImg {
     max-width: 80%;
     margin: 20px 0;
+    pointer-events: none;
 }
 
 @media only screen and (max-width: 950px) {
