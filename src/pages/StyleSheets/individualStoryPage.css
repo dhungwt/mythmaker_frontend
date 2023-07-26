@@ -1,17 +1,44 @@
-/* .eventOuterContainer{
-    display: grid;
-} */
+.capitalizeName {
+    text-transform: capitalize;
+}
+
+.eventLogName {
+    font-size: 22px;
+}
+
+.theEnd {
+    color: aliceblue;
+    text-shadow: 0 0 10px #eebbc3;
+    font-size: 50px;
+}
+
+.eventOuterContainer{
+    overflow: clip;
+} 
 
 .eventContainer{
+    background-color: black;
+    border-top: 3px double #eebbc3;
+    border-bottom: 5px double #eebbc3;
     display: grid;
     grid-template-columns: 67% auto;
 }
 
 .eventDisplayBox{
-    background-color: aqua;
+    background-image: url("../assets/pexel-stock-sky.jpg");
+    background-size: cover;
+    background-color: #eebbc3;
     display: grid;
-    grid-template-rows: auto 45px 170px;
-    height: 80vh;
+    grid-template-rows: 50px auto 45px 170px 25px;
+    height: 91vh;
+}
+
+.eventTitle{
+    background-color: #232946d0;
+    color: #eebbc3;
+    height: fit-content;
+    text-align: center;
+    font-size: 35px;
 }
 
 .eventChoiceBox{
@@ -22,6 +49,10 @@
 }
 
 .eventChoiceButton{
+    color: #232946;
+    background-color: #eebbc3;
+    border-color: #232946;
+    border-radius: 5px;
     min-width: 200px;
     max-width: 80%;
     margin: 10px;
@@ -31,12 +62,18 @@
     word-wrap: break-word;
 }
 
+.eventChoiceButton:hover{
+    background-color: #b8c1ec;
+}
+
 .eventCharacter{
-    background-color: burlywood;
+    background-color: #eebbc3;
+    color: #232946;
     width: fit-content;
-    font-size: 27px;
+    font-size: 25px;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 20px;
+    padding-top: 2px;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 10px 10px 0 0;
@@ -44,40 +81,128 @@
 }
 
 .eventDialogue{
-    background-color: grey;
-    grid-row: 3;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: auto;
+    background-color: #353B5A;
+    border: 4px solid #eebbc3;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+    color: #eebbc3;
+    display: flex;
+    flex-direction: column-reverse;
+    grid-row: 4;
+    cursor: pointer;
 }
 
-.eventDialogue::-webkit-scrollbar {
-    height: 1rem;
-  }
-
-.eventDialogue::-webkit-scrollbar-track {
-    margin: 5px;
-}
-
-.eventDialogue::-webkit-scrollbar-thumb {
-    background-color: black;
-    border-radius: 10px;
+.eventDialogueTop, .eventLogTop{
+    margin-top: auto;
 }
 
 .eventDialogueText{
-    margin: 10px;
+    margin: 4px;
+    margin-bottom: 1px;
+    padding: 12px;
+    padding-bottom: 5px;
+    font-size: 23px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: auto;
+    user-select: none;
+}
+
+.userNote{
+    background-color: #353B5A;
+    color: #b8c1ec;
+    font-size: 18px;
+    padding: 0 10px;
+    border-left: 4px solid #eebbc3;
+    border-right: 4px solid #eebbc3;
+    text-align: right;
     user-select: none;
 }
 
 .eventLogBox{
-    background-color:indianred;
-    height: 80vh;
+    background-color:#b8c1ec;
+    color: #232946;
+    border-left: 3px solid #232946e0;
+    font-size: 18px;
+    display: grid;
+    grid-template-rows: 45px auto 70px;
+    height: 91vh;
+}
+
+.eventLogTitle{
+    background-color: #232946e0;
+    border-bottom: 3px solid #eebbc3;
+    color: #eebbc3;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 30px;
 }
 
 .eventLog{
-    margin: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-right: 2px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: auto;
 }
 
-@media only screen and (max-width: 700px) {
+.eventLogText{
+    padding: 10px;
+    margin: 5px 0;
+    padding-right: 15px;
+}
+
+.eventLogText:hover{
+    background-color: #23294630;
+}
+
+.eventButtons{
+    background-color: #232946e0;
+    border-top: 3px solid #eebbc3;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 5px;
+}
+
+.eventButt{
+    background-color: #eebbc3;
+    color:#232946;
+    border-color: #232946;
+    border-radius: 10px;
+    margin: 0 2px 0 2px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.eventButt:hover{
+    background-color: #b8c1ec;
+}
+
+.eventDialogueText::-webkit-scrollbar, .eventLog::-webkit-scrollbar {
+    height: 1rem;
+    width: 0.7rem;
+  }
+
+.eventDialogueText::-webkit-scrollbar-track {
+    background-color: #eebbc3e0;
+    border-radius: 5px;
+}
+  
+.eventLog::-webkit-scrollbar-track {
+    background-color: #23294670;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.eventDialogueText::-webkit-scrollbar-thumb, .eventLog::-webkit-scrollbar-thumb {
+    background-color: #121629;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 950px) {
+    .eventTitle{
+        font-size: 7vw;
+    }
+
     .eventContainer{
         display: grid;
         grid-template-columns: auto;
@@ -85,6 +210,11 @@
 
     /* hides on smaller device */
     .eventLogBox{
-        height: 20vh;
+        height: 40vh;
+        border-left: none;
+    }
+
+    .eventLogTitle{
+        border-top: 3px double #eebbc3;
     }
   }

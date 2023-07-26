@@ -1,6 +1,7 @@
 import React from "react";
-import UserHomepage from "../pages/UserHomepage";
+//import UserHomepage from "../pages/UserHomepage";
 import { useNavigate } from "react-router-dom";
+import "../components/Button/StreamingButton.css";
 //this is the card that appears on the user homepage after login
 //displays all stories the user made
 function CreatorStoryCard(props) {
@@ -20,8 +21,8 @@ function CreatorStoryCard(props) {
   return (
     <div className="creatorStoryTitle"style={{}}>
       CreatorStoryCard: Title: {creatorStory.title} &nbsp;
-      <button onClick={handleEditStoryClick}>✎ Edit ✎</button>
-      <button onClick={handlePlayClick}>Play</button>
+      <button className="btn" onClick={handleEditStoryClick}>✎ Edit ✎</button>
+      <button className="btn" onClick={handlePlayClick}>Play</button>
     </div>
   );
 }

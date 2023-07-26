@@ -80,3 +80,30 @@ body.edit-event-body {
     z-index: 2;
 }
 
+@media screen and (max-width: 1024px) {
+    .Edit_Event_Option {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Edit_Event_Name textarea,
+    .Edit_Event_Name input {
+        width: 100%;
+    }
+    
+    .option-card textarea{
+        min-height: 60px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .Edit_Event_Name textarea,
+    .Edit_Event_Name input {
+        width: 100%;
+    }
+    
+    .option-card textarea{
+        min-height: 30px;
+    }
+}

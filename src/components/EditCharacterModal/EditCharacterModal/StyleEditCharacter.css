@@ -4,6 +4,8 @@
     border: 1px solid black;
     border-radius: 10px;
     max-width: 300px;
+    text-align: center;
+    
 }
 
 .edit-character-form {
@@ -21,15 +23,14 @@
 }
 
 .edit-character-form button {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width:100%;
 }
 
-.edit-character-form button[type="submit"] {
+/* .edit-character-form button[type="submit"] {
     background-color: #007bff;
 }
 
@@ -39,4 +40,4 @@
 
 .edit-character-form button[type="submit"]:hover {
     background-color: #0056
-}
+} */

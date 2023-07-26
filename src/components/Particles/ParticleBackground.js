@@ -32,7 +32,7 @@ const ParticleBackground = () => {
             options={{
                 background: {
                     color: {
-                        value: "#0d47a1",
+                        value: "#232946",//dark blue
                     },
                 },
                 fpsLimit: 120,
@@ -50,23 +50,23 @@ const ParticleBackground = () => {
                     },
                     modes: {
                         push: {
-                            quantity: 4,
+                            quantity: 2,
                         },
                         repulse: {
-                            distance: 200,
+                            distance: 150,
                             duration: 0.4,
                         },
                     },
                 },
                 particles: {
                     color: {
-                        value: "#ffffff",
+                        value: "#d4939d",//pink
                     },
                     links: {
                         color: "#ffffff",
                         distance: 150,
                         enable: true,
-                        opacity: 0.5,
+                        opacity: 0.8,
                         width: 1,
                     },
                     move: {

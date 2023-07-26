@@ -2,23 +2,17 @@
 
   .navbar {
     height: 64px;
+    width: 100%;
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0;
     padding-bottom: 2px;
     font-family: 'Cinzel Decorative', cursive;
     font-family: 'EB Garamond', serif;  
   }
-  .logo-container{
-        
-  }
 
   .navbar h1 {
     margin: 0;
-  }
-  
-  .navbar nav {
-    margin-left: auto;
   }
   
   .navbar a {
@@ -73,4 +67,141 @@
   box-shadow: 0px 0px 0.05px 0.05px #000612;
   border-radius: 20px;
   
+}
+
+.Stories_Page_Particles{
+  position: absolute;
+width: 100%;
+height: 100%;
+z-index: 1;
+}
+
+.story-card-container{
+  position: relative;
+  z-index: 5;
+}
+
+.Stories_Page_Name{
+  text-align: center;
+  padding-top: 2%;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.Stories-Page-Pagination{
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 3;
+  margin-bottom: 10px;
+  color: tan;
+  /* background-color: white; Change this to match your color scheme */
+}
+
+
+
+.Stories_Page_Search_Bar .inputBox {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 300px; 
+  height: 40px; 
+  /* bottom:20px; */
+  border-radius: 5px;
+  /* overflow: hidden; */
+}
+
+.Stories_Page_Search_Bar .inputBox:last-child {
+  margin-bottom: 30px;
+}
+
+.Stories_Page_Search_Bar .inputBox input {
+  box-sizing: border-box;
+  position: relative;
+  padding: 8px 10px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.25em;
+  letter-spacing: 0.05em;
+  z-index: 2;
+  bottom:15px;
+  /* height: 50px; */
+}
+
+.Stories_Page_Search_Bar .inputBox span {
+  position: absolute;
+  left: 20px;
+  padding: 10px 0;
+  pointer-events: none;
+  font-size: .85em; /* smaller font size */
+  transform: translateY(-80px); /* move text above the line */
+  transition: .5s;
+  color: #fff; /* white color */
+  letter-spacing: .05em;
+}
+
+.Stories_Page_Search_Bar .inputBox input:valid ~ span,
+.Stories_Page_Search_Bar .inputBox input:focus ~ span {
+  font-size: .85em;
+  transform: translateY(-120px);
+}
+
+.Stories_Page_Search_Bar .inputBox i {
+  position: absolute;
+  bottom:0;
+  top:20px;
+  left:20px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(45deg, #d4939d, #232946);
+  transition: .5s;
+  z-index: 1;
+  border-radius: 4px;
+  pointer-events: none;
+  margin-top: auto;
+}
+
+.Stories_Page_Search_Bar .inputBox input:valid ~ i,
+.Stories_Page_Search_Bar .inputBox input:focus ~ i {
+  height: 100%;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, .25);
+}
+
+.Stories_Page_Display_Stories{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: center; 
+  /* margin-right: 150px;
+  margin-top: 100px;
+  margin-bottom: 100px; */
+  
+}
+
+@media (max-width: 600px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .Stories_Page_Display_Stories {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .Stories_Page_Search_Bar input{
+    width: 90%;
+  }
 }
