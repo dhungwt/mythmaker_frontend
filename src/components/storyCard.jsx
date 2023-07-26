@@ -51,7 +51,7 @@ function StoryCard(props) {
     //    </button>
     // </div>
     
-    <div className="story-card">
+  <div className="story-card">
     <div className="card"> 
       <img className="card-img-top" src="https://i.imgur.com/t1lXeFj.png" alt="Card image cap"
        // Set a fixed height for the card image 
