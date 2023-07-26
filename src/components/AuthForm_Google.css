@@ -3,48 +3,66 @@
 .google-btn {
     width: 40%;
     height: 42px;
-    background-color: #eebbc3;
+
     border-radius: 10px;
-    box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+
     display: flex;
     align-items: center;
     color: white;
     text-decoration: none;
     margin-bottom: 10px;
-  }
+    border: 0;
   
-  .google-icon-wrapper {
+    
+    font-size: 1rem;
+    
+    color: #fff;
+    
+
+    background-color: #eebbc3;
+    /* background-color: rgba(220, 0, 0, 1); */
+    background-image: linear-gradient(to top left,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2) 30%,
+            rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+        inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+   
+}
+
+.google-icon-wrapper {
     position: absolute;
     margin-top: 1px;
-    margin-left: 1px;
+    margin-left: ;
+    
     width: 40px;
     height: 40px;
     border-radius: 2px;
-    background-color:white;
+    background-color: white;
     border-radius: 10px;
-  }
-  
-  .google-icon {
+}
+
+.google-icon {
     position: absolute;
     margin-top: 11px;
     margin-left: 11px;
     width: 18px;
     height: 18px;
-  }
-  
-  .btn-text {
+}
+
+.btn-text {
     /* margin: 11px 11px 0 0; */
     margin-top: 15px;
-    margin-left: 45px;
+    margin-left: 42px;
     font-size: 14px;
     letter-spacing: 0.2px;
     font-family: "Roboto", sans-serif;
-  }
-  
-  .google-btn:hover {
+}
+
+.google-btn:hover {
     box-shadow: 0 0 6px #232946;
-  }
-  
-  .google-btn:active {
+}
+
+.google-btn:active {
     background: #1669F2;
-  }
+}
