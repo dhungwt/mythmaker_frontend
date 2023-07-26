@@ -30,7 +30,7 @@ function App() {
   useEffect (() =>{
     const getAuthedUser = async () => {
       try{
-        const response = await axios.get("http://localhost:8080/auth/login/success",{
+        const response = await axios.get(process.env.REACT_APP_AUTH_KEY,{
           withCredentials : true
         })
         console.log("response: ", response);

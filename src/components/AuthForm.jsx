@@ -69,14 +69,14 @@ const AuthForm = ({ name, displayName }) => {
                         <h1 className="signInText" style={{ color: "white" }}> {displayName} Form </h1>
                         {/*email input*/}
                         <div className="emailinput">
-                            <label htmlFor="email" >
+                            <label htmlFor="email" style={{color:"pink"}}>
                                 Email
                             </label>
                             <input name="email" type="email" className="box" id="emailBox" placeholder="Enter email..." />
                         </div>
                         {/*password input*/}
                         <div className="passwordinput">
-                            <label htmlFor="password">
+                            <label htmlFor="password" style={{color:"pink"}}>
                                 Password
                             </label>
                             <input name="password" type="password" className="box" placeholder="Enter password..." />
@@ -86,7 +86,7 @@ const AuthForm = ({ name, displayName }) => {
                             <button type="submit" className="submitText">{displayName}</button>
                         </div>
                         {/*if there is error we can handle the error message */}
-                        {error && error.response && <div> {error.response.data.message} </div>}
+                        {error && error.response && <div style={{color:"pink"}}> {error.response.data.message} </div>}
                         {/*Google Oauth button */}
                         <a href="http://localhost:8080/auth/google" className="google-btn">
                             <div className="google-icon-wrapper">
