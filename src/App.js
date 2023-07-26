@@ -4,6 +4,7 @@ import { Login,Signup } from './components/AuthForm';
 
 import CreateStory from './pages/CreateStoryPage/CreateStoryPage';
 
+
 import NavBar from './components/NavBar';
 import UserHomepage from './pages/UserHomepage';
 import HomePage from './pages/HomePage';
@@ -30,7 +31,7 @@ function App() {
   useEffect (() =>{
     const getAuthedUser = async () => {
       try{
-        const response = await axios.get("http://localhost:8080/auth/login/success",{
+        const response = await axios.get("http://localhost:8080/auth/login/success",{ 
           withCredentials : true
         })
         console.log("LOGIN SUCCESS RESPONSE", response)
@@ -46,6 +47,7 @@ function App() {
     } 
 
     if(!isLogin){
+      console.log("isLogin HIT")
       getAuthedUser();
       navigate("/home");
     }

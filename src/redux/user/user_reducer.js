@@ -10,7 +10,7 @@ export default function userReducer(state = defaultUser, action) {
     case userActionTypes.GET_USER:
       return { ...state, ...action.user };
     case userActionTypes.REMOVE_USER:
-      return defaultUser;
+      return {};
     case userActionTypes.FETCH_USER_STORIES:
       return { ...state, storyIds: action.payload };
     case userActionTypes.UPDATE_USER:
