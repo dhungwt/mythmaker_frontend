@@ -229,7 +229,7 @@ function IndividualStoryPage() {
   //once the user click the save if will save the current event to the local storage
   const saveGame = () => {
     //const currentEvent = displayEvent[displayEvent.length-1];
-    localStorage.setItem(`currentEvent_${id}`, currentEvent._id);
+    localStorage.setItem(`currentEvent_${id}`, currentEvent?._id);
     localStorage.setItem(`savedEvent_${id}`, JSON.stringify(displayEvent.map(event => event._id)));
   }
 
