@@ -97,6 +97,11 @@ function StoriesPage() {
       <div className="Stories_Page_Particles">
         <ParticleBackground />
       </div>
+
+      <div className='Stories_Page_Name'>
+          <h1>StoriesPage</h1>
+      </div>
+
       <div
         className="story-card-container"
         style={{
@@ -104,11 +109,32 @@ function StoriesPage() {
           // flexWrap: 'wrap', 
           // backgroundImage: 'url(https://wallpapercave.com/wp/wp2635945.jpg)' ,
           backgroundPosition: 'center'
-        }}>
+        }}
+      >
 
-        <div className='Stories_Page_Name'>
-          <h1>StoriesPage</h1>
+        {/* for search... */}
+        <div className='Stories_Page_Search_Bar'>
+          <div className="inputBox">
+            <input
+              type="text"
+              value={search}
+              onChange={handleSearch}
+              required="required"
+              style={{ height: "32px", margin: "20px" }}
+            />
+            <span>Search by title...</span>
+            <i></i>
+          </div>
         </div>
+
+        <div className='Stories_Page_Display_Stories'>
+          {isLoading ? (
+            <h1>Loading..</h1>
+          )
+            : search.length > 0 ? searchedStories() : paginatedStories()
+          }
+        </div>
+
         <div className='Stories-Page-Pagination'>
           <ThemeProvider theme={theme}>
             <Stack spacing={1}>
@@ -136,52 +162,6 @@ function StoriesPage() {
               {/* <Pagination count={10} color="secondary" /> */}
             </Stack>
           </ThemeProvider>
-        </div>
-
-        {/* for search... */}
-        <div className='Stories_Page_Search_Bar'>
-          <div className="inputBox">
-            <input
-              type="text"
-              value={search}
-              onChange={handleSearch}
-              required="required"
-              style={{ height: "32px", margin: "20px" }}
-            />
-            <span>Search by title...</span>
-            <i></i>
-          </div>
-        </div>
-
-        <div className='Stories_Page_Display_Stories'>
-          {isLoading ? (
-            <h1>Loading..</h1>
-          )
-            : search.length > 0 ? searchedStories() : paginatedStories()
-
-
-            // (
-            //   filterStories.length > 0 ? (
-            //     filterStories.map((storyList) => (
-            //       <StoryCard story={storyList} key={storyList._id} />
-            //     ))
-            // ) 
-            // : 
-            // (
-            // checking if there are any stories
-            // currentPosts.length > 0 ? (
-            // currentPosts.map((storyList) => (
-            //   <StoryCard story={storyList} key={storyList._id} />
-            // )
-            // )
-            // ) : (
-            // if there are no stories then return this
-
-            // <h1>Nothing to return</h1>
-            // )
-            // )
-            // )
-          }
         </div>
 
       </div>
