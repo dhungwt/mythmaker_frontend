@@ -1,0 +1,42 @@
+.particlebackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+}
+
+.homePage {
+    color: #b8c1ec;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.homePageTitle {
+    color: #fffffe;
+    font-size: 60px;
+}
+
+.homePageBtnBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.homePageButton {
+    font-size: 15px;
+    margin: 10px;
+}
+
+.logoImg {
+    max-width: 80%;
+    margin: 20px 0;
+}
+
+@media only screen and (max-width: 950px) {
+    .logoImg{
+        max-width: 90%;
+    }
+}
+

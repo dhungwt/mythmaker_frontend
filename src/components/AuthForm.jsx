@@ -50,7 +50,7 @@ const AuthForm = ({ name, displayName }) => {
         <div className="authform" style={{}}>
             <section className="container" style={{backgroundColor:"#000612", paddingLeft:"20px", border:"20px #b8c1ec solid"}}>
             <form onSubmit={handleSubmit} name={name} className="form">
-                <h1 className="signInText" style={{color:"white"}}> SIGN IN FORM </h1>
+                <h1 className="signInText" style={{color:"white"}}> {displayName} form</h1>
                 {/*email input*/}
                 <div className="emailinput">
                     <label htmlFor="email" >
