@@ -1,17 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/user/user_actions";
 import '../pages/pages.css'
 import MMlogo from "../pages/assets/MMlogo.png"
 // this component will display different links based on whether user is logged in or not
 
-//define the linkbutton that create navigational link with option onclick behavior
-const LinkButton = ({ to, children, onClick }) => (
-    <NavLink to={to} onClick={onClick}>
-         {children}
-     </NavLink>
-);
+// //define the linkbutton that create navigational link with option onclick behavior
+// const LinkButton = ({ to, children, onClick }) => (
+//     <NavLink to={to} onClick={onClick}>
+//          {children}
+//      </NavLink>
+// );
 
 // // //define the component part
 const NavBar = () => {
@@ -84,7 +84,9 @@ const NavBar = () => {
                     <span className="navbar-text"> 
                         {isLoggedIn ? (
                             <div>
-                                <a className="logBtn nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </a>
+
+                                <button className="nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </button>
+
                             </div>
                         ) : (
                             <div className="logBtn notlogin" style={{display:"flex"}}>
