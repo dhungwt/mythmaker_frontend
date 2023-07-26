@@ -134,7 +134,7 @@
 
 .authformsubmit {
   padding: 12px 20px;
-  width: 40%;
+  width: 50%;
   margin-top: 10px;
   display: flex; /* Added: Make the button a flex container */
   justify-content: center; /* Added: Center the text horizontally */
@@ -145,7 +145,7 @@
 }
 
 .authformsubmit:hover {
-  background-color: #fffffe;
+  background-color:#232946;
   border-radius: 20px;
   right: -7px;
   
