@@ -2,7 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-
+import './components.css';
+import '../components/Button/StreamingButton.css'
 
 //this card displays stories the user has played
 function HistoryCard(props) {
@@ -23,30 +24,37 @@ function HistoryCard(props) {
   };
 
   const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
     textAlign: 'center',
-    color: theme.palette.text.secondary,
-    border:"solid 1px", 
-    padding:"25px", 
-    borderRadius:"5px", 
+    color: "white", 
     marginBottom:"10px", 
-    display:"flex",
-    flexWrap:"wrap",
-    justifyContent:"center",
-    // display:"inline-block",
-    width:"50vh",
-    textDecoration:"underline"
+    width:"40vw",
+    fontSize:"17px",
+    border:"solid 1px", 
+    borderRadius:"25px",
+    boxShadow: "0px 0px 30px rgba(254, 252, 252, 0.3)",
   }));
   
   return (
-    <section>
-      
-      <Item onClick={handleHistoryClick} >
-        {history?.Title}
-      </Item>
-    </section>
+    <div >
+      <div 
+      style={{
+        border:"solid white", 
+        padding:"20px",
+        borderRadius:"20px",  
+        marginBottom:"20px",
+        boxShadow: "0px 0px 30px rgba(254, 252, 252, 0.3)"
+    }}>
+      <p style={{
+        color:"white", textAlign:"center" }}> 
+        <strong>Replay</strong> 
+      </p>
+        <Item onClick={handleHistoryClick}
+        className="btn" style={{}} 
+        >
+          {history?.Title}
+        </Item>
+        </div>
+      </div>
   )
 }
 

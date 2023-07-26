@@ -50,6 +50,7 @@ const AuthForm = ({ name, displayName }) => {
 
     return (
         <div className="authform" style={{}}>
+
             <div className="Auth_Form_Background" style={{
                 position: "absolute",
                 zIndex: "1",
@@ -99,6 +100,7 @@ const AuthForm = ({ name, displayName }) => {
                     </div>
 
                 </section>
+
             </div>
         </div>
 
