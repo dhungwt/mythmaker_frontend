@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 
+  .logo-container {
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  .logo-container > img {
+    pointer-events: none;
+  }
+
   .navbar {
+    border-bottom: 3px double #d4939d;
     height: 64px;
     width: 100%;
     display: flex;
@@ -40,6 +50,10 @@
     border-radius: 10px;
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
                 inset -2px -2px 3px rgba(0, 0, 0, 0.6); 
+  }
+
+  .logBtn {
+    margin: 0 20px;
   }
 
   /* .nav-link:hover{

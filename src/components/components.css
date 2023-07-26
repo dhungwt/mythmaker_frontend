@@ -125,13 +125,14 @@
 
 .side {
   display: flex;
+  
   justify-content: center;
   align-items: center;
 }
 
 .side img {
-  width: 500px;
-  height: 450px;
+  width: 400px;
+  height: 380px;
   object-fit: cover;
   border-radius: 2px; /* Apply border-radius to the image */
 }
