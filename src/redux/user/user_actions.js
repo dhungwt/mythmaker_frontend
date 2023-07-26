@@ -110,9 +110,14 @@ export const oAuth = (_id, password, googleId, storyHistory, storyIds) => async 
 export const logout = () => async (dispatch) => {
     try {
         console.log("hey, are you here!")
-        await axios.post("http://localhost:8080/api/users/auth/logout", {headers: {
+        // const response = await axios.post(
+        //     "http://localhost:8080/api/logout",
+        //     {},
+        //     { withCredentials: true }
+        //   );
+        await axios.post("http://localhost:8080/api/users/auth/logout",{}, {headers: {
             "Access-Control-Allow-Origin": "http://localhost:3000"
-    }});
+    }, withCredentials:true });
         console.log('Before dispatch removeUser');
         dispatch(removeUser());
         console.log('After dispatch removeUser');

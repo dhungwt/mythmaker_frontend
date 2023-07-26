@@ -10,16 +10,9 @@
     font-family: 'Cinzel Decorative', cursive;
     font-family: 'EB Garamond', serif;  
   }
-  .logo-container{
-        
-  }
 
   .navbar h1 {
     margin: 0;
-  }
-  
-  .navbar nav {
-    /* margin-left: auto; */
   }
   
   .navbar a {
@@ -83,7 +76,7 @@ z-index: 1;
 
 .story-card-container{
   position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
 .Stories_Page_Name{
@@ -107,18 +100,21 @@ z-index: 1;
   /* background-color: white; Change this to match your color scheme */
 }
 
+
+
 .Stories_Page_Search_Bar .inputBox {
   position: relative;
+  display: block;
+  margin: 0 auto;
   width: 300px; 
   height: 40px; 
   /* bottom:20px; */
   border-radius: 5px;
   /* overflow: hidden; */
-  margin-top: 100px;
 }
 
 .Stories_Page_Search_Bar .inputBox:last-child {
-  margin-bottom: 0;
+  margin-bottom: 30px;
 }
 
 .Stories_Page_Search_Bar .inputBox input {
@@ -177,13 +173,14 @@ z-index: 1;
 }
 
 .Stories_Page_Display_Stories{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5rem;
   justify-content: center; 
-  margin-right: 1150px;
+  /* margin-right: 150px;
   margin-top: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 100px; */
   
 }
 
@@ -195,7 +192,7 @@ z-index: 1;
   }
   
   .Stories_Page_Display_Stories {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
