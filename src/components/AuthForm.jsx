@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import './components.css'
 import mythmakerpic from './mythmakerpic.png'
 import ParticleBackground from "./Particles/ParticleBackground";
+import "./AuthForm_Google.css";
 
 
 const AuthForm = ({ name, displayName }) => {
@@ -57,12 +58,12 @@ const AuthForm = ({ name, displayName }) => {
 
             </div>
             <div className="Auth_Form_Container" style={{
-                position:"relative",
-                zIndex:"2",
+                position: "relative",
+                zIndex: "2",
             }}>
 
 
-                <section className="container" style={{ backgroundColor: "#232946", paddingLeft: "20px", border: "20px #b8c1ec solid", marginTop:"10px" }}>
+                <section className="container" style={{ backgroundColor: "#232946", paddingLeft: "20px", border: "20px #b8c1ec solid", marginTop: "10px" }}>
                     <form onSubmit={handleSubmit} name={name} className="form">
                         <h1 className="signInText" style={{ color: "white" }}> {displayName} Form </h1>
                         {/*email input*/}
@@ -86,7 +87,12 @@ const AuthForm = ({ name, displayName }) => {
                         {/*if there is error we can handle the error message */}
                         {error && error.response && <div> {error.response.data.message} </div>}
                         {/*Google Oauth button */}
-                        <a href="http://localhost:8080/auth/google" >{displayName} with Google</a>
+                        <a href="http://localhost:8080/auth/google" className="google-btn">
+                            <div className="google-icon-wrapper">
+                                <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
+                            </div>
+                            <p className="btn-text"><b>{displayName} with Google</b></p>
+                        </a>
                     </form>
                     <div className="side">
                         <img src={mythmakerpic} alt="myth maker logo" style={{ maxWidth: "100%" }} />
