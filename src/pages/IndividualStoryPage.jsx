@@ -1,6 +1,6 @@
 import "./StyleSheets/individualStoryPage.css"
 
-import React, { Fragment, useEffect, useRef, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { fetchIndividualStoryThunk } from '../redux/story/story_actions';

@@ -35,7 +35,7 @@ function App() {
         })
         console.log("response: ", response);
         console.log("LOGIN SUCCESS RESPONSE", response)
-        if(response.status==200){
+        if(response.status===200){
           await dispatch(oAuth(response.data.user._id,response.data.user.password, response.data.user.googleId, response.data.user.storyHistory, response.data.user.storyIds )); 
           navigate("/home");
         }else{
