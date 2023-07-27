@@ -89,7 +89,7 @@ const AuthForm = ({ name, displayName }) => {
                         {/*if there is error we can handle the error message */}
                         {error && error.response && <div style={{color:"pink"}}> {error.response.data.message} </div>}
                         {/*Google Oauth button */}
-                        <a href={process.env.REACT_APP_GOOGLE_KEY} className="google-btn">
+                        <a href={process.env.REACT_APP_GOOGLE_KEY} className="google-btn" style={{maxWidth:"90%"}}>
                             <div className="google-icon-wrapper">
                                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
                             </div>

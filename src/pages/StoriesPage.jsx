@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllStoriesThunk } from '../redux/story/story_actions';
 import StoryCard from '../components/StoryCard';
 import './pages.css';
+// import Pagination from '../components/Pagination';
 // import * as React from 'react';
-import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import ParticleBackground from '../components/Particles/ParticleBackground';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
 
 
 function StoriesPage() {
@@ -80,20 +81,17 @@ function StoriesPage() {
       )
     }).slice(firstPostIndex, lastPostIndex)
   }
-
   const theme = createTheme({
-    // palette: {
-    //   primary: {
-    //     main: '#EEBBC3', // Set your desired custom primary color here
-    //   },
-    //   secondary: {
-    //     main: '#EEBBC3', // Set your desired custom secondary color here
-    //   },
-    // },
+    palette: {
+      primary: {
+        main: '#EEBBC3', // Set your desired custom primary color here
+      },
+      secondary: {
+        main: '#EEBBC3', // Set your desired custom secondary color here
+      },
+    },
   });
 
-  
-  
   return (
     <div>
       <div className="Stories_Page_Particles">
@@ -165,9 +163,8 @@ function StoriesPage() {
             </Stack>
           </ThemeProvider>
         </div>
-        </div>
       </div>
-    
+    </div>
   );
 }
 
