@@ -28,7 +28,7 @@
 import React from "react";
 import "./components.css";
 import { useNavigate } from "react-router-dom";
-import books from "../pages/assets/books";
+import books from "../pages/assets/books.png";
 
 function StoryCard(props) {
   // const { title, event } = props;
