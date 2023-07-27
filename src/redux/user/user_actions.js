@@ -15,7 +15,7 @@ export const updateEntireUserThunk =  (userID, data) => {
     return async (dispatch) => {  
         console.log("FIRING UPDATE ENTIRE USER THUNK");
         try{
-            const response = await axios.patch(`http://localhost:8080/api/users/${userID}`, data)
+            const response = await axios.patch(`${process.env.REACT_APP_USER_KEY}${userID}`, data)
             dispatch(updateEntireUser(response.data))
             console.log(response, "updateEntireUserThunk successful")
         } catch (error) {
@@ -54,7 +54,7 @@ const removeUser = () => {
 export const me = () => async (dispatch) => {
     try {
         console.log("FETCHING GET USER")
-        const res = await axios.get("http://localhost:8080/api/users/auth/me");
+        const res = await axios.get(`${process.env.REACT_APP_USER_KEY}auth/me`);
         dispatch(getUser(res.data || defaultUser));
         console.log("GET USER IS DONE")
     } catch (error) {
@@ -67,7 +67,7 @@ export const fetchUserStoriesThunk = (userID) => {
     return async (dispatch) => {
         try {
             //change this url to user stories api once it is set up
-            const response = await axios.get(`http://localhost:8080/api/users/${userID}/`);
+            const response = await axios.get(`${process.env.REACT_APP_USER_KEY}${userID}/`);
             console.log("data", response.data);
             dispatch(fetchUserStories(response.data.storyIds));
             // no route to access all the stories of a user yet  
@@ -81,7 +81,7 @@ export const fetchUserStoriesThunk = (userID) => {
 export const auth = (email, password, method) => async (dispatch) => {
     let res;
     try {
-        res = await axios.post(`http://localhost:8080/api/users/auth/${method}`, {
+        res = await axios.post(`${process.env.REACT_APP_USER_KEY}auth/${method}`, {
             email,
             password,
         });
@@ -115,8 +115,8 @@ export const logout = () => async (dispatch) => {
         //     {},
         //     { withCredentials: true }
         //   );
-        await axios.post("http://localhost:8080/api/users/auth/logout",{}, {headers: {
-            "Access-Control-Allow-Origin": "http://localhost:3000"
+        await axios.post(`${process.env.REACT_APP_USER_KEY}auth/logout`,{}, {headers: {
+            "Access-Control-Allow-Origin": "https://mythmaker.netlify.app/"
     }, withCredentials:true });
         console.log('Before dispatch removeUser');
         dispatch(removeUser());
@@ -130,7 +130,7 @@ export const updatedUserThunk = (userId, storyId) => {
     return async (dispatch) => {
         try {
             //editing story id
-            const response = await axios.patch(`http://localhost:8080/api/users/${userId}`, { storyId });
+            const response = await axios.patch(`${process.env.REACT_APP_USER_KEY}${userId}`, { storyId });
             //dispatch the data
             dispatch({
                 type: userActionTypes.UPDATE_USER,

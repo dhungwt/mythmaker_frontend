@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom"; // Import Link for navigation
-import { auth } from '../components/Auth'
-import {LogIn, Signup} from '../components/AuthForm'
+import { Link } from "react-router-dom"; // Import Link for navigation
+// import { auth } from '../components/Auth'
+// import {LogIn, Signup} from '../components/AuthForm'
 import { useSelector } from "react-redux"; 
 import ParticleBackground from "../components/Particles/ParticleBackground";
 import "./StyleSheets/homePage.css";

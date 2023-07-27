@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 import { auth } from "../redux/user/user_actions";
 import { useNavigate } from "react-router-dom";
 import './components.css'
-import mythmakerpic from './mythmakerpic.png'
+//import mythmakerpic from './mythmakerpic.png'
 import ParticleBackground from "./Particles/ParticleBackground";
 import "./AuthForm_Google.css";
+import MMlogoDog from "../pages/assets/MMlogoDog.png"
 
 
 const AuthForm = ({ name, displayName }) => {
@@ -69,26 +70,26 @@ const AuthForm = ({ name, displayName }) => {
                         <h1 className="signInText" style={{ color: "white" }}> {displayName} Form </h1>
                         {/*email input*/}
                         <div className="emailinput">
-                            <label htmlFor="email" >
+                            <label htmlFor="email" style={{color:"pink"}}>
                                 Email
                             </label>
-                            <input name="email" type="email" className="box" id="emailBox" placeholder="Enter email..." />
+                            <input name="email" type="email" className="box" id="emailBox" placeholder="Enter email..." required/>
                         </div>
                         {/*password input*/}
                         <div className="passwordinput">
-                            <label htmlFor="password">
+                            <label htmlFor="password" style={{color:"pink"}}>
                                 Password
                             </label>
-                            <input name="password" type="password" className="box" placeholder="Enter password..." />
+                            <input name="password" type="password" className="box" placeholder="Enter password..." required/>
                         </div>
                         {/*for the submit button */}
                         <div className="authformsubmit">
                             <button type="submit" className="submitText">{displayName}</button>
                         </div>
                         {/*if there is error we can handle the error message */}
-                        {error && error.response && <div> {error.response.data.message} </div>}
+                        {error && error.response && <div style={{color:"pink"}}> {error.response.data.message} </div>}
                         {/*Google Oauth button */}
-                        <a href="http://localhost:8080/auth/google" className="google-btn">
+                        <a href={process.env.REACT_APP_GOOGLE_KEY} className="google-btn">
                             <div className="google-icon-wrapper">
                                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
                             </div>
@@ -96,7 +97,7 @@ const AuthForm = ({ name, displayName }) => {
                         </a>
                     </form>
                     <div className="side">
-                        <img src={mythmakerpic} alt="myth maker logo" style={{ maxWidth: "100%" }} />
+                        <img src={MMlogoDog} alt="BoW WoW" style={{ maxWidth: "100%", margin:"10px", pointerEvents:"none" }} />
                     </div>
 
                 </section>
