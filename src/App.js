@@ -21,6 +21,8 @@ import { useDispatch, useSelector } from 'react-redux';
 //css imports
 import '../src/pages/pages.css';
 
+axios.defaults.withCredentials = true;
+
 
 function App() {
   const navigate = useNavigate();
@@ -30,9 +32,8 @@ function App() {
   useEffect (() =>{
     const getAuthedUser = async () => {
       try{
-        const response = await axios.get(process.env.REACT_APP_AUTH_KEY,{
-          withCredentials : true
-        })
+        console.log("Before Login Success : ")
+        const response = await axios.get(process.env.REACT_APP_AUTH_KEY)
         console.log("response: ", response);
         console.log("LOGIN SUCCESS RESPONSE", response)
         if(response.status===200){
