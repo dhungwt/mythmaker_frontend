@@ -116,7 +116,7 @@ export const logout = () => async (dispatch) => {
         //     { withCredentials: true }
         //   );
         await axios.post(`${process.env.REACT_APP_USER_KEY}auth/logout`,{}, {headers: {
-            "Access-Control-Allow-Origin": "http://localhost:3000"
+            "Access-Control-Allow-Origin": "https://mythmaker.netlify.app/"
     }, withCredentials:true });
         console.log('Before dispatch removeUser');
         dispatch(removeUser());
