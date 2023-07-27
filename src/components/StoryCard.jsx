@@ -28,6 +28,7 @@
 import React from "react";
 import "./components.css";
 import { useNavigate } from "react-router-dom";
+import books from "../pages/assets/books";
 
 function StoryCard(props) {
   // const { title, event } = props;
@@ -54,7 +55,7 @@ function StoryCard(props) {
       <div className="card">
         <image
           className="card-img-top"
-          src="https://i.imgur.com/t1lXeFj.png"
+          src={books}
           alt="Card image cap"
           // Set a fixed height for the card image
         />
