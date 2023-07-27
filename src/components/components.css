@@ -175,13 +175,13 @@
   color: #ffffff;
   border-radius: 5px;
   margin: 15px;
-  box-shadow: 10px 10px 10px 0 #ffffff50;
+  box-shadow: 10px 10px 10px 0 #b8c1ec80;
   width: 300px;
-  height: 400px;
+  height: fit-content;
 }
 
 .card {
-  background-color: #ffffffc0;
+  background-color: #b8c1ec50;
 }
 
 .card-button {
