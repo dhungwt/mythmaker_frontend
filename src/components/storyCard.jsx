@@ -25,7 +25,7 @@
 // export default StoryCard;
 //need props, which is why we imported storycard into storiespage
 //this card is for the browse all stories page
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './components.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -53,7 +53,7 @@ function StoryCard(props) {
     
   <div className="story-card">
     <div className="card"> 
-      <img className="card-img-top" src="https://i.imgur.com/t1lXeFj.png" alt="Card image cap"
+      <image className="card-img-top" src="https://i.imgur.com/t1lXeFj.png" alt="Card image cap"
        // Set a fixed height for the card image 
        />
       

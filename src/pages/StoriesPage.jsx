@@ -129,7 +129,7 @@ function StoriesPage() {
 
         <div className='Stories_Page_Display_Stories'>
           {isLoading ? (
-            <h1>Loading..</h1>
+            <h1 style={{color:"#fff"}}>Loading..</h1>
           )
             : search.length > 0 ? searchedStories() : paginatedStories()
           }

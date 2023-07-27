@@ -18,7 +18,7 @@
 
 .eventContainer{
     background-color: black;
-    border-top: 3px double #eebbc3;
+    /* border-top: 3px double #eebbc3; */
     border-bottom: 5px double #eebbc3;
     display: grid;
     grid-template-columns: 67% auto;

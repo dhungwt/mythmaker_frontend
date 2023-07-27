@@ -18,7 +18,7 @@ export const fetchIndividualStoryByCreatorIdThunk = (userId) =>{
 
   return async (dispatch) => {
     try{
-      const response = await axios.get(`http://localhost:8080/api/stories/getCreatorStoryByTitle/${userId}`)
+      const response = await axios.get(`${process.env.REACT_APP_STORY_KEY}getCreatorStoryByTitle/${userId}`)
       // dispatch(fetchIndividualStoryByCreatorId(response.data.title));
       console.log(response.data, "i am response dataa")
       dispatch(fetchIndividualStoryByCreatorId(response.data))
@@ -45,7 +45,7 @@ export const  fetchIndividualStoryThunk = (id) => {
 
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/stories/${id}`);
+      const response = await axios.get(`${process.env.REACT_APP_STORY_KEY}${id}`);
       dispatch(fetchIndividualStory(response.data));
     } catch (error) {
       console.log("fetchIndividualStoryThunk error : ", error);
@@ -62,7 +62,7 @@ const editStory = (story) => ({
 export const editStoryThunk = (updatedStory) => async (dispatch) =>{
     try {
         console.log("EDIT STORY THUNK IS RUNNING");
-        const response = await axios.patch(`http://localhost:8080/api/stories/${updatedStory._id}`,updatedStory);
+        const response = await axios.patch(`${process.env.REACT_APP_STORY_KEY}${updatedStory._id}`,updatedStory);
         dispatch(editStory(response.data));
         console.log("EDIT STORY IS COMPLETED");
     } catch (error) {
@@ -75,7 +75,7 @@ export const editStoryCharacterIdThunk = (storyId, characterId) => async (dispat
     try {
         console.log("EDIT STORY CHARACTER ID THUNK IS ACTIVE");
         //add the character id to the array of characterid in the story
-        const response = await axios.patch(`http://localhost:8080/api/stories/${storyId}/${characterId}`);
+        const response = await axios.patch(`${process.env.REACT_APP_STORY_KEY}${storyId}/${characterId}`);
       
         dispatch(editStory(response.data));
         
@@ -97,7 +97,7 @@ export const fetchAllStories = (payload) => {
 export const fetchAllStoriesThunk = () => {
   return async (dispatch) => {               //wrong link for now
     try{
-    const response = await axios.get(`http://localhost:8080/api/stories/`)
+    const response = await axios.get(process.env.REACT_APP_STORY_KEY)
     console.log('FETCHALLSTORIES THUNK COMPLETE')
     dispatch(fetchAllStories(response.data));
     } catch (error) {
@@ -137,7 +137,7 @@ const deleteStory = (storyId) =>({
 export const deleteStoryThunk = (storyId) => async(dispatch) =>{
     try {
         console.log("Delete STORY THUNK IS RUNNING");
-        await axios.delete(`http://localhost:8080/api/stories/${storyId}`);
+        await axios.delete(`${process.env.REACT_APP_STORY_KEY}${storyId}`);
         dispatch(deleteStory(storyId));
         console.log("DELETE STORY IS COMPLETED");
     } catch (error) {

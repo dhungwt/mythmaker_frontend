@@ -1,4 +1,4 @@
-body.edit-event-body {
+.Edit_Event_Page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ body.edit-event-body {
     margin: 15px;
     padding: 20px;
     border-radius: 5px;
-    background: #fff;
+    background: #ffffffc0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
