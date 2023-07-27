@@ -53,7 +53,7 @@ function StoryCard(props) {
 
     <div className="story-card">
       <div className="card">
-        <image
+        <img
           className="card-img-top"
           src={books}
           alt="Card image cap"
