@@ -12,13 +12,19 @@
   display:flex;
   align-items: center;
   justify-content: center;
-  
   margin: 100px 0px;
   padding: 0;
   box-sizing: border-box;
   border: none;
+  max-width: 100%;
 
 }
+
+/* LOGIN FORM */
+
+  .Auth_Form_Container{
+    max-width: 95%;
+  }
 
 .container {
   background-color: #000;
@@ -27,12 +33,11 @@
   border: 30px solid black;
   display: flex;
   padding: 0px;
-  /* height: 500px; */
   width: 1000px;
+  max-width: 95%;
   border: 1px solid black;
   margin: auto;
   margin-top: 12vh;
-  /* box-shadow: 15px 15px black; */
   box-shadow: 12px 12px #eebbc3
 }
 /* @media (max-width: 768px) */
@@ -42,13 +47,13 @@
   }
 } 
 
-/* LOGIN FORM */
 .form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex: 1; /* To make the form take up the left side */
   align-items: center;
+  max-width: 95%;
  
 }
 .form label{
@@ -70,6 +75,7 @@
   padding: 5px;
   margin: 3px 0px 25px; 
   min-width: 250px;
+  max-width: 90%;
   width: 65%;
   border: 1px solid black;
   outline: none;
@@ -79,6 +85,7 @@
 
 .submitText {
   border: 0;
+  max-width: 90%;
   line-height: 2.5;
   padding: 0 20px;
   font-size: 1rem;
@@ -157,7 +164,6 @@
     /* is this font weight needed for a feature? */
   }
 }
-
 .creatorStoryTitle{
   border:solid 5px pink;
   border-Radius:20px;
@@ -177,13 +183,13 @@
   color: #ffffff;
   border-radius: 5px;
   margin: 15px;
-  box-shadow: 10px 10px 10px 0 #ffffff50;
+  box-shadow: 10px 10px 10px 0 #b8c1ec80;
   width: 300px;
-  height: 400px;
+  height: fit-content;
 }
 
 .card {
-  background-color: #ffffffc0;
+  background-color: #b8c1ec50;
 }
 
 .card-button {
