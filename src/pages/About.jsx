@@ -23,6 +23,8 @@ import home from "../pages/assets/home.png";
 import homepage from "../pages/assets/home page.png";
 import login from "../pages/assets/login and sign up.png";
 import "./AboutCss.css";
+import ParticleBackground from "../components/Particles/ParticleBackground";
+import ScrollButton from "../components/ScrollButton/ScrollButton";
 
 
 
@@ -49,7 +51,7 @@ const AboutPage = () => {
                 imagePath: storiescreated,
                 text: "This section is designed to modify and play the narratives you've crafted. Here, you can make necessary alterations to your story, be it minor adjustments or major plot twists. Once editing is done, you can play through your narrative, experiencing it firsthand."
             },
-            
+
         ],
         "Create Story": [
             {
@@ -76,7 +78,7 @@ const AboutPage = () => {
                 imagePath: savedelete,
                 text: "The final section is about saving any changes made to the story or deleting the story if desired. It's a safeguard for your creative process, ensuring that all your edits are stored correctly, or enabling you to start fresh if you decide to discard the current story. "
             },
-            
+
         ],
         "Edit Event": [
             {
@@ -103,7 +105,7 @@ const AboutPage = () => {
                 imagePath: editevent,
                 text: "In this final section, you can make changes to any aspect of the event that you've previously created or selected. This includes modifying characters, the event description, or the options available to characters."
             },
-            
+
         ],
         "Browse Stories": [
             {
@@ -118,7 +120,7 @@ const AboutPage = () => {
                 imagePath: storyname,
                 text: "In this section, by clicking on a story's name, you can access to play the story. "
             },
-            
+
         ],
         "Play Story": [
             {
@@ -182,14 +184,20 @@ const AboutPage = () => {
 
     return (
         <div className="about_page_root">
-            <AboutNavBar majorSections={Object.keys(majorSectionsData)} />
-            {Object.entries(majorSectionsData).map(([majorSection, sections]) =>
-                <AboutMajorSection 
-                    key={majorSection}
-                    title={majorSection}
-                    sections={sections}
-                />
-            )}
+            <div className="about_page_background">
+                <ParticleBackground />
+            </div>
+            <div className="about_page_container">
+                <AboutNavBar majorSections={Object.keys(majorSectionsData)} />
+                {Object.entries(majorSectionsData).map(([majorSection, sections]) =>
+                    <AboutMajorSection
+                        key={majorSection}
+                        title={majorSection}
+                        sections={sections}
+                    />
+                )}
+                <ScrollButton />
+            </div>
         </div>
     );
 };

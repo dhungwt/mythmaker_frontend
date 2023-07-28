@@ -11,9 +11,10 @@
 }
 
 .majorsection_text {
-    font-size: 28px;
+    font-size: 38px;
     margin: 10px 0;
     font-family: 'EB Garamond', serif;  
+    color: white;
 }
 
 .majorsections_Container {
