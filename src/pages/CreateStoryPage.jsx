@@ -9,6 +9,7 @@ import { fetchIndividualStoryThunk } from "../redux/story/story_actions";
 import { fetchAllEventsByStoryThunk } from "../redux/event/event_actions";
 import CharacterList from "../components/CharacterList/CharacterList";
 import DisplayEvent from "../components/EventPart/DispalyEvent/DisplayEvent";
+import ScrollButton from "../components/ScrollButton/ScrollButton";
 
 const CreateStory = () => {
     const dispatch = useDispatch();
@@ -129,6 +130,7 @@ const CreateStory = () => {
                 <button onClick={handleSaveChanges}>Save Changes</button>
                 <button onClick={handleDeleteStory}>Delete Story</button>
             </div>
+            <ScrollButton />
         </div>
     );
 

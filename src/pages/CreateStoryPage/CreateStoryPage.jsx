@@ -13,6 +13,7 @@ import "./CreateStoryPage.css";
 import "../../components/Button/StreamingButton.css";
 import "../../components/Button/Dropdown.css";
 import ParticleBackground from "../../components/Particles/ParticleBackground.js";
+import ScrollButton from "../../components/ScrollButton/ScrollButton";
 
 const CreateStory = () => {
   const dispatch = useDispatch();
@@ -153,6 +154,7 @@ const CreateStory = () => {
               <button className="btn" onClick={handleDeleteStory}>
                 Delete Story
               </button>
+              <ScrollButton />
             </div>
           </div>
         </div>
