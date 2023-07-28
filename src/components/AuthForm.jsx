@@ -83,7 +83,7 @@ const AuthForm = ({ name, displayName }) => {
                         </div>
                         
                         {/*if there is error we can handle the error message */}
-                        {error && error.response && <div style={{color:"pink"}}> {error.response.data.message} </div>}
+                        {error && error.response && <div style={{color:"pink", textAlign:"center"}}> {error.response.data.message ==="Email already registered" ? error.response.data.message : error.response.data.message&&"Password Incorrect Or Email Not Register"} </div>}
                         {/*for the submit button */}
                         <div className="authformsubmit">
                             <button type="submit" className="submitText">{displayName}</button>
