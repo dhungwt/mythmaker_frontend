@@ -98,7 +98,7 @@ const EditEvent = () => {
                 setNewEventOptions(old => [...old, { index, option }]);
             }
 
-            setOptionSaveMsg(`Option ${index+1} Is Successfully Change!`)
+            setOptionSaveMsg(`Option ${index+1} Is Successfully Changed!`)
         } else if (option.name !== "Default Option Name") {
             // Else, consider it as a new option
             const existingOptionIndex = newEventOptions.findIndex(e => e.index === index);
@@ -198,6 +198,18 @@ const EditEvent = () => {
         navigate(`/createStory/${eventStoryId}`);
     };
 
+    const handleBackBtn = () => {
+        if(unsavedChanges){
+            if(window.confirm("You will lost all your unsave change if you leave now. Are you sure?")){
+               navigate(`/createStory/${eventStoryId}`) 
+            } else {
+                return;
+            }
+        }
+        
+        navigate(`/createStory/${eventStoryId}`)
+    }
+
     //fetch data and fill the form by the event value
     useEffect(() => {
         const fetcheventData = async () => {
@@ -253,7 +265,7 @@ const EditEvent = () => {
                 <div className="Edit_Event_Name">
                     <h2 className="boldTitle">Describe your event:</h2>
                     <p>Event Name:</p>
-                    <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
+                    <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" readonly="readonly" disabled="disabled"/>
 
                     <p>Event Text:</p>
                     <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Event Text" />
@@ -292,6 +304,7 @@ const EditEvent = () => {
                 </div>
                 <div className="Edit_Event_Page_Edit">
                     <button className="btn" onClick={handleEditEvent}>Edit Event</button>
+                    <button className="btn" onClick={handleBackBtn}>Back</button>
                 </div>
             </div>
         </div>

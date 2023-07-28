@@ -63,14 +63,14 @@ function IndividualStoryPage() {
           dispatch(updateEntireUserThunk(user._id, newHistory));
         }else if (!exist){
           let newArr = { storyHistory: [id, ...user.storyHistory] };
-          console.log("After NEWARR :",newArr )
+          //console.log("After NEWARR :",newArr )
           dispatch(updateEntireUserThunk(user._id, newArr));
-          console.log(newArr, "im newArr and im working");
+          //console.log(newArr, "im newArr and im working");
         }
       } else {
         let newArr = { storyHistory: [id] };
         dispatch(updateEntireUserThunk(user._id, newArr))
-        console.log("user DNE");
+        //console.log("user DNE");
       }
     }
   }, [story]);
@@ -118,7 +118,7 @@ function IndividualStoryPage() {
   const addNextEvent = (option) => {
     setTyping(true);
     const newEvent = eventObj[option?.next]
-    console.log('End of the story?', newEvent);
+    //console.log('End of the story?', newEvent);
 
     setSpeedUp(false);
 

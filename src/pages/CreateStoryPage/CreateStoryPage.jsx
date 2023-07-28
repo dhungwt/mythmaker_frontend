@@ -74,8 +74,9 @@ const CreateStory = () => {
         _id: storyId,
         title: storyTitle, //send the new title here
       };
-      await dispatch(editStoryThunk(updatedStory));
-      console.log("Changes saved successfully");
+      await dispatch(editStoryThunk(updatedStory))
+      .then((response) => { navigate("/home") });
+      console.log("Changes saved successfully, ", dispatch);
     } catch (error) {
       console.log("Error saving changes:", error);
     }
