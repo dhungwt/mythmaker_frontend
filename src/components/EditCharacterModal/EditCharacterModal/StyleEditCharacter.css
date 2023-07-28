@@ -1,3 +1,11 @@
+.bold {
+    font-weight: bold;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
 .EditCharacter {
     margin: 20px;
     padding: 20px;

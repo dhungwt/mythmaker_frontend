@@ -77,7 +77,7 @@ const UserHomepage = () => {
   const handleCreateStory = async () => {
     //create the new character
     const newCharacter = await dispatch(addCharacterThunk(defaultCharacter));
-    console.log("Where si the new Character:", newCharacter);
+    //console.log("Where si the new Character:", newCharacter);
     //create the default option
     const defaultOption = {
       name: "Default Option Name",

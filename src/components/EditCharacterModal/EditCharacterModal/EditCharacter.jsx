@@ -1,3 +1,5 @@
+// edit exist character component file
+
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -50,15 +52,15 @@ function EditCharacter({ character }) {
 
     return (
         <div className="EditCharacter">
-            <h2>{character.name}</h2>
+            <h2 className="capitalize">{character.name}</h2>
             <button className="btn" onClick={handleEdit}>Edit</button>
             {isPop && (
                 <div className="edit-character-form">
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="name">Name:</label>
+                        <label className="bold" htmlFor="name">Name:</label>
                         <input type="text" id="character-name" name="name"
                             value={characterName} onChange={handleNameChange} required />
-                        <button className="btn" type="submit">Submit</button>
+                        <button className="btn" type="submit">Submit Change</button>
                         <button className="btn" type="button" onClick={handleCancel}>Cancel</button>
 
 
