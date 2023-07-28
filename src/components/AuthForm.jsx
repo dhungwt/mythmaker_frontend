@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { auth } from "../redux/user/user_actions";
 import { useNavigate } from "react-router-dom";
 import './components.css'
-//import mythmakerpic from './mythmakerpic.png'
 import ParticleBackground from "./Particles/ParticleBackground";
 import "./AuthForm_Google.css";
 import MMlogoDog from "../pages/assets/MMlogoDog.png"

@@ -20,6 +20,12 @@
 
 }
 
+/* LOGIN FORM */
+
+  .Auth_Form_Container{
+    max-width: 95%;
+  }
+
 .container {
   background-color: #000;
   margin-top: 50px;
@@ -41,7 +47,6 @@
   }
 } 
 
-/* LOGIN FORM */
 .form {
   display: flex;
   flex-direction: column;
