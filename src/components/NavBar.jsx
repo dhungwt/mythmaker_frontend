@@ -90,7 +90,7 @@ const NavBar = () => {
                         {isLoggedIn ? (
                             <div>
 
-                                <button className="nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </button>
+                                <a className="nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </a>
 
                             </div>
                         ) : (
