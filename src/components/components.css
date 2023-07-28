@@ -190,6 +190,7 @@
   box-shadow: 10px 10px 10px 0 #b8c1ec80;
   width: 300px;
   height: fit-content;
+  cursor: pointer;
 }
 
 .card {
