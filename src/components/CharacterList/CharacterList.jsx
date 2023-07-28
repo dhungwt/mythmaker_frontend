@@ -7,7 +7,7 @@ import EditCharacter from "../EditCharacterModal/EditCharacterModal/EditCharacte
 import "../../components/Button/StreamingButton.css";
 import "../Button/Dropdown.css";
 
-function CharacterList({ storyId, onCharacterChange }) {
+function CharacterList({ storyId, onCharacterChange, setDeletedCharacterMsg }) {
     //dispatch the thunk
     const dispatch = useDispatch();
 
@@ -33,8 +33,13 @@ function CharacterList({ storyId, onCharacterChange }) {
 
     //use to delete the character
     const handleCharacterDelete = (characterId) => {
+        let tempCharacter = selectedCharacter.name
         dispatch(deleteCharacterThunk(characterId));
         setSelectedCharacterId(null);
+        setDeletedCharacterMsg(`Character '${tempCharacter}' is deleted!`)
+        setTimeout(() => {
+            setDeletedCharacterMsg("");
+          }, 10000);
     }
 
     //when the drop down meun character change the character id will change
@@ -55,11 +60,11 @@ function CharacterList({ storyId, onCharacterChange }) {
             <AddCharacter storyId={storyId} />
             {story && story.characters && (
                 <form>
-                    <select className="custom-dropdown" onChange={handleCharacterChange} required>
+                    <select className="custom-dropdown capitalize" onChange={handleCharacterChange} required>
 
                         <option className="btn">Select a Character</option>
                         {story.characters.map((character, index) => (
-                            <option key={index} value={character._id}>
+                            <option className="capitalize" key={index} value={character._id}>
                                 {character.name}
                             </option>
                         ))}
@@ -72,10 +77,10 @@ function CharacterList({ storyId, onCharacterChange }) {
 
 
             {selectedCharacter && (
-                <>
+                <div className="selectedCharacter">
                     <EditCharacter character={selectedCharacter} />
-                    <button className="btn" onClick={() => handleCharacterDelete(selectedCharacter._id)}>Delete</button>
-                </>
+                    <button className="btn" onClick={() => handleCharacterDelete(selectedCharacter._id)}>Delete Character</button>
+                </div>
             )}
         </div>
     );

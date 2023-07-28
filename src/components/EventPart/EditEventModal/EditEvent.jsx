@@ -7,6 +7,7 @@ import { editEventThunk } from "../../../redux/event/event_actions";
 import { editStoryThunk, fetchIndividualStoryThunk } from "../../../redux/story/story_actions";
 import { addEventThunk } from "../../../redux/event/event_actions";
 import CharacterList from "../../CharacterList/CharacterList";
+import Notification from "../../Notification";
 import './EditEvent.css';
 import '../../Button/StreamingButton.css';
 import ParticleBackground from "../../Particles/ParticleBackground";
@@ -48,6 +49,12 @@ const EditEvent = () => {
     // Store the initial 'next' values for each option
     const [initialOptionNextValues, setInitialOptionNextValues] = useState([null, null, null]);
 
+    //deleted character message
+    const [deletedCharacterMsg, setDeletedCharacterMsg] = useState("")
+
+    // notif message, if option is save
+    const [optionSaveMsg, setOptionSaveMsg] = useState("");
+
     //all events
     const allEvents = useSelector(state => state.event.events);
 
@@ -69,6 +76,11 @@ const EditEvent = () => {
     };
 
     const handleSaveOption = (index) => {
+        //alert if no character is chosen
+        if (!characterId) {
+            alert("Please select a character that is associated with the 'Option Text' before saving changes.");
+            return;
+        }
         const option = options[index];
         setUnsavedChanges(false);
 
@@ -85,6 +97,8 @@ const EditEvent = () => {
             } else {
                 setNewEventOptions(old => [...old, { index, option }]);
             }
+
+            setOptionSaveMsg(`Option ${index+1} Is Successfully Change!`)
         } else if (option.name !== "Default Option Name") {
             // Else, consider it as a new option
             const existingOptionIndex = newEventOptions.findIndex(e => e.index === index);
@@ -97,6 +111,8 @@ const EditEvent = () => {
             } else {
                 setNewEventOptions(old => [...old, { index, option }]);
             }
+
+            setOptionSaveMsg(`Option ${index} Is Created!`)
         }
     };
 
@@ -227,35 +243,36 @@ const EditEvent = () => {
 
             <div className="Edit_Event_Page_Container">
                 <div className="Edit_Event_Title">
-                    <h1>Edit Event</h1>
+                    <h1 className="boldTitle">Edit Event</h1>
                 </div>
                 <div className="Edit_Event_Character_List">
-                    <h2>Select your character:</h2>
-                    <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} />
+                    <h2 className="boldTitle">Select your character:</h2>
+                    <div className="notif"><Notification msg={deletedCharacterMsg} /></div>
+                    <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} setDeletedCharacterMsg={setDeletedCharacterMsg} />
                 </div>
                 <div className="Edit_Event_Name">
-                    <h2>Describe your event:</h2>
+                    <h2 className="boldTitle">Describe your event:</h2>
                     <p>Event Name:</p>
                     <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" />
 
-
-
                     <p>Event Text:</p>
                     <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Event Text" />
-
+                    
                 </div>
                 <div className="Edit_Event_Option_Part">
                     <div className="Edit_Event_Option_Part">
-                        <h2>Add Event Options:</h2>
+                        <h2 className="boldTitle">Add Event Options:</h2>
                     </div>
+                    <div className="notif"><Notification msg={optionSaveMsg} /></div>
                     <div className="Edit_Event_Option">
 
                         {options.map((option, index) => (
                             option ? (
                                 <div className="option-card" key={index}>
-                                    <p>Option {index + 1} Name:</p>
+                                    <h2 className="boldTitle">Option {index + 1}</h2>
+                                    <p>Name:</p>
                                     <input type="text" value={option.name} onChange={e => handleOptionChange(index, { ...option, name: e.target.value })} placeholder={`Option ${index + 1} Name`} />
-                                    <p>Option {index + 1} Text:</p>
+                                    <p>Text:</p>
                                     <textarea value={option.text} onChange={e => handleOptionChange(index, { ...option, text: e.target.value })} placeholder={`Option ${index + 1} Text`} />
                                     <button className="btn" onClick={() => handleSaveOption(index)}>Save Changes</button>
                                 </div>
@@ -267,6 +284,11 @@ const EditEvent = () => {
 
                         ))}
                     </div>
+                    <p className="eventNote boldTitle">Name = Event Name</p>
+                    <p className="eventNote">The text that appear as clickable choice.</p>
+                    <p></p>
+                    <p className="eventNote boldTitle">Text = Event Text</p>
+                    <p className="eventNote">The dialogue text that appear after clicking on the associated choice(Event Name)</p>
                 </div>
                 <div className="Edit_Event_Page_Edit">
                     <button className="btn" onClick={handleEditEvent}>Edit Event</button>

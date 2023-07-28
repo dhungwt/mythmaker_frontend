@@ -1,3 +1,8 @@
+/* capitalize all names */
+.capitalize {
+  text-transform: capitalize;
+}
+
 /* Button CSS adapted for the dropdowns */
 .custom-dropdown {
   display: flex;
@@ -15,7 +20,7 @@
   height: 30px;
   line-height: 20px;
   text-align: center;
-  color: #fff;
+  color: #555;
   font-size: 12px;
   text-transform: uppercase;
   cursor: pointer;
@@ -93,4 +98,9 @@
 /* Dropdown close styles */
 .custom-dropdown ul {
   display: none;
+}
+
+.selectedCharacter {
+  display: flex;
+  flex-direction: column;
 }
