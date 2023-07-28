@@ -32,6 +32,7 @@ function IndividualStoryPage() {
 
   //button notifications
   const [saveMsg, setSaveMsg] = useState("");
+  const [clearGameAlert, setClearGameAlert] = useState(false);
 
   //navigate between the pages
   const navigate = useNavigate();
@@ -239,9 +240,10 @@ function IndividualStoryPage() {
     setSaveMsg("Your Game Is Save!")
         setTimeout(() => {
             setSaveMsg("");
-        }, 10000);
+        }, 6000);
   }
 
+  //load game from where the user last save the game
   const loadGame = () => {
     const savedEventId = localStorage.getItem(`savedEvent_${id}`);
     const currentEventId = localStorage.getItem(`currentEvent_${id}`);
@@ -260,8 +262,19 @@ function IndividualStoryPage() {
   }
 
 
+  //back button, redirect to homepage
   const handleGoBack = () => {
     navigate('/home');
+  }
+
+  //cancel clear game, make the alert disappear
+  const handleCancelClear = () => {
+    setClearGameAlert(false);
+  }
+
+  //show a pop up for the user to confirm their decision of clearing the game
+  const handleClearBtn = () => {
+    setClearGameAlert(true);
   }
 
   //clear the local storage and reload the css
@@ -270,6 +283,8 @@ function IndividualStoryPage() {
     localStorage.removeItem(`currentEvent_${id}`);
     window.location.reload();
   }
+
+
 
   return (
     <div className="eventOuterContainer">
@@ -294,6 +309,11 @@ function IndividualStoryPage() {
         <div className="eventLogBox">
           <div className="eventLogTitle">HISTORY LOG</div>
           <div className="eventLog">
+            {clearGameAlert && <div className="storyNotif clear">
+              <div>This will clear your save data and restart your game. Are you sure?</div>
+              <button className="eventButt" onClick={clearDataAndReload}>Yes</button>
+              <button className="eventButt" onClick={handleCancelClear}>Cancel</button>
+            </div>}
             {saveMsg !== "" && <div className="storyNotif"><Notification msg={saveMsg} /></div>}
             <div className="eventLogTop"></div>
             {
@@ -310,7 +330,7 @@ function IndividualStoryPage() {
           <div className="eventButtons">
             <div>
               <button className="eventButt" onClick={saveGame}>Save Game</button>
-              <button className="eventButt" onClick={clearDataAndReload}>Clear Game</button>
+              <button className="eventButt" onClick={handleClearBtn}>Clear Game</button>
             </div>
             <div>
               <button className="eventButt" onClick={handleGoBack}>Back</button>
