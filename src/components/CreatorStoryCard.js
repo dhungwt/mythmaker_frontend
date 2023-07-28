@@ -8,7 +8,7 @@ import './components.css'
 //displays all stories the user made
 function CreatorStoryCard(props) {
   const creatorStory = props.creatorIdSelector;
-  console.log(creatorStory, "i am the creator story");
+  //console.log(creatorStory, "i am the creator story");
   const navigate = useNavigate();
 
   const handleEditStoryClick = () => {

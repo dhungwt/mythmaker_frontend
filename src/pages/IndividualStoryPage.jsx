@@ -247,8 +247,8 @@ function IndividualStoryPage() {
   const loadGame = () => {
     const savedEventId = localStorage.getItem(`savedEvent_${id}`);
     const currentEventId = localStorage.getItem(`currentEvent_${id}`);
-    console.log('SavedEventId:', savedEventId);  // log to debug
-    console.log('CurrentEventId:', currentEventId);  // log to debug
+    //console.log('SavedEventId:', savedEventId);  // log to debug
+    //console.log('CurrentEventId:', currentEventId);  // log to debug
 
     if (savedEventId && currentEventId) {
       try {

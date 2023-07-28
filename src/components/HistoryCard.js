@@ -27,11 +27,16 @@ function HistoryCard(props) {
     textAlign: 'center',
     color: "white", 
     marginBottom:"10px", 
+    margin: "min(10px, auto)",
     width:"40vw",
+    height:"fit-content",
     fontSize:"17px",
     border:"solid 1px", 
     borderRadius:"25px",
     boxShadow: "0px 0px 30px rgba(254, 252, 252, 0.3)",
+    whiteSpace: "normal",
+    wordBreak: "break-word",
+    
   }));
   
   return (
@@ -42,19 +47,19 @@ function HistoryCard(props) {
         padding:"20px",
         borderRadius:"20px",  
         marginBottom:"20px",
-        boxShadow: "0px 0px 30px rgba(254, 252, 252, 0.3)"
+        boxShadow: "0px 0px 30px rgba(254, 252, 252, 0.3)",
     }}>
       <p style={{
         color:"white", textAlign:"center" }}> 
         <strong>Replay</strong> 
       </p>
         <Item onClick={handleHistoryClick}
-        className="btn" style={{}} 
+        className="btn"
         >
           {history?.Title}
         </Item>
         </div>
-      </div>
+    </div>
   )
 }
 
