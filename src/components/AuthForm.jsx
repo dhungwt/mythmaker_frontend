@@ -81,12 +81,13 @@ const AuthForm = ({ name, displayName }) => {
                             </label>
                             <input name="password" type="password" className="box" placeholder="Enter password..." required/>
                         </div>
+                        
+                        {/*if there is error we can handle the error message */}
+                        {error && error.response && <div style={{color:"pink"}}> {error.response.data.message} </div>}
                         {/*for the submit button */}
                         <div className="authformsubmit">
                             <button type="submit" className="submitText">{displayName}</button>
                         </div>
-                        {/*if there is error we can handle the error message */}
-                        {error && error.response && <div style={{color:"pink"}}> {error.response.data.message} </div>}
                         {/*Google Oauth button */}
                         <a href={process.env.REACT_APP_GOOGLE_KEY} className="google-btn" style={{maxWidth:"90%"}}>
                             <div className="google-icon-wrapper">
