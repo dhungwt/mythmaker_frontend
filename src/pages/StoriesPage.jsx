@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllStoriesThunk } from '../redux/story/story_actions';
 import StoryCard from '../components/StoryCard';
+import { fetchAllStoriesThunk } from '../redux/story/story_actions';
 import './pages.css';
+
 // import Pagination from '../components/Pagination';
 // import * as React from 'react';
 import Pagination from '@mui/material/Pagination';

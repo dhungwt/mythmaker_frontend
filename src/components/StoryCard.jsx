@@ -17,7 +17,7 @@ function StoryCard(props) {
 
   return (
 
-    <div className="story-card">
+    <div className="story-card" onClick={handleClick}>
       <div className="card">
         <img
           className="card-img-top"
