@@ -60,11 +60,6 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="/stories" style={{color:"white", backgroundColor:"#232946"}}>
-                                Stories
-                            </a>
-                        </li>
                         <li className="nav-item">
                             {isLoggedIn ? (
                                 <div className="homePageLogin">
@@ -81,6 +76,11 @@ const NavBar = () => {
                             )}
                         </li>
                         <li className="nav-item active">
+                            <a className="nav-link" href="/stories" style={{color:"white", backgroundColor:"#232946"}}>
+                                Browse Stories
+                            </a>
+                        </li>
+                        <li className="nav-item active">
                             <a className="nav-link" href="/about" style={{color:"white", backgroundColor:"#232946"}}>
                                 About
                             </a>
@@ -90,13 +90,13 @@ const NavBar = () => {
                         {isLoggedIn ? (
                             <div>
 
-                                <a className="nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </a>
+                                <a className="nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100", marginRight:"20px"}}> Log Out </a>
 
                             </div>
                         ) : (
                             <div className="logBtn notlogin" style={{display:"flex"}}>
-                                <a  className="nav-link"  id="login" href="/login" style={{backgroundColor:"#232946",color:"white"}} > Login </a>
-                                <a className="nav-link" id="signup" href="/signup" style={{backgroundColor:"#232946", color:"white"}}> Sign up </a>
+                                <a  className="nav-link"  id="login" href="/login" style={{backgroundColor:"#232946",color:"white", minWidth:"fit-content", marginRight:"5px"}} > Login </a>
+                                <a className="nav-link" id="signup" href="/signup" style={{backgroundColor:"#232946", color:"white", minWidth:"fit-content"}}> Sign up </a>
                             </div>
                         )}
                     </span> 

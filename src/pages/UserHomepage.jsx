@@ -168,11 +168,10 @@ const UserHomepage = () => {
           ) : (
             <Fragment>
               <h1>
-                {" "}
                 <div className="error-text">
                   You haven't played any games yet. Check out some games to get
-                  started.{" "}
-                </div>{" "}
+                  started.
+                </div>
               </h1>
               <div className="line-break"> </div>
               <button className="btn" onClick={handleClickBrowse}>
@@ -201,7 +200,7 @@ const UserHomepage = () => {
             <div className="error-text">
               <br />
               <br />
-              <h1> You have not created a story yet. </h1>{" "}
+              <h1 className="error-text"> You have not created a story yet. </h1>
             </div>
           )}
         </div>
