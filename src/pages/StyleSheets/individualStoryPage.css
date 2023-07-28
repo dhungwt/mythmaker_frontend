@@ -1,3 +1,22 @@
+/* notification pop up colors */
+.storyNotif {
+    position: relative;
+    color: cyan;
+    background-color: #232946c0;
+    font-size: 20px;
+    border: 1px solid #eebbc3;
+    border-radius: 13px;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 320px;
+
+}
+
+.eventOuterContainer {
+    min-height: 95vh;
+    background-color: #232946;
+}
+
 .capitalizeName {
     text-transform: capitalize;
 }
@@ -216,5 +235,9 @@
 
     .eventLogTitle{
         border-top: 3px double #eebbc3;
+    }
+
+    .eventButt{
+        font-size: 18px;
     }
   }

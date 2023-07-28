@@ -10,6 +10,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { useNavigate } from 'react-router-dom';
 import { updateEntireUserThunk } from '../redux/user/user_actions';
 import ErrorPage from "./ErrorPage";
+import Notification from "../components/Notification";
 
 
 function IndividualStoryPage() {
@@ -28,6 +29,9 @@ function IndividualStoryPage() {
   const [loading, setLoading] = useState(true);
   const [typing, setTyping] = useState(true);
   const [speedUp, setSpeedUp] = useState(false); //show choice and full dialogue early
+
+  //button notifications
+  const [saveMsg, setSaveMsg] = useState("");
 
   //navigate between the pages
   const navigate = useNavigate();
@@ -232,6 +236,10 @@ function IndividualStoryPage() {
     //const currentEvent = displayEvent[displayEvent.length-1];
     localStorage.setItem(`currentEvent_${id}`, currentEvent?._id);
     localStorage.setItem(`savedEvent_${id}`, JSON.stringify(displayEvent.map(event => event._id)));
+    setSaveMsg("Your Game Is Save!")
+        setTimeout(() => {
+            setSaveMsg("");
+        }, 10000);
   }
 
   const loadGame = () => {
@@ -286,6 +294,7 @@ function IndividualStoryPage() {
         <div className="eventLogBox">
           <div className="eventLogTitle">HISTORY LOG</div>
           <div className="eventLog">
+            {saveMsg !== "" && <div className="storyNotif"><Notification msg={saveMsg} /></div>}
             <div className="eventLogTop"></div>
             {
             displayEvent.length !== 0
