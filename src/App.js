@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { oAuth } from './redux/user/user_actions';
 import { useDispatch, useSelector } from 'react-redux';
+import AboutPage from './pages/About';
 
 //css imports
 import '../src/pages/pages.css';
@@ -61,6 +62,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<Login name="login" displayName='Log In' />}/>
         <Route path="/signup" element={<Signup name="signup" displayName='Sign Up'/>}/>
         
