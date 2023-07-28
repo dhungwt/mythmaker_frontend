@@ -80,6 +80,11 @@ const NavBar = () => {
                                 </div>
                             )}
                         </li>
+                        <li className="nav-item active">
+                            <a className="nav-link" href="/about" style={{color:"white", backgroundColor:"#232946"}}>
+                                About
+                            </a>
+                        </li>
                     </ul>
                     <span className="navbar-text"> 
                         {isLoggedIn ? (
