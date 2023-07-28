@@ -56,7 +56,7 @@ function IndividualStoryPage() {
             break;
           }
         }
-        if (!exist && user.storyHistory.length >= 5) {
+        if (!exist && user.storyHistory.length >= 6) {
           let newArr = [id,...user.storyHistory]
           newArr.pop();
           let newHistory = { storyHistory: newArr };

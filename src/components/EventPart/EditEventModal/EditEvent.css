@@ -1,3 +1,18 @@
+.boldTitle {
+    font-weight: bold;
+}
+
+.eventNote {
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* notification pop up colors */
+.notif {
+    color: darkcyan;
+}
+
 .Edit_Event_Page {
     display: flex;
     justify-content: center;

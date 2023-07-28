@@ -1,3 +1,5 @@
+//submit new character component file
+
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -75,10 +77,10 @@ const AddCharacter = ({ storyId }) => {
             {isPop && (
                 <div className="add-character-form">
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor="name">Name:</label>
+                        <label className="bold" htmlFor="name">Name:</label>
                         <input type="text" id="character-name" name="name"
                             value={characterName} onChange={handleNameChange} required />
-                        <button className="btn" type="submit">Submit</button>
+                        <button className="btn" type="submit">Submit Character</button>
                         <button className="btn" type="button" onClick={handleCancel}>Cancel</button>
                     </form>
                 </div>

@@ -80,12 +80,17 @@ const NavBar = () => {
                                 </div>
                             )}
                         </li>
+                        <li className="nav-item active">
+                            <a className="nav-link" href="/about" style={{color:"white", backgroundColor:"#232946"}}>
+                                About
+                            </a>
+                        </li>
                     </ul>
                     <span className="navbar-text"> 
                         {isLoggedIn ? (
                             <div>
 
-                                <button className="nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </button>
+                                <a className="nav-link" onClick={handleLogOut} style={{backgroundColor:"#232946", color:"white", zIndex:"100"}}> Log Out </a>
 
                             </div>
                         ) : (

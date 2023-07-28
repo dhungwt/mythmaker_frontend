@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { auth } from "../redux/user/user_actions";
 import { useNavigate } from "react-router-dom";
 import './components.css'
-//import mythmakerpic from './mythmakerpic.png'
 import ParticleBackground from "./Particles/ParticleBackground";
 import "./AuthForm_Google.css";
 import MMlogoDog from "../pages/assets/MMlogoDog.png"
@@ -82,14 +81,15 @@ const AuthForm = ({ name, displayName }) => {
                             </label>
                             <input name="password" type="password" className="box" placeholder="Enter password..." required/>
                         </div>
+                        
+                        {/*if there is error we can handle the error message */}
+                        {error && error.response && <div style={{color:"pink"}}> {error.response.data.message} </div>}
                         {/*for the submit button */}
                         <div className="authformsubmit">
                             <button type="submit" className="submitText">{displayName}</button>
                         </div>
-                        {/*if there is error we can handle the error message */}
-                        {error && error.response && <div style={{color:"pink"}}> {error.response.data.message} </div>}
                         {/*Google Oauth button */}
-                        <a href={process.env.REACT_APP_GOOGLE_KEY} className="google-btn">
+                        <a href={process.env.REACT_APP_GOOGLE_KEY} className="google-btn" style={{maxWidth:"90%"}}>
                             <div className="google-icon-wrapper">
                                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo" />
                             </div>

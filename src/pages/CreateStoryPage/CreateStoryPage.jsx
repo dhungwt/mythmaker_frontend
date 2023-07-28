@@ -9,6 +9,7 @@ import { fetchIndividualStoryThunk } from "../../redux/story/story_actions";
 import { fetchAllEventsByStoryThunk } from "../../redux/event/event_actions";
 import CharacterList from "../../components/CharacterList/CharacterList";
 import DisplayEvent from "../../components/EventPart/DispalyEvent/DisplayEvent";
+import Notification from "../../components/Notification";
 import "./CreateStoryPage.css";
 import "../../components/Button/StreamingButton.css";
 import "../../components/Button/Dropdown.css";
@@ -22,6 +23,9 @@ const CreateStory = () => {
 
   //get the all events
   const events = useSelector((state) => state.event.events);
+
+  //deleted character message
+  const [deletedCharacterMsg, setDeletedCharacterMsg] = useState("")
 
   //fetch the current story
   useEffect(() => {
@@ -120,7 +124,7 @@ const CreateStory = () => {
         </div>
         <div className="create-story-container">
           <div className="create-story-title card-bg">
-            <h2>Title: &nbsp; </h2> &nbsp;
+            <h2 className="bold">Title: &nbsp; </h2> &nbsp;
             <input
               type="text"
               value={storyTitle}
@@ -129,10 +133,12 @@ const CreateStory = () => {
           </div>
 
           <div className="add-character-field card-bg">
-            <h2>Select Character Speaking: &nbsp;</h2>
-            <CharacterList storyId={storyId} onCharacterChange={() => {}} />
+            <h2 className="bold">Select Character Speaking:</h2>
+            <div className="notif"><Notification msg={deletedCharacterMsg} /></div>
+            <CharacterList storyId={storyId} onCharacterChange={() => {}} setDeletedCharacterMsg={setDeletedCharacterMsg} />
           </div>
           <div className="display-event-field">
+            <br />
             <h2 className="whiteTitle">Current Story Events:</h2>
             {events.map((event, index) => (
               <div key={index} className="event-card">
@@ -148,7 +154,7 @@ const CreateStory = () => {
             </h3>
             <div className="bottomBtns">
               <button className="btn" onClick={handleSaveChanges}>
-                Save Changes
+                Save Story
               </button>
               <button className="btn" onClick={handleDeleteStory}>
                 Delete Story
