@@ -142,11 +142,9 @@ function StoriesPage() {
               <div
                 style={{
                   display: "grid",
-                  flexDirection: "column",
                   alignItems: "center",
                   border: "5px",
-
-
+                  borderRadius: "5px",
                   cursor: "pointer",
                   outline: "none", // Add this to remove focus outline when the button is clicked
                   padding: 0, // Add this to remove default button padding

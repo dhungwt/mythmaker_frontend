@@ -1,3 +1,27 @@
+/* notification pop up colors */
+.storyNotif {
+    position: relative;
+    color: cyan;
+    background-color: #232946c0;
+    font-size: 20px;
+    border: 1px solid #eebbc3;
+    border-radius: 13px;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 320px;
+
+}
+
+/* clear button */
+.clear {
+    text-align: center;
+}
+
+.eventOuterContainer {
+    min-height: 95vh;
+    background-color: #232946;
+}
+
 .capitalizeName {
     text-transform: capitalize;
 }
@@ -171,6 +195,7 @@
     margin: 0 2px 0 2px;
     font-size: 20px;
     font-weight: bold;
+    min-width: 75px;
 }
 
 .eventButt:hover{
@@ -210,11 +235,15 @@
 
     /* hides on smaller device */
     .eventLogBox{
-        height: 40vh;
+        height: 60vh;
         border-left: none;
     }
 
     .eventLogTitle{
         border-top: 3px double #eebbc3;
+    }
+
+    .eventButt{
+        font-size: 18px;
     }
   }

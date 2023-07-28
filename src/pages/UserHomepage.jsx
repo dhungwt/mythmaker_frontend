@@ -107,8 +107,7 @@ const UserHomepage = () => {
     //put the current event by the dewfault event
     defaultStory.currentEvent = newEvent._id;
 
-    console.log("what is the character id:", newCharacter._id);
-    console.log("I am ready to add story");
+    //console.log("what is the character id:", newCharacter._id);
     //create the new story
     const newStory = await dispatch(addStoryThunk(defaultStory));
     defaultEvent.storyId = newStory._id;
@@ -118,19 +117,9 @@ const UserHomepage = () => {
 
     dispatch(updatedUserThunk(userID, newStory._id));
 
-    console.log("I am done");
     //once we create the newstory, we will jump to the page to create the story
     navigate(`/createStory/${newStory._id}`);
   };
-
-  //get the email address from the store state
-  //comment below back in when auth is set up
-  // const user = useSelector((state)=>state.user);
-
-  // useEffect(() => {
-  //     console.log("FETCH USER Stories FIRING IN USEEFFECT");
-  //     fetchUserStories(fakeUser._id.$oid);
-  //   }, []);
 
   console.log(creatorIdSelector, "the creator id selectorr");
 
@@ -168,11 +157,10 @@ const UserHomepage = () => {
           ) : (
             <Fragment>
               <h1>
-                {" "}
                 <div className="error-text">
                   You haven't played any games yet. Check out some games to get
-                  started.{" "}
-                </div>{" "}
+                  started.
+                </div>
               </h1>
               <div className="line-break"> </div>
               <button className="btn" onClick={handleClickBrowse}>
@@ -201,7 +189,7 @@ const UserHomepage = () => {
             <div className="error-text">
               <br />
               <br />
-              <h1> You have not created a story yet. </h1>{" "}
+              <h1 className="error-text"> You have not created a story yet. </h1>
             </div>
           )}
         </div>

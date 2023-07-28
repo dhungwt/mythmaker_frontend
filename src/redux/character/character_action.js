@@ -66,10 +66,10 @@ export const deleteCharacterThunk = (characterId) => async (dispatch) => {
 //api call address could be wrong
 export const editCharacterThunk = (updatedCharacter) => async (dispatch) => {
     try {
-        console.log("EDIT CHARACTER THUNK IS ACTIVE")
+        //console.log("EDIT CHARACTER THUNK IS ACTIVE")
         const response = await axios.patch(`${process.env.REACT_APP_CHARACTER_KEY}${updatedCharacter._id}`, updatedCharacter);
         dispatch(editCharacter(response.data));
-        console.log("Edit character name",response.data)
+        //console.log("Edit character name",response.data)
         console.log("EDIT SUCCESSFULLY");
     } catch (error) {
         console.error(error);

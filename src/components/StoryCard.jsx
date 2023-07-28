@@ -1,29 +1,3 @@
-//need props, which is why we imported storycard into storiespage
-// import React, { useEffect, useState } from 'react'
-// import './components.css'
-
-// function StoryCard(props) {
-//     const story = props.story;
-
-//     const handleClick = (e) =>{
-//         e.preventDefault();
-//         window.location.href= `/stories/:id`; //redirects to the individual story page
-//     }
-//   return (
-//     <div className="story-card" style={{maxWidth:"20%", height:"10%"}}>
-//         <button className="card-button" onClick={handleClick}>
-//         <h1 className="card-title"> Title: {story.title} </h1>
-//         {/* <p> Event: {event} </p> */}
-//         <div key={story.id}>
-
-//           </div>
-//        </button>
-//     </div>
-//   )
-// }
-
-// export default StoryCard;
-//need props, which is why we imported storycard into storiespage
 //this card is for the browse all stories page
 import React from "react";
 import "./components.css";
@@ -42,14 +16,6 @@ function StoryCard(props) {
   //does essentially the samething as the StoriesPage where we check if the input/title exists
 
   return (
-    // <div className="story-card" style={{maxWidth:"20%"}}>
-    //     <button className="card-button" onClick={handleClick}>
-    //     <h1 className="card-title"> Title: {story.title} </h1>
-    //     <div key={story.id}>
-
-    //       </div>
-    //    </button>
-    // </div>
 
     <div className="story-card" onClick={handleClick}>
       <div className="card">

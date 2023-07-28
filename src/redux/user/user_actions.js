@@ -17,7 +17,7 @@ export const updateEntireUserThunk =  (userID, data) => {
         try{
             const response = await axios.patch(`${process.env.REACT_APP_USER_KEY}${userID}`, data)
             dispatch(updateEntireUser(response.data))
-            console.log(response, "updateEntireUserThunk successful")
+            //console.log(response, "updateEntireUserThunk successful")
         } catch (error) {
             console.log(error, "error occurerd on updateEntireUserThunk")
       };
@@ -68,7 +68,7 @@ export const fetchUserStoriesThunk = (userID) => {
         try {
             //change this url to user stories api once it is set up
             const response = await axios.get(`${process.env.REACT_APP_USER_KEY}${userID}/`);
-            console.log("data", response.data);
+            //console.log("data", response.data);
             dispatch(fetchUserStories(response.data.storyIds));
             // no route to access all the stories of a user yet  
         } catch (error) {

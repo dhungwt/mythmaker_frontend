@@ -20,7 +20,7 @@ export const fetchIndividualStoryByCreatorIdThunk = (userId) =>{
     try{
       const response = await axios.get(`${process.env.REACT_APP_STORY_KEY}getCreatorStoryByTitle/${userId}`)
       // dispatch(fetchIndividualStoryByCreatorId(response.data.title));
-      console.log(response.data, "i am response dataa")
+      //console.log(response.data, "i am response dataa")
       dispatch(fetchIndividualStoryByCreatorId(response.data))
     } catch (error){
       console.log("error has occured with fetchIndividualStoryByCreatorIdThunk", error)

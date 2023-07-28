@@ -10,6 +10,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { useNavigate } from 'react-router-dom';
 import { updateEntireUserThunk } from '../redux/user/user_actions';
 import ErrorPage from "./ErrorPage";
+import Notification from "../components/Notification";
 
 
 function IndividualStoryPage() {
@@ -28,6 +29,10 @@ function IndividualStoryPage() {
   const [loading, setLoading] = useState(true);
   const [typing, setTyping] = useState(true);
   const [speedUp, setSpeedUp] = useState(false); //show choice and full dialogue early
+
+  //button notifications
+  const [saveMsg, setSaveMsg] = useState("");
+  const [clearGameAlert, setClearGameAlert] = useState(false);
 
   //navigate between the pages
   const navigate = useNavigate();
@@ -63,14 +68,14 @@ function IndividualStoryPage() {
           dispatch(updateEntireUserThunk(user._id, newHistory));
         }else if (!exist){
           let newArr = { storyHistory: [id, ...user.storyHistory] };
-          console.log("After NEWARR :",newArr )
+          //console.log("After NEWARR :",newArr )
           dispatch(updateEntireUserThunk(user._id, newArr));
-          console.log(newArr, "im newArr and im working");
+          //console.log(newArr, "im newArr and im working");
         }
       } else {
         let newArr = { storyHistory: [id] };
         dispatch(updateEntireUserThunk(user._id, newArr))
-        console.log("user DNE");
+        //console.log("user DNE");
       }
     }
   }, [story]);
@@ -118,7 +123,7 @@ function IndividualStoryPage() {
   const addNextEvent = (option) => {
     setTyping(true);
     const newEvent = eventObj[option?.next]
-    console.log('End of the story?', newEvent);
+    //console.log('End of the story?', newEvent);
 
     setSpeedUp(false);
 
@@ -232,13 +237,18 @@ function IndividualStoryPage() {
     //const currentEvent = displayEvent[displayEvent.length-1];
     localStorage.setItem(`currentEvent_${id}`, currentEvent?._id);
     localStorage.setItem(`savedEvent_${id}`, JSON.stringify(displayEvent.map(event => event._id)));
+    setSaveMsg("Your Game Is Save!")
+        setTimeout(() => {
+            setSaveMsg("");
+        }, 6000);
   }
 
+  //load game from where the user last save the game
   const loadGame = () => {
     const savedEventId = localStorage.getItem(`savedEvent_${id}`);
     const currentEventId = localStorage.getItem(`currentEvent_${id}`);
-    console.log('SavedEventId:', savedEventId);  // log to debug
-    console.log('CurrentEventId:', currentEventId);  // log to debug
+    //console.log('SavedEventId:', savedEventId);  // log to debug
+    //console.log('CurrentEventId:', currentEventId);  // log to debug
 
     if (savedEventId && currentEventId) {
       try {
@@ -252,8 +262,19 @@ function IndividualStoryPage() {
   }
 
 
+  //back button, redirect to homepage
   const handleGoBack = () => {
     navigate('/home');
+  }
+
+  //cancel clear game, make the alert disappear
+  const handleCancelClear = () => {
+    setClearGameAlert(false);
+  }
+
+  //show a pop up for the user to confirm their decision of clearing the game
+  const handleClearBtn = () => {
+    setClearGameAlert(true);
   }
 
   //clear the local storage and reload the css
@@ -262,6 +283,8 @@ function IndividualStoryPage() {
     localStorage.removeItem(`currentEvent_${id}`);
     window.location.reload();
   }
+
+
 
   return (
     <div className="eventOuterContainer">
@@ -286,6 +309,12 @@ function IndividualStoryPage() {
         <div className="eventLogBox">
           <div className="eventLogTitle">HISTORY LOG</div>
           <div className="eventLog">
+            {clearGameAlert && <div className="storyNotif clear">
+              <div>This will clear your save data and restart your game. Are you sure?</div>
+              <button className="eventButt" onClick={clearDataAndReload}>Yes</button>
+              <button className="eventButt" onClick={handleCancelClear}>Cancel</button>
+            </div>}
+            {saveMsg !== "" && <div className="storyNotif"><Notification msg={saveMsg} /></div>}
             <div className="eventLogTop"></div>
             {
             displayEvent.length !== 0
@@ -301,7 +330,7 @@ function IndividualStoryPage() {
           <div className="eventButtons">
             <div>
               <button className="eventButt" onClick={saveGame}>Save Game</button>
-              <button className="eventButt" onClick={clearDataAndReload}>Clear Game</button>
+              <button className="eventButt" onClick={handleClearBtn}>Clear Game</button>
             </div>
             <div>
               <button className="eventButt" onClick={handleGoBack}>Back</button>
