@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 // import  {useEffect} from "react";
 import { useDispatch } from "react-redux";
 import Grid from "@mui/material/Grid";
-import "../App.css";
 // import { fetchAllStories } from "../redux/story/story_actions";
 import { useSelector } from "react-redux";
 // import { fetchUserStoriesThunk} from "../redux/user/user_actions";
 import { useNavigate } from "react-router-dom";
 import { addCharacterThunk } from "../redux/character/character_action";
 import "./pages.css";
-
+import "../App.css";
+import "../components/Button/StreamingButton.css";
 import {
   addStoryThunk,
   fetchIndividualStoryByCreatorIdThunk,
@@ -21,7 +21,7 @@ import { addEventThunk } from "../redux/event/event_actions";
 import { editEventThunk } from "../redux/event/event_actions";
 import { updatedUserThunk } from "../redux/user/user_actions";
 import ParticleBackground from "../components/Particles/ParticleBackground.js";
-
+import { Fragment } from "react";
 //This the user's homepage
 //07/11 created: just simple page created
 
@@ -66,6 +66,12 @@ const UserHomepage = () => {
     };
     fetchUserCreatorStory();
   }, []);
+
+  //navigate to Stories page when user has not played any stories
+  const handleClickBrowse = (e) => {
+    e.preventDefault();
+    navigate(`/stories`); //redirects to the stories page
+  };
 
   //handle the default story we create
   const handleCreateStory = async () => {
@@ -160,14 +166,27 @@ const UserHomepage = () => {
               );
             })
           ) : (
-            <h1> nothing to return </h1>
+            <Fragment>
+              <h1>
+                {" "}
+                <div className="error-text">
+                  You haven't played any games yet. Check out some games to get
+                  started.{" "}
+                </div>{" "}
+              </h1>
+              <div className="line-break"> </div>
+              <button className="btn" onClick={handleClickBrowse}>
+                Browse Stories
+              </button>
+            </Fragment>
           )}
         </div>
-
-        <h2 className="created-stories" style={{}}>
-          {" "}
-          <strong>Stories Created</strong>
-        </h2>
+        <div className="created-stories">
+          <h2 style={{}}>
+            {" "}
+            <strong>Stories Created</strong>
+          </h2>
+        </div>
         <div className="storiesContainer">
           {creatorIdSelector.length > 0 ? (
             creatorIdSelector.map((creatorStoryList, index) => {
@@ -179,7 +198,11 @@ const UserHomepage = () => {
               );
             })
           ) : (
-            <h1> nothing to return </h1>
+            <div className="error-text">
+              <br />
+              <br />
+              <h1> You have not created a story yet. </h1>{" "}
+            </div>
           )}
         </div>
       </div>

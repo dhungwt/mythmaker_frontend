@@ -3,7 +3,7 @@
 .google-btn {
     width: 40%;
     height: 42px;
-
+    
     border-radius: 10px;
 
     display: flex;
@@ -33,6 +33,7 @@
 .google-icon-wrapper {
     position: absolute;
     margin-top: 1px;
+    
    
     
     width: 40px;
