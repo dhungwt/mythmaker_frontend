@@ -67,7 +67,7 @@ function CharacterList({ event, characterId, storyId, onCharacterChange, setDele
                 <form>
                     <select className="custom-dropdown capitalize" onChange={handleCharacterChange} defaultValue={characterId || null} required>
 
-                        <option className="btn">Checkout a Character</option>
+                        <option className="btn">Check Out Characters</option>
                         {story.characters.map((character, index) => {
                             if(selectedCharacterId === character._id){
                                 return <option className="capitalize" key={index} value={selectedCharacterId} selected>

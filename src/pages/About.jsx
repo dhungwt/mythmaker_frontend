@@ -37,6 +37,14 @@ import EndScreen from "../pages/assets/screenshots/EndScreen.png";
 import CreateStoryButton from "../pages/assets/screenshots/CreateStoryButton.png"
 import NewStoryOnHomePage from "../pages/assets/screenshots/NewStoryOnHomePage.png"
 import EditPageTitle from "../pages/assets/screenshots/EditPageTitle.png"
+import CharacterCast from "../pages/assets/screenshots/CharacterCast.png"
+import CharacterCastAdd from "../pages/assets/screenshots/CharacterCast_Add.png"
+import CharacterCastAddName from "../pages/assets/screenshots/CharacterCast_AddName.png"
+import CharacterCastSubmit from "../pages/assets/screenshots/CharacterCast_Submit.png"
+import CharacterCastSelect from "../pages/assets/screenshots/CharacterCast_Select.png"
+import CharacterCastAfterSelect from "../pages/assets/screenshots/CharacterCast_AfterSelect.png"
+import CharacterCastAfterEdit from "../pages/assets/screenshots/CharacterCast_AfterEdit.png"
+
 
 
 
@@ -67,7 +75,7 @@ const AboutPage = () => {
                 id: "section4",
                 imagePath: SaveGameButton,
                 title: "Save Game Button",
-                text: "Click the save game button to save the progress! When the player comes back next time, they’re back at exactly where they last left off from. \n\n Save only works locally, on the same device.S",
+                text: "Click the save game button to save the progress! When the player comes back next time, they’re back at exactly where they last left off from. \n\n Save only works locally, on the same device.",
                 main: false,
             },
             {
@@ -111,42 +119,43 @@ const AboutPage = () => {
         "Edit Your Character Cast": [
             {
                 id: "section1",
-                imagePath: selectyourcharacter, //switch photo
+                imagePath: CharacterCast,
                 text: "This is an organization section for the Story Characters.\nHere the user can add/edit/delete the Characters of their Story to easily apply them with each associated Event later on.",
                 main: true
             },
             {
                 id: "section2",
                 title: "Add Character",
-                imagePath: eventnametext, //switch photo
+                imagePath: CharacterCastAdd,
                 text: "Click 'Add Character' button to start adding a new Character.",
                 main: false
             },
             {
                 id: "section3",
                 title: "Name The New Character",
-                imagePath: optionnametext, //switch photo
+                imagePath: CharacterCastAddName, 
                 text: "Name the new Character!",
                 main: false
             },
             {
                 id: "section4",
                 title: "Finish Adding The New Character",
-                imagePath: editevent,  //switch photo
+                imagePath: CharacterCastSubmit,
                 text: "Click 'Submit' to finish adding the newly created Character in the Story’s cast of characters.",
                 main: false
             },
             {
                 id: "section5",
                 title: "Checkout The Newly Added Character",
-                imagePath: editevent,  //switch photo
-                text: "The user now have a newly created Character listed in the 'Character Dropdown'.",
+                imagePath: CharacterCastSelect,
+                text: "The user now have a newly created Character listed in the 'Character Dropdown'. Click on this dropdown to see the whole list!",
                 main: false
             },
             {
                 id: "section4",
-                imagePath: editevent,//switch photo
-                text: "Select the Character. Now the user can edit or delete this Character anytime as needed.",
+                imagePath: CharacterCastAfterSelect,
+                imagePath2: CharacterCastAfterEdit,
+                text: "Select the Character. The user can now edit or delete this Character anytime as needed.",
                 main: true
             },
 
