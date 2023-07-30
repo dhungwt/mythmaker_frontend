@@ -26,30 +26,34 @@ import "./AboutCss.css";
 import ParticleBackground from "../components/Particles/ParticleBackground";
 import ScrollButton from "../components/ScrollButton/ScrollButton";
 
+import BrowseStory from "../pages/assets/screenshots/BrowseStory.png"
+import ExampleStoryPage from "../pages/assets/screenshots/ExampleStoryPage.png"
+import HistoryLog from "../pages/assets/screenshots/HistoryLog.png"
+
 
 
 
 
 const AboutPage = () => {
     const majorSectionsData = {
-        "User Home": [
+        "How To Play A Story?": [
             {
                 id: "section1",
-                title: "Create a New Story",
-                imagePath: createstory,
-                text: "This section allows users to create their own unique narratives. By employing the interactive tools available, you can draft a plot, design characters. "
+                imagePath: BrowseStory,
+                text: "Anyone, register or not can browse and play these stories written by the talented creatives who share their adventures with us. \n\n Click on a Story of choice to start!",
+                main: true
             },
             {
                 id: "section2",
-                title: "Play History",
-                imagePath: playhistory,
-                text: "This section showcases the history of stories you've played. It gives a summary of your choices, the characters you've interacted with, and the storylines you've explored. Click on the title to continue your journey!"
+                imagePath: ExampleStoryPage,
+                text: "The narrative of the Story will type itself out in the dialogue box here. When the typing finish, a set of decisions will pop up asking you the player to choose the direction of this Story. \n\n To speed up this process, click on the dialogue box!",
+                main: true
             },
             {
                 id: "section3",
-                title: "Stories Created Edit & Play",
                 imagePath: storiescreated,
-                text: "This section is designed to modify and play the narratives you've crafted. Here, you can make necessary alterations to your story, be it minor adjustments or major plot twists. Once editing is done, you can play through your narrative, experiencing it firsthand."
+                text: "This section is designed to modify and play the narratives you've crafted. Here, you can make necessary alterations to your story, be it minor adjustments or major plot twists. Once editing is done, you can play through your narrative, experiencing it firsthand.",
+                main: true,
             },
 
         ],
@@ -58,25 +62,29 @@ const AboutPage = () => {
                 id: "section1",
                 title: "Title",
                 imagePath: title,
-                text: "This is the initial step in your story creation process. Here, you're prompted to name your narrative. Choosing a compelling title is crucial as it piques the interest of potential readers and provides a sneak peek into your story's theme. "
+                text: "This is the initial step in your story creation process. Here, you're prompted to name your narrative. Choosing a compelling title is crucial as it piques the interest of potential readers and provides a sneak peek into your story's theme. ",
+                main: false
             },
             {
                 id: "section2",
                 title: "Select Character",
                 imagePath: selectyourcharacter,
-                text: "This section allows you to choose or design characters for your story. You can pick from preset options or design your own unique persona to enhance the plot"
+                text: "This section allows you to choose or design characters for your story. You can pick from preset options or design your own unique persona to enhance the plot",
+                main: false
             },
             {
                 id: "section3",
                 title: "Current Events Delete & Edit",
                 imagePath: currentevent,
-                text: "This section provides a list of events happening in your story. It allows you to modify these events or even remove them if they no longer align with your plot"
+                text: "This section provides a list of events happening in your story. It allows you to modify these events or even remove them if they no longer align with your plot",
+                main: false
             },
             {
                 id: "section4",
                 title: "Save Changes & Delete Story",
                 imagePath: savedelete,
-                text: "The final section is about saving any changes made to the story or deleting the story if desired. It's a safeguard for your creative process, ensuring that all your edits are stored correctly, or enabling you to start fresh if you decide to discard the current story. "
+                text: "The final section is about saving any changes made to the story or deleting the story if desired. It's a safeguard for your creative process, ensuring that all your edits are stored correctly, or enabling you to start fresh if you decide to discard the current story. ",
+                main: false
             },
 
         ],
@@ -85,25 +93,29 @@ const AboutPage = () => {
                 id: "section1",
                 title: "Select Character",
                 imagePath: selectyourcharacter,
-                text: "This is the first step in the event editing process. In this section, you are required to choose the character that this event pertains to. You can choose or design characters for your story. You can pick from preset options or design your own unique persona to enhance the plot"
+                text: "This is the first step in the event editing process. In this section, you are required to choose the character that this event pertains to. You can choose or design characters for your story. You can pick from preset options or design your own unique persona to enhance the plot",
+                main: false
             },
             {
                 id: "section2",
                 title: "Describe Event Name & Text",
                 imagePath: eventnametext,
-                text: "This section allows you to assign a name to the event and describe it in detail. The event name should give a quick overview of what to expect, while the description provides the context, setting, and plot elements. "
+                text: "This section allows you to assign a name to the event and describe it in detail. The event name should give a quick overview of what to expect, while the description provides the context, setting, and plot elements. ",
+                main: false
             },
             {
                 id: "section3",
                 title: "Options Name & Text",
                 imagePath: optionnametext,
-                text: " This section enables you to specify the different choices or options that your characters have within the event. Each option can lead the story in a different direction, making your narrative interactive and dynamic. Based on the option you provide, we will create new event for that option. if you don't need option, keep the default name!"
+                text: " This section enables you to specify the different choices or options that your characters have within the event. Each option can lead the story in a different direction, making your narrative interactive and dynamic. Based on the option you provide, we will create new event for that option. if you don't need option, keep the default name!",
+                main: false
             },
             {
                 id: "section4",
                 title: "Edit Event",
                 imagePath: editevent,
-                text: "In this final section, you can make changes to any aspect of the event that you've previously created or selected. This includes modifying characters, the event description, or the options available to characters."
+                text: "In this final section, you can make changes to any aspect of the event that you've previously created or selected. This includes modifying characters, the event description, or the options available to characters.",
+                main: false
             },
 
         ],
@@ -112,13 +124,15 @@ const AboutPage = () => {
                 id: "section1",
                 title: "Search",
                 imagePath: search,
-                text: "This section facilitates your navigation through the plethora of stories available. You can use the names of stories to find the stories that most interest you."
+                text: "This section facilitates your navigation through the plethora of stories available. You can use the names of stories to find the stories that most interest you.",
+                main: false
             },
             {
                 id: "section2",
                 title: "Story Name",
                 imagePath: storyname,
-                text: "In this section, by clicking on a story's name, you can access to play the story. "
+                text: "In this section, by clicking on a story's name, you can access to play the story. ",
+                main: false
             },
 
         ],
@@ -127,31 +141,36 @@ const AboutPage = () => {
                 id: "section1",
                 title: "Make a Choice",
                 imagePath: makechoice,
-                text: "This section is integral to the interactive storytelling experience. As a player, you're presented with different choices or paths that your character can take. Each decision made will influence the storyline and lead to varying outcomes. "
+                text: "This section is integral to the interactive storytelling experience. As a player, you're presented with different choices or paths that your character can take. Each decision made will influence the storyline and lead to varying outcomes. ",
+                main: false
             },
             {
                 id: "section2",
                 title: "Narrate",
                 imagePath: narrate,
-                text: " This section displays the narrative unfolding based on the choices you make. It details the characters' reactions, the environment, and the subsequent events. As the name suggests, it narrates the story, immersing you in the fictional world. "
+                text: " This section displays the narrative unfolding based on the choices you make. It details the characters' reactions, the environment, and the subsequent events. As the name suggests, it narrates the story, immersing you in the fictional world. ",
+                main: false
             },
             {
                 id: "section3",
                 title: "History Log",
                 imagePath: historylog,
-                text: "This section keeps track of your progress throughout the story. It logs the choices you've made and the paths you've taken, allowing you to reflect on past decisions and their outcomes."
+                text: "This section keeps track of your progress throughout the story. It logs the choices you've made and the paths you've taken, allowing you to reflect on past decisions and their outcomes.",
+                main: false
             },
             {
                 id: "section4",
                 title: "Save & Clear",
                 imagePath: saveclear,
-                text: "This section is about managing your story progression. You can save your progress at any point, which is particularly useful for long narratives. If desired, you can also clear the history, effectively restarting the story from the beginning. "
+                text: "This section is about managing your story progression. You can save your progress at any point, which is particularly useful for long narratives. If desired, you can also clear the history, effectively restarting the story from the beginning. ",
+                main: false
             },
             {
                 id: "section5",
                 title: "Back",
                 imagePath: back,
-                text: "click we can go back to the user home page"
+                text: "click we can go back to the user home page",
+                main: false
             },
         ],
         "Navigation Bar": [
@@ -159,25 +178,29 @@ const AboutPage = () => {
                 id: "section1",
                 title: "Stories",
                 imagePath: stories,
-                text: " This section leads users to the repository of available stories. By clicking on this option, you can browse, select, and interact with the narratives on offer."
+                text: " This section leads users to the repository of available stories. By clicking on this option, you can browse, select, and interact with the narratives on offer.",
+                main: false
             },
             {
                 id: "section2",
                 title: "Home",
                 imagePath: home,
-                text: "This section brings users back to the start page of the application. No matter where you are within the platform, you can quickly return to the application home page by clicking on this option. "
+                text: "This section brings users back to the start page of the application. No matter where you are within the platform, you can quickly return to the application home page by clicking on this option. ",
+                main: false
             },
             {
                 id: "section3",
                 title: "Home Pages",
                 imagePath: homepage,
-                text: "This section brings users back to the user main of the application. No matter where you are within the platform, you can quickly return to the user homepage by clicking on this option. "
+                text: "This section brings users back to the user main of the application. No matter where you are within the platform, you can quickly return to the user homepage by clicking on this option. ",
+                main: false
             },
             {
                 id: "section4",
                 title: "Login & Logout & Signup",
                 imagePath: login,
-                text: "This section handles the user authentication process. Login is for existing users to enter their credentials and access their accounts. Signup is for new users who want to create an account, and Logout allows users to sign out of their account, ensuring their privacy and security."
+                text: "This section handles the user authentication process. Login is for existing users to enter their credentials and access their accounts. Signup is for new users who want to create an account, and Logout allows users to sign out of their account, ensuring their privacy and security.",
+                main: false
             },
         ],
     };

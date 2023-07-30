@@ -14,6 +14,7 @@ const AboutMajorSection = ({ title, sections }) => {
                         title={section.title}
                         imagePath={section.imagePath}
                         text={section.text}
+                        main={section.main}
                     />
                 )}
             </div>

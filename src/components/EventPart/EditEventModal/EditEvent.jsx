@@ -54,6 +54,7 @@ const EditEvent = () => {
 
     // notif message, if option is save
     const [optionSaveMsg, setOptionSaveMsg] = useState("");
+    
 
     //all events
     const allEvents = useSelector(state => state.event.events);
@@ -260,12 +261,12 @@ const EditEvent = () => {
                 <div className="Edit_Event_Character_List">
                     <h2 className="boldTitle">Select your character:</h2>
                     <div className="notif"><Notification msg={deletedCharacterMsg} /></div>
-                    <CharacterList storyId={eventStoryId} onCharacterChange={handleCharacterChange} setDeletedCharacterMsg={setDeletedCharacterMsg} />
+                    <CharacterList characterId={event ? event.characterId : null} event={event} storyId={eventStoryId} onCharacterChange={handleCharacterChange} setDeletedCharacterMsg={setDeletedCharacterMsg} />
                 </div>
                 <div className="Edit_Event_Name">
                     <h2 className="boldTitle">Describe your event:</h2>
                     <p>Event Name:</p>
-                    <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" readonly="readonly" disabled="disabled" style={{background:"#99999955"}}/>
+                    <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Event Name" readOnly="readonly" disabled="disabled" style={{background:"#99999955"}}/>
 
                     <p>Event Text:</p>
                     <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Event Text" />
