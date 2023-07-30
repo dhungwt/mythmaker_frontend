@@ -13,6 +13,8 @@ const AboutMajorSection = ({ title, sections }) => {
                         id={section.id}
                         title={section.title}
                         imagePath={section.imagePath}
+                        imagePath2={section.imagePath2}
+                        imagePath3={section.imagePath3}
                         text={section.text}
                         main={section.main}
                     />

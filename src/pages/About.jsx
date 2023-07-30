@@ -29,6 +29,10 @@ import ScrollButton from "../components/ScrollButton/ScrollButton";
 import BrowseStory from "../pages/assets/screenshots/BrowseStory.png"
 import ExampleStoryPage from "../pages/assets/screenshots/ExampleStoryPage.png"
 import HistoryLog from "../pages/assets/screenshots/HistoryLog.png"
+import SaveGameButton from "../pages/assets/screenshots/SaveGameButton.png"
+import ClearGameButton from "../pages/assets/screenshots/ClearGameButton.png"
+import EndScreenButton from "../pages/assets/screenshots/EndScreenButton.png"
+import EndScreen from "../pages/assets/screenshots/EndScreen.png"
 
 
 
@@ -40,7 +44,7 @@ const AboutPage = () => {
             {
                 id: "section1",
                 imagePath: BrowseStory,
-                text: "Anyone, register or not can browse and play these stories written by the talented creatives who share their adventures with us. \n\n Click on a Story of choice to start!",
+                text: "Each Game is also an interactive story written by another user. Anyone, register or not can browse and play these stories written by the talented creatives who share their adventures with us. \n\n Click on a Story of choice to start!",
                 main: true
             },
             {
@@ -51,19 +55,40 @@ const AboutPage = () => {
             },
             {
                 id: "section3",
-                imagePath: storiescreated,
-                text: "This section is designed to modify and play the narratives you've crafted. Here, you can make necessary alterations to your story, be it minor adjustments or major plot twists. Once editing is done, you can play through your narrative, experiencing it firsthand.",
+                imagePath: HistoryLog,
+                text: "As the player progresses into the Story, every previous section of text (that has appeared in the dialogue box) will be added to the History Log for the player to refresh on what has happened in the story so far.",
+                main: true,
+            },
+            {
+                id: "section4",
+                imagePath: SaveGameButton,
+                title: "Save Game Button",
+                text: "Click the save game button to save the progress! When the player comes back next time, they’re back at exactly where they last left off from. \n\n Save only works locally, on the same device.S",
+                main: false,
+            },
+            {
+                id: "section5",
+                imagePath: ClearGameButton,
+                title: "Clear Game Button",
+                text: "Click the clear game button to clear the save data AND restart from the beginning.",
+                main: false,
+            },
+            {
+                id: "section6",
+                imagePath: EndScreenButton,
+                imagePath2: EndScreen,
+                title: "End Screen",
+                text: "When the ending choice appears and was click. Congratulations, You’ve found the first ending of this story! \n\n Beware! When you click that ‘End’ choice, your save progress will also be clear.",
                 main: true,
             },
 
         ],
-        "Create Story": [
+        "How To Create A New Story": [
             {
                 id: "section1",
-                title: "Title",
                 imagePath: title,
                 text: "This is the initial step in your story creation process. Here, you're prompted to name your narrative. Choosing a compelling title is crucial as it piques the interest of potential readers and provides a sneak peek into your story's theme. ",
-                main: false
+                main: true
             },
             {
                 id: "section2",
