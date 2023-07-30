@@ -13,6 +13,7 @@ function CharacterList({ event, characterId, storyId, onCharacterChange, setDele
 
     //get the single story
     const story = useSelector(state => state.story.singleStory);
+    const singleEvents = useSelector(state => state.event.singleEvents);
 
     //in the dropdown menu select the character
     const [selectedCharacterId, setSelectedCharacterId] = useState(null);
@@ -25,7 +26,6 @@ function CharacterList({ event, characterId, storyId, onCharacterChange, setDele
 
     // //define the selected character
     // const selectedCharacter = story.characters.find(character => character._id === selectedCharacterId);
-
     useEffect(() => {
         if(selectedCharacterId === null && event){
             setSelectedCharacterId(event.characterId._id)
@@ -67,7 +67,7 @@ function CharacterList({ event, characterId, storyId, onCharacterChange, setDele
                 <form>
                     <select className="custom-dropdown capitalize" onChange={handleCharacterChange} defaultValue={characterId || null} required>
 
-                        <option className="btn">Check Out Characters</option>
+                        <option className="btn">Select A Character</option>
                         {story.characters.map((character, index) => {
                             if(selectedCharacterId === character._id){
                                 return <option className="capitalize" key={index} value={selectedCharacterId} selected>

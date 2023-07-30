@@ -1,16 +1,6 @@
 import React from "react";
 import AboutNavBar from "../components/About Page Component/AboutNavBar";
 import AboutMajorSection from "../components/About Page Component/AboutMajorSection";
-import createstory from "../pages/assets/createstory.png";
-import playhistory from "../pages/assets/playhistory.png";
-import storiescreated from "../pages/assets/storiescreated.png";
-import title from "../pages/assets/title.png";
-import selectyourcharacter from "../pages/assets/selectyourcharacter.png";
-import currentevent from "../pages/assets/currenevent.png";
-import savedelete from "../pages/assets/saveanddelete.png";
-import eventnametext from "../pages/assets/eventnameandtext.png";
-import optionnametext from "../pages/assets/optionnameandtext.png";
-import editevent from "../pages/assets/edit event.png";
 import search from "../pages/assets/search.png";
 import storyname from "../pages/assets/storyname.png";
 import makechoice from "../pages/assets/makeachoice.png";
@@ -18,10 +8,6 @@ import narrate from "../pages/assets/narrate.png";
 import historylog from "../pages/assets/historylog.png";
 import saveclear from "../pages/assets/save and clear.png";
 import back from "../pages/assets/back.png";
-import stories from "../pages/assets/stories.png";
-import home from "../pages/assets/home.png";
-import homepage from "../pages/assets/home page.png";
-import login from "../pages/assets/login and sign up.png";
 import "./AboutCss.css";
 import ParticleBackground from "../components/Particles/ParticleBackground";
 import ScrollButton from "../components/ScrollButton/ScrollButton";
@@ -155,7 +141,7 @@ const AboutPage = () => {
                 id: "section4",
                 imagePath: CharacterCastAfterSelect,
                 imagePath2: CharacterCastAfterEdit,
-                text: "Select the Character. The user can now edit or delete this Character anytime as needed.",
+                text: "Select the Character. The user can now edit or delete this Character anytime as needed! \nClick 'Cancel' to close the edit character tab without saving.",
                 main: true
             },
 

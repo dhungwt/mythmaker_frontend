@@ -11,6 +11,7 @@ import Notification from "../../Notification";
 import './EditEvent.css';
 import '../../Button/StreamingButton.css';
 import ParticleBackground from "../../Particles/ParticleBackground";
+import ErrorPage from "../../../pages/ErrorPage";
 
 
 
@@ -63,6 +64,8 @@ const EditEvent = () => {
     const handleCharacterChange = (selectedCharacterId) => {
         setCharacterId(selectedCharacterId)
     };
+
+    
 
     //create the new option and to handle each option change
     //index is the option's 1,2,3 
@@ -243,8 +246,8 @@ const EditEvent = () => {
     }, []);
 
     //if no event exist, give the loading page
-    if (!event) {
-        return <div>Loading...</div>
+    if(!event || event?._id !== eventId){
+        return <ErrorPage msg={"Loading..."}/>
     }
 
 
