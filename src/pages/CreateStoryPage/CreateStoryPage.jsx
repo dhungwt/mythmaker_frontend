@@ -134,13 +134,13 @@ const CreateStory = () => {
           </div>
 
           <div className="add-character-field card-bg">
-            <h2 className="bold">Select Character Speaking:</h2>
+            <h2 className="bold">Edit Character Cast:</h2>
             <div className="notif"><Notification msg={deletedCharacterMsg} /></div>
             <CharacterList storyId={storyId} onCharacterChange={() => {}} setDeletedCharacterMsg={setDeletedCharacterMsg} />
           </div>
           <div className="display-event-field">
             <br />
-            <h2 className="whiteTitle">Current Story Events:</h2>
+            <h2 className="whiteTitle">Story Events:</h2>
             {events.map((event, index) => (
               <div key={index} className="event-card">
                 <DisplayEvent event={event} />
