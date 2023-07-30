@@ -7,12 +7,13 @@ import EditCharacter from "../EditCharacterModal/EditCharacterModal/EditCharacte
 import "../../components/Button/StreamingButton.css";
 import "../Button/Dropdown.css";
 
-function CharacterList({ storyId, onCharacterChange, setDeletedCharacterMsg }) {
+function CharacterList({ event, characterId, storyId, onCharacterChange, setDeletedCharacterMsg }) {
     //dispatch the thunk
     const dispatch = useDispatch();
 
     //get the single story
     const story = useSelector(state => state.story.singleStory);
+    const singleEvents = useSelector(state => state.event.singleEvents);
 
     //in the dropdown menu select the character
     const [selectedCharacterId, setSelectedCharacterId] = useState(null);
@@ -25,11 +26,17 @@ function CharacterList({ storyId, onCharacterChange, setDeletedCharacterMsg }) {
 
     // //define the selected character
     // const selectedCharacter = story.characters.find(character => character._id === selectedCharacterId);
-
+    useEffect(() => {
+        if(selectedCharacterId === null && event){
+            setSelectedCharacterId(event.characterId._id)
+            onCharacterChange(event.characterId._id);
+        }
+    }, []);
 
     useEffect(() => {
         dispatch(fetchIndividualStoryThunk(storyId));
     }, [dispatch, storyId, selectedCharacterId]);
+
 
     //use to delete the character
     const handleCharacterDelete = (characterId) => {
@@ -49,8 +56,6 @@ function CharacterList({ storyId, onCharacterChange, setDeletedCharacterMsg }) {
         onCharacterChange(event.target.value);
     };
 
-
-
     return (
         <div className="characterList" style={{
             justifyContent: "center",
@@ -60,14 +65,23 @@ function CharacterList({ storyId, onCharacterChange, setDeletedCharacterMsg }) {
             <AddCharacter storyId={storyId} />
             {story && story.characters && (
                 <form>
-                    <select className="custom-dropdown capitalize" onChange={handleCharacterChange} required>
+                    <select className="custom-dropdown capitalize" onChange={handleCharacterChange} defaultValue={characterId || null} required>
 
-                        <option className="btn">Select a Character</option>
-                        {story.characters.map((character, index) => (
-                            <option className="capitalize" key={index} value={character._id}>
+                        <option className="btn">Select A Character</option>
+                        {story.characters.map((character, index) => {
+                            if(selectedCharacterId === character._id){
+                                return <option className="capitalize" key={index} value={selectedCharacterId} selected>
                                 {character.name}
-                            </option>
-                        ))}
+                                </option>  
+                            }
+                            
+                            else{
+                              return <option className="capitalize" key={index} value={character._id}>
+                                {character.name}
+                              </option>  
+                            }
+                            
+                        })}
                     </select>
 
                 </form>

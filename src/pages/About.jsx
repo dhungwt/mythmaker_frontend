@@ -1,16 +1,6 @@
 import React from "react";
 import AboutNavBar from "../components/About Page Component/AboutNavBar";
 import AboutMajorSection from "../components/About Page Component/AboutMajorSection";
-import createstory from "../pages/assets/createstory.png";
-import playhistory from "../pages/assets/playhistory.png";
-import storiescreated from "../pages/assets/storiescreated.png";
-import title from "../pages/assets/title.png";
-import selectyourcharacter from "../pages/assets/selectyourcharacter.png";
-import currentevent from "../pages/assets/currenevent.png";
-import savedelete from "../pages/assets/saveanddelete.png";
-import eventnametext from "../pages/assets/eventnameandtext.png";
-import optionnametext from "../pages/assets/optionnameandtext.png";
-import editevent from "../pages/assets/edit event.png";
 import search from "../pages/assets/search.png";
 import storyname from "../pages/assets/storyname.png";
 import makechoice from "../pages/assets/makeachoice.png";
@@ -18,166 +8,222 @@ import narrate from "../pages/assets/narrate.png";
 import historylog from "../pages/assets/historylog.png";
 import saveclear from "../pages/assets/save and clear.png";
 import back from "../pages/assets/back.png";
-import stories from "../pages/assets/stories.png";
-import home from "../pages/assets/home.png";
-import homepage from "../pages/assets/home page.png";
-import login from "../pages/assets/login and sign up.png";
 import "./AboutCss.css";
 import ParticleBackground from "../components/Particles/ParticleBackground";
 import ScrollButton from "../components/ScrollButton/ScrollButton";
 
+import MMlogo from "../pages/assets/MMlogo.png"
+import BrowseStory from "../pages/assets/screenshots/BrowseStory.png";
+import ExampleStoryPage from "../pages/assets/screenshots/ExampleStoryPage.png";
+import HistoryLog from "../pages/assets/screenshots/HistoryLog.png";
+import SaveGameButton from "../pages/assets/screenshots/SaveGameButton.png";
+import ClearGameButton from "../pages/assets/screenshots/ClearGameButton.png";
+import EndScreenButton from "../pages/assets/screenshots/EndScreenButton.png";
+import EndScreen from "../pages/assets/screenshots/EndScreen.png";
+import CreateStoryButton from "../pages/assets/screenshots/CreateStoryButton.png"
+import NewStoryOnHomePage from "../pages/assets/screenshots/NewStoryOnHomePage.png"
+import EditPageTitle from "../pages/assets/screenshots/EditPageTitle.png"
+import CharacterCast from "../pages/assets/screenshots/CharacterCast.png"
+import CharacterCastAdd from "../pages/assets/screenshots/CharacterCast_Add.png"
+import CharacterCastAddName from "../pages/assets/screenshots/CharacterCast_AddName.png"
+import CharacterCastSubmit from "../pages/assets/screenshots/CharacterCast_Submit.png"
+import CharacterCastSelect from "../pages/assets/screenshots/CharacterCast_Select.png"
+import CharacterCastAfterSelect from "../pages/assets/screenshots/CharacterCast_AfterSelect.png"
+import CharacterCastAfterEdit from "../pages/assets/screenshots/CharacterCast_AfterEdit.png"
 
 
 
+
+//main means bigger boxes
 
 const AboutPage = () => {
     const majorSectionsData = {
-        "User Home": [
+        "How To Play A Story?": [
             {
                 id: "section1",
-                title: "Create a New Story",
-                imagePath: createstory,
-                text: "This section allows users to create their own unique narratives. By employing the interactive tools available, you can draft a plot, design characters. "
+                imagePath: BrowseStory,
+                text: "Each Game is also an interactive story written by another user. Anyone, register or not can browse and play these stories written by the talented creatives who share their adventures with us. \n\n Click on a Story of choice to start!",
+                main: true
             },
             {
                 id: "section2",
-                title: "Play History",
-                imagePath: playhistory,
-                text: "This section showcases the history of stories you've played. It gives a summary of your choices, the characters you've interacted with, and the storylines you've explored. Click on the title to continue your journey!"
+                imagePath: ExampleStoryPage,
+                text: "The narrative of the Story will type itself out in the dialogue box here. When the typing finish, a set of decisions will pop up asking you the player to choose the direction of this Story. \n\n To speed up this process, click on the dialogue box!",
+                main: true
             },
             {
                 id: "section3",
-                title: "Stories Created Edit & Play",
-                imagePath: storiescreated,
-                text: "This section is designed to modify and play the narratives you've crafted. Here, you can make necessary alterations to your story, be it minor adjustments or major plot twists. Once editing is done, you can play through your narrative, experiencing it firsthand."
-            },
-
-        ],
-        "Create Story": [
-            {
-                id: "section1",
-                title: "Title",
-                imagePath: title,
-                text: "This is the initial step in your story creation process. Here, you're prompted to name your narrative. Choosing a compelling title is crucial as it piques the interest of potential readers and provides a sneak peek into your story's theme. "
-            },
-            {
-                id: "section2",
-                title: "Select Character",
-                imagePath: selectyourcharacter,
-                text: "This section allows you to choose or design characters for your story. You can pick from preset options or design your own unique persona to enhance the plot"
-            },
-            {
-                id: "section3",
-                title: "Current Events Delete & Edit",
-                imagePath: currentevent,
-                text: "This section provides a list of events happening in your story. It allows you to modify these events or even remove them if they no longer align with your plot"
+                imagePath: HistoryLog,
+                text: "As the player progresses into the Story, every previous section of text (that has appeared in the dialogue box) will be added to the History Log for the player to refresh on what has happened in the story so far.",
+                main: true,
             },
             {
                 id: "section4",
-                title: "Save Changes & Delete Story",
-                imagePath: savedelete,
-                text: "The final section is about saving any changes made to the story or deleting the story if desired. It's a safeguard for your creative process, ensuring that all your edits are stored correctly, or enabling you to start fresh if you decide to discard the current story. "
+                imagePath: SaveGameButton,
+                title: "Save Game Button",
+                text: "Click the save game button to save the progress! When the player comes back next time, they’re back at exactly where they last left off from. \n\n Save only works locally, on the same device.",
+                main: false,
+            },
+            {
+                id: "section5",
+                imagePath: ClearGameButton,
+                title: "Clear Game Button",
+                text: "Click the clear game button to clear the save data AND restart from the beginning.",
+                main: false,
+            },
+            {
+                id: "section6",
+                imagePath: EndScreenButton,
+                imagePath2: EndScreen,
+                title: "End Screen",
+                text: "When the ending choice appears and was click. Congratulations, You’ve found the first ending of this story! \n\n Beware! When you click that ‘End’ choice, your save progress will also be clear.",
+                main: true,
             },
 
         ],
-        "Edit Event": [
+        "Create A New Story": [
             {
                 id: "section1",
-                title: "Select Character",
-                imagePath: selectyourcharacter,
-                text: "This is the first step in the event editing process. In this section, you are required to choose the character that this event pertains to. You can choose or design characters for your story. You can pick from preset options or design your own unique persona to enhance the plot"
+                imagePath: CreateStoryButton,
+                text: "To start creating a new Story, head to Homepage(only available to login users) and click the ‘Create A New Story’ button. The user will be redirected to the 'Edit Story Page’, where they can edit the newly created story. \n\nOnly registered users can create a story.",
+                main: true
             },
             {
                 id: "section2",
-                title: "Describe Event Name & Text",
-                imagePath: eventnametext,
-                text: "This section allows you to assign a name to the event and describe it in detail. The event name should give a quick overview of what to expect, while the description provides the context, setting, and plot elements. "
+                imagePath: NewStoryOnHomePage,
+                text: "Once ‘Create A New Story’ is clicked, a new Story will be automatically created and can be found on the bottom of the user’s homepage.",
+                main: true
             },
             {
                 id: "section3",
-                title: "Options Name & Text",
-                imagePath: optionnametext,
-                text: " This section enables you to specify the different choices or options that your characters have within the event. Each option can lead the story in a different direction, making your narrative interactive and dynamic. Based on the option you provide, we will create new event for that option. if you don't need option, keep the default name!"
-            },
-            {
-                id: "section4",
-                title: "Edit Event",
-                imagePath: editevent,
-                text: "In this final section, you can make changes to any aspect of the event that you've previously created or selected. This includes modifying characters, the event description, or the options available to characters."
+                imagePath: EditPageTitle,
+                text: "Now that you're on the 'Edit Story' page, give the Story a desire title!",
+                main: true
             },
 
         ],
-        "Browse Stories": [
+        "Edit Your Character Cast": [
             {
                 id: "section1",
-                title: "Search",
+                imagePath: CharacterCast,
+                text: "This is an organization section for the Story Characters.\nHere the user can add/edit/delete the Characters of their Story to easily apply them with each associated Event later on.",
+                main: true
+            },
+            {
+                id: "section2",
+                title: "Add Character",
+                imagePath: CharacterCastAdd,
+                text: "Click 'Add Character' button to start adding a new Character.",
+                main: false
+            },
+            {
+                id: "section3",
+                title: "Name The New Character",
+                imagePath: CharacterCastAddName, 
+                text: "Name the new Character!",
+                main: false
+            },
+            {
+                id: "section4",
+                title: "Finish Adding The New Character",
+                imagePath: CharacterCastSubmit,
+                text: "Click 'Submit' to finish adding the newly created Character in the Story’s cast of characters.",
+                main: false
+            },
+            {
+                id: "section5",
+                title: "Checkout The Newly Added Character",
+                imagePath: CharacterCastSelect,
+                text: "The user now have a newly created Character listed in the 'Character Dropdown'. Click on this dropdown to see the whole list!",
+                main: false
+            },
+            {
+                id: "section4",
+                imagePath: CharacterCastAfterSelect,
+                imagePath2: CharacterCastAfterEdit,
+                text: "Select the Character. The user can now edit or delete this Character anytime as needed! \nClick 'Cancel' to close the edit character tab without saving.",
+                main: true
+            },
+
+        ],
+        "Edit Story Events": [
+            {
+                id: "section1",
+                imagePath: search, //switch photo
                 imagePath: search,
-                text: "This section facilitates your navigation through the plethora of stories available. You can use the names of stories to find the stories that most interest you."
+                text: "A ‘Event’ is a single section of text that will pop up on one page and will only be associated with one Character. Each ‘Event’ can be connected up to 1-3 different ‘Options’",
+                main: true
             },
             {
                 id: "section2",
-                title: "Story Name",
-                imagePath: storyname,
-                text: "In this section, by clicking on a story's name, you can access to play the story. "
+                imagePath: storyname, //switch photo
+                imagePath2: storyname,
+                text: "An ‘Option’ is a clickable choice that will take the player to the next link Event.",
+                main: true
+            },
+            {
+                id: "section3",
+                imagePath: storyname, //switch photo
+                text: "Click ‘Edit’ to edit this specific Event.",
+                main: true
+            },
+            {
+                id: "section4",
+                imagePath: storyname, //switch photo
+                text: "Select a Character that is associated with this Event. If the Character of choice doesn’t exist, you can add them in this section here. \n\nThis section works similarly to the 'Story Character Cast' section in the previous page.",
+                main: false
+            },
+            {
+                id: "section5",
+                imagePath: storyname, //switch photo
+                text: "Write the very first line of narrative here.",
+                main: false
             },
 
         ],
-        "Play Story": [
+        "Finish Editing Your Story": [
             {
                 id: "section1",
                 title: "Make a Choice",
                 imagePath: makechoice,
-                text: "This section is integral to the interactive storytelling experience. As a player, you're presented with different choices or paths that your character can take. Each decision made will influence the storyline and lead to varying outcomes. "
+                text: "This section is integral to the interactive storytelling experience. As a player, you're presented with different choices or paths that your character can take. Each decision made will influence the storyline and lead to varying outcomes. ",
+                main: false
             },
             {
                 id: "section2",
                 title: "Narrate",
                 imagePath: narrate,
-                text: " This section displays the narrative unfolding based on the choices you make. It details the characters' reactions, the environment, and the subsequent events. As the name suggests, it narrates the story, immersing you in the fictional world. "
+                text: " This section displays the narrative unfolding based on the choices you make. It details the characters' reactions, the environment, and the subsequent events. As the name suggests, it narrates the story, immersing you in the fictional world. ",
+                main: false
             },
             {
                 id: "section3",
                 title: "History Log",
                 imagePath: historylog,
-                text: "This section keeps track of your progress throughout the story. It logs the choices you've made and the paths you've taken, allowing you to reflect on past decisions and their outcomes."
+                text: "This section keeps track of your progress throughout the story. It logs the choices you've made and the paths you've taken, allowing you to reflect on past decisions and their outcomes.",
+                main: false
             },
             {
                 id: "section4",
                 title: "Save & Clear",
                 imagePath: saveclear,
-                text: "This section is about managing your story progression. You can save your progress at any point, which is particularly useful for long narratives. If desired, you can also clear the history, effectively restarting the story from the beginning. "
+                text: "This section is about managing your story progression. You can save your progress at any point, which is particularly useful for long narratives. If desired, you can also clear the history, effectively restarting the story from the beginning. ",
+                main: false
             },
             {
                 id: "section5",
                 title: "Back",
                 imagePath: back,
-                text: "click we can go back to the user home page"
+                text: "click we can go back to the user home page",
+                main: false
             },
         ],
-        "Navigation Bar": [
+        "About Myth Maker?": [
             {
                 id: "section1",
-                title: "Stories",
-                imagePath: stories,
-                text: " This section leads users to the repository of available stories. By clicking on this option, you can browse, select, and interact with the narratives on offer."
-            },
-            {
-                id: "section2",
-                title: "Home",
-                imagePath: home,
-                text: "This section brings users back to the start page of the application. No matter where you are within the platform, you can quickly return to the application home page by clicking on this option. "
-            },
-            {
-                id: "section3",
-                title: "Home Pages",
-                imagePath: homepage,
-                text: "This section brings users back to the user main of the application. No matter where you are within the platform, you can quickly return to the user homepage by clicking on this option. "
-            },
-            {
-                id: "section4",
-                title: "Login & Logout & Signup",
-                imagePath: login,
-                text: "This section handles the user authentication process. Login is for existing users to enter their credentials and access their accounts. Signup is for new users who want to create an account, and Logout allows users to sign out of their account, ensuring their privacy and security."
+                imagePath: MMlogo,
+                text: "Myth Maker is a 3 week long project made by Anyi Chen, Diana Hung, Hafeefa Sultan and Jianing Wei as part of the Brooklyn College Tech Talent Pipeline Program. Our goal is to enable creative minds to share their craft with the world, as easily as possible and as fun as possible.",
+                main: true
             },
         ],
     };
