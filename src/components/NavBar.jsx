@@ -64,7 +64,7 @@ const NavBar = () => {
                             {isLoggedIn ? (
                                 <div className="homePageLogin">
                                     <a  className="nav-link" href="/home" style={{color:"white", backgroundColor:"#232946"}}>
-                                        HomePage
+                                        Home Page
                                     </a>
                                 </div>
                             ):(

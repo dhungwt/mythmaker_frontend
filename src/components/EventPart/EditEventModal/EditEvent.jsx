@@ -112,7 +112,7 @@ const EditEvent = () => {
                 setNewEventOptions(old => [...old, { index, option }]);
             }
 
-            setOptionSaveMsg(`Option ${index} Is Created!`)
+            setOptionSaveMsg(`Option ${index+1} Is Created!`)
         }
     };
 
