@@ -22,7 +22,7 @@ Each story is written by the creatives using our platform. Each story is made of
 - MythMaker's History Log function requires fetching from the list of events available and appending them to an array of events to be displayed. To accomplish this as efficiently as possible, we use the map algorithm by converting the array of events to a key-value pair object with their unique id as key and their data as the value. This approach helped us avoid iterating through the large set of array data every time we need to search for a new event.
 
 # Features: 
-	!!!!!Paste the recorded video, and list the features in simple form(create story + play story)!!!!!
+	Video Tour Available here: https://youtu.be/MIQDs0wo8uo
 ### Authorization
 - Local login
 - OAuth through Google Services
