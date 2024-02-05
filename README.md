@@ -1,5 +1,5 @@
  <p align="center">
-<a href="https://mythmakers.netlify.app">Deployed Netlify Site</a>
+<a href="https://mythmakers.netlify.app">Deployed Site</a>
     ·
     <a href="https://github.com/anyichen212/Mythmaker_BE">Back End Repo</a>
     ·
